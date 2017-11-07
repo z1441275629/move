@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+	</body>
+
+</html>
+<script type="text/javascript">
+	//n=10
+	//var arr=[2,1,6,3,5,8,4,7,10];
+	//console.log(arr.length)
+	//方法一:
+	/*for(var i=1;i<=arr.length+1;i++){
+		var flag=false;
+		for(var j=0;j<arr.length;j++){
+			if(arr[j]===i){
+				flag=true;
+				break;
+			}
+			
+		}
+		if(flag==false){
+			console.log(i);
+		}
+	}*/
+	//方法二:
+	/*var sum=0,arrSum=0;
+	for(var i=1;i<=10;i++){
+		sum+=i;
+	}
+	for(var j=0;j<arr.length;j++){
+		arrSum+=arr[j];
+	}
+	console.log(sum-arrSum)
+	*/
+	//方法三:
+	var arr = [2, 1, 6, 9, 5, 8, 4, 7, 10];
+	var arr1 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+	for(var i = 0; i < arr.length; i++) {
+		arr1[arr[i] - 1] = 1;
+	}
+	//console.log(arr1)
+	for(var j = 0; j < arr1.length; j++) {
+		if(arr1[j] == 0) {
+			console.log(j + 1);
+			break;
+		}
+	}
+
+	function quiktSort(arr) {
+		var left = [],
+			right = [];
+		if(arr.length < 1) {
+			return arr;
+		}
+		var index = Math.floor(arr.length / 2);
+		var point = arr.splice(index, 1);
+		for(var i = 0, len = arr.length; i < len; i++) {
+			if(arr[i] < point) {
+				left.push(arr[i]);
+			} else {
+				right.push(arr[i]);
+			}
+		}
+		//return quickSort(left).concat(point, quickSort(right));
+		return left.concat(point, right);
+	}
+	console.log(quiktSort(arr))
+</script>

@@ -1,0 +1,329 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>简易老虎机效果</title>
+<!--<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>-->
+<style>
+/*外框*/
+#parent {
+	width:1150px;
+	height:600px;
+	border:3px solid black;
+	margin:0px auto;
+	padding:30px;
+	position:relative;
+	top:10px;
+	left:10px;
+	background:#00BFFF;
+}
+/*跑圈框*/
+#box {
+	width:470px;
+	height:470px;
+	border:2px solid black;
+	padding:10px;
+	position:relative;
+	top:80px;
+	left:60px;
+	background:pink;
+}
+/*跑圈div*/
+#parent #box div {
+	width:94px;
+	height:94px;
+	border:1px solid black;
+	float:left;
+	margin:10px 10px;
+	top:20px;
+	left:20px;
+	color:red;
+	font-weight:bold;
+}
+/*中奖信息框*/
+#message {
+	width:500px;
+	height:490px;
+	border:2px solid black;
+	position:relative;
+	top:-415px;
+	left:600px;
+	overflow:hidden;
+}
+/*跑圈div定位*/
+#parent #box div:nth-of-type(6) {
+	width:210px;
+	height:210px;
+}
+#parent #box div:nth-of-type(9) {
+	margin-top:-106px;
+}
+/*开始按钮*/
+#btn {
+	width:80px;
+	height:80px;
+	position:absolute;
+	top:20px;
+	left:300px;
+	border-radius:50%;
+	background:blue;
+}
+/*投币按钮*/
+#coins {
+	width:80px;
+	height:80px;
+	position:absolute;
+	top:20px;
+	left:90px;
+	border-radius:50%;
+	background:blue;
+}
+/*余额*/
+span {
+	position:absolute;
+	left:230px;
+	top:50px;
+}
+/*红色div*/
+.box {
+	background:blue;
+}
+/*透明度：opacity:0.5;
+	*/
+/*得分div*/
+#parent #message div {
+	width:500px;
+	height:490px;
+	border:2px solid black;
+	position:absolute;
+	top:492px;
+	left:-2px;
+	background:pink;
+}
+/*右边中奖信息提示框*/
+#parent #message div:nth-of-type(1) {
+	color:red;
+	display:none;
+}
+#parent #message div:nth-of-type(2) {
+	color:red;
+	display:none;
+}
+#parent #message div:nth-of-type(3) {
+	color:red;
+	display:none;
+}
+#parent #message div:nth-of-type(4) {
+	color:green;
+	display:none;
+}
+#parent #message div:nth-of-type(5) {
+	color:green;
+	display:none;
+}
+#parent #message div:nth-of-type(6) {
+	color:black;
+	display:none;
+}
+#parent #message div:nth-of-type(7) {
+	color:blue;
+	display:none;
+}
+#parent #message div:nth-of-type(8) {
+	color:deepskyblue;
+	display:none;
+}
+#parent #message div:nth-of-type(9) {
+	color:black;
+	display:none;
+}
+#parent #message div:nth-of-type(10) {
+	color:blue;
+	display:none;
+}
+#parent #message div:nth-of-type(11) {
+	color:deepskyblue;
+	display:none;
+}
+#parent #message div:nth-of-type(12) {
+	color:black;
+	display:none;
+}
+#parent #message div:nth-of-type(13) {
+	color:black;
+	display:none;
+}
+</style>
+</head>
+<body>
+<div id="parent">
+  <input type="button" value="泽林老虎机" id="btn"  />
+  <span id="oSpan">0元</span>
+  <input type="button" value="投币" id="coins"  />
+  <div id="box">
+    <div>1等奖
+      <p>深圳一环内别墅一套</p>
+    </div>
+    <div>2等奖
+      <p>深圳二环内新房一套</p>
+    </div>
+    <div>3等奖
+      <p>深圳三环新房一套</p>
+    </div>
+    <div>4等奖
+      <p>高级跑车一辆</p>
+    </div>
+    <div>5等奖
+      <p>suv一辆</p>
+    </div>
+    <div id="price">
+      <p></p>
+    </div>
+    <div>7等奖
+      <p>苹果8s一部</p>
+    </div>
+    <div>8等奖
+      <p>奖金1000元</p>
+    </div>
+    <div>9等奖
+      <p>倒贴1000元</p>
+    </div>
+    <div>10等奖
+      <p>苹果8s一部</p>
+    </div>
+    <div>11等奖
+      <p>奖金5000元</p>
+    </div>
+    <div>12等奖
+      <p>倒贴100000元</p>
+    </div>
+    <div>13等奖
+      <p>倒贴一个亿</p>
+    </div>
+  </div>
+  <div id="message">
+    <div>
+      <h1>靠，深圳一环别墅，瞬间升级土豪，土豪，我能跪舔你吗，亲！！！</h1>
+    </div>
+    <div>
+      <h1>靠，深圳二环内新房一套，瞬间升级土豪，土豪，我能跪舔你吗，亲！！！</h1>
+    </div>
+    <div>
+      <h1>靠，深圳三环内新房一套，瞬间升级土豪，土豪，我能跪舔你吗，亲！！！</h1>
+    </div>
+    <div>
+      <h1>靠，高级跑车一辆，瞬间升级老司机，老司机，能给点种子吗，亲！！！</h1>
+    </div>
+    <div>
+      <h1>靠，SUV一辆，瞬间升级老司机，老司机，能给点种子吗，亲！！！</h1>
+    </div>
+    <div>
+      <h1>靠，没有币了，乱点你妹啊！！！小赌怡情，大赌伤身，强赌灰飞烟灭！！！</h1>
+    </div>
+    <div>
+      <h1>天降肾八一部，可以的，小伙子，继续努力！！！</h1>
+    </div>
+    <div>
+      <h1>鼓励奖1000元，小伙子，继续努力！！！</h1>
+    </div>
+    <div>
+      <h1>衰！！！倒贴1000元，小伙子，继续努力！！！</h1>
+    </div>
+    <div>
+      <h1>天降肾八一部，可以的，小伙子，继续努力！！！</h1>
+    </div>
+    <div>
+      <h1>鼓励奖5000元，小伙子，继续努力！！！</h1>
+    </div>
+    <div>
+      <h1>超级衰！！！倒贴100000元，小伙子，不要灰心，压力就是动力！！！</h1>
+    </div>
+    <div>
+      <h1>王总的小目标！！！倒贴一个亿，小伙子，厉害啦，神都救不了你啊，666！！！</h1>
+    </div>
+  </div>
+</div>
+<script>
+//开始按钮
+var oBtn = document.getElementById('btn');
+//绕圈div框
+var oBox = document.getElementById('box');
+//绕圈div
+var aDiv = oBox.getElementsByTagName('div');
+//中奖显示div
+var oPrice = document.getElementById('price');
+//奖励信息显示框
+var oMessage = document.getElementById('message');
+//奖励信息div
+var aMsg = oMessage.getElementsByTagName('div');
+//投币按钮
+var oCoins = document.getElementById('coins');
+//余额提示
+var oSpan = document.getElementById('oSpan');
+//绕圈定时器
+var timer = 0;
+//绕圈停止定时器
+var timer1 = 0;
+//硬币初始值
+var coin = 0;
+//点击投币，一次一枚
+oCoins.onmouseover = function() {
+    coin++;
+    oSpan.innerHTML = coin + '元';
+};
+//开始按钮
+oBtn.onclick = function() {
+    //判断有没有币,有币开始,使用一次减一枚币
+    if (coin > 0) {
+        //清除定时器
+        clearInterval(timer);
+        //绕圈循环
+        timer = setInterval(run, 100);
+        //绕圈延迟停止
+        timer1 = setTimeout(function() {
+            clearInterval(timer);
+            oPrice.innerHTML = '恭喜你中奖了！' + oVelue;
+            //中奖信息浮现
+            //如果iNow == 11的时候 iNow == 0,解决iNow[11]5等奖不显示的BUG
+            if (iNow == 0) {
+                aMsg[arr[11]].style.display = 'block';
+                aMsg[arr[11]].style.top = '0';
+            } else {
+                aMsg[arr[iNow - 1]].style.display = 'block';
+                aMsg[arr[iNow - 1]].style.top = '0';
+            }
+        },
+        (Math.random() * 3 + 1) * 1000); //((0-1)*3+1)*1000
+        //每次跑完从头开始跑
+        iNow = 0;
+        //使用一次减少一枚硬币
+        coin--;
+        oSpan.innerHTML = coin + '元';
+    } else {
+        for (var i = 0; i < aMsg.length; i++) {
+            aMsg[i].style.display = 'none';
+            aMsg[i].style.top = '492px';
+        }
+        alert('请投币');
+        aMsg[5].style.display = 'block';
+        aMsg[5].style.top = '0';
+    }
+}
+//循环抽奖
+var iNow = 0;
+var arr = [0, 1, 2, 3, 6, 7, 12, 11, 10, 9, 8, 4]
+function run() {
+    for (var i = 0; i < aDiv.length; i++) {
+        aDiv[i].className = '';
+        aDiv[arr[iNow]].className = 'box';
+        oVelue = aDiv[arr[iNow]].innerHTML;
+        aMsg[i].style.display = 'none';
+    }
+    if (iNow == 11) {
+        iNow = 0;
+    } else {
+        iNow++;
+    }
+}</script>
+</body>
+</html>

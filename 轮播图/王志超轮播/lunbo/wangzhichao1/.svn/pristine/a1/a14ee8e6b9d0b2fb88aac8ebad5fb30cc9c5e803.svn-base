@@ -1,0 +1,240 @@
+body{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+background: #fbfcfe;
+}
+.header{
+	padding-top: 0.426667rem;
+	height:1.92rem;
+	width:100%;
+	background: #d43c33;
+	display: flex
+
+}
+.header>img{
+	width: 1.365333rem;
+	height: 1.365333rem;
+	margin:  auto;
+}
+.input{
+	width: 11.306667rem;
+	height: 1.28rem;
+	background: #fff;
+	border-radius: 0.426667rem ;
+	margin:  auto;
+  line-height: 1.28rem;
+  padding-left: 2.752rem;
+  background: #fff url(../img/find.svg) left center no-repeat;
+  background-position: 2.010667rem ; 
+  background-size: 0.533333rem 0.533333rem; 
+}
+.input input{
+   background: none;
+   border: none;
+}
+
+
+/* main */
+.main{
+
+	width:100%;
+	flex: 1;
+
+	overflow-y: scroll;
+}
+.nav{
+	width: 100%;
+	height: 1.706667rem;
+	background: #f8f8fa;
+	display: flex;
+}
+.nav li{
+	width: 25%;
+	text-align: center;
+	line-height: 1.706667rem;
+}
+.border{
+	border-bottom: 0.042667rem solid #d43c33;
+	padding-bottom: 0.426667rem;
+	color: #d43c33;
+}
+.swiperwrap{
+	height: 6.186667rem;
+}
+.swiper-slide img{
+	width: 100%;
+	height: 100%;
+}
+
+.fm{
+	width: 100%;
+	height: 4.48rem;
+	padding-top: 0.661333rem;
+	background: #fbfcfe;
+	display: flex;
+	justify-content: space-around;
+	border-bottom: 0.021333rem solid #e1e2e4;
+}
+
+ .three:nth-child(1) .yuan{
+	background: url(../img/ppp_03.gif) no-repeat center center;
+	
+}
+ .three:nth-child(2) .yuan{
+	background: url(../img/ppp_05.gif) no-repeat center center;
+	
+}
+ .three:nth-child(3) .yuan{
+	background: url(../img/ppp_07.png) no-repeat center center;
+	
+}
+.fm .three .yuan{
+	background-size: 1.493333rem 1.493333rem; 
+}
+.three{
+	width:33%;
+	height: 100%;
+	text-align: center;	
+}
+.three p{
+	line-height: 1.066667rem;
+	color: #5a5a5c;
+}
+.yuan{
+	width: 2.389333rem;
+	height: 2.389333rem;
+	border-radius: 50%;
+	border: 0.021333rem solid #d43c33;
+	margin:  auto;
+}
+
+.day{
+	width: 100%;
+	height: 2.133333rem;
+	line-height: 2.133333rem;
+	font-size: 0.64rem;
+	font-weight: bold;
+}
+.day a{
+	font-size: 0.64rem;
+	color: #313234;
+	padding: 0 0.426667rem ;
+	border-left:0.085333rem solid #d43c33;
+}
+.musiclist{
+	width: 100%;
+  overflow: hidden;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap:wrap;
+}
+.list{
+	width: 5.248rem;
+		height: 7.253333rem;
+	position: relative;
+}
+.list .down{
+	    position: absolute;
+    right: 5px;
+    top: 2px;
+    z-index: 3;
+    padding-left: 13px;
+    color: #fff;
+    font-size: 12px;
+    background-position: 0;
+    background-repeat: no-repeat;
+    background-size: 11px 10px;
+    text-shadow: 1px 0 0 rgba(0,0,0,.15);
+    background-image: url(../img/down.svg);
+
+}
+.list img{
+width: 5.248rem;
+	height: 5.248rem;
+}
+.list p{
+	padding: 0.128rem 0.042667rem 0 0.128rem;
+    line-height: 1.2;
+  
+}
+
+.newlist{
+	width: 100%;
+	overflow: hidden;
+}
+.newmusic{
+	height: 2.346667rem;
+	width: 100%;
+	padding: 0.213333rem;
+   display: flex;
+   justify-content: space-between;
+}
+.musicname{
+	width: 100%;
+	display: inline-block;
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: normal;
+	font-size: 0.704rem;
+
+}
+.move{
+	color:#888;
+}
+.musicpeo{
+	width: 80%;	
+	color: #888;
+	display: inline-block;
+	
+}
+.music{
+	width: 90%;
+}
+.span{
+	display: inline-block;
+    width: 0.938667rem;
+    height: 0.938667rem;
+    margin: auto 0;
+    background: url(../img/index_icon_2x.png) no-repeat;
+    background-size: 7.082667rem 4.138667rem; 
+       background-position: -1.024rem 0;
+}
+.music i{
+
+    display: inline-block;
+    width: 0.512rem;
+    height: 0.341333rem;
+    margin-right: 4px;
+    background: url(../img/index_icon_2x.png) no-repeat;
+    background-size: 7.082667rem 4.138667rem; 
+}
+
+/* footer */
+.footer{
+	height:2.048rem;
+	width:100%;
+
+	background: #2f1b14;
+}
+.footer>ul{
+	height: 100%;
+		display: flex;
+		text-align: center;
+
+}
+
+.footer>ul>li{
+	width: 25%;
+	height: 100%;
+color: #afabaa;
+}
+.footer>ul>.white{
+	color:#fdfcfa;
+}
+.footer>ul>li>img{
+	width: 1.365333rem;
+	height: 1.365333rem;
+	margin: 0 auto;
+}

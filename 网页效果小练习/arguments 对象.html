@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+	//在函数代码中，使用特殊对象 arguments，开发者无需明确指出参数名，就能访问它们。
+	//例如，在函数 sayHi() 中，第一个参数是 message。用 arguments[0] 也可以访问这个值，即第一个参数的值（第一个参数位于位置 0，第二个参数位于位置 1，依此类推）。
+	function say(){
+		if(arguments[0]=="fuck you"){
+			
+		}else{
+			alert(arguments[0]);
+		}
+	}
+	say("fuck you");//
+	say("fuck you too");//fuck you too
+	//检测参数个数
+	//还可以用 arguments 对象检测函数的参数个数，引用属性 arguments.length 即可。
+	
+	function changdu(){
+		alert(arguments.length);
+		if(arguments.length!=0){
+			var str="";
+			for(var i=0;i<arguments.length;i++){
+				str+=arguments[i]+",";
+			}
+			alert(str);
+		}
+	}
+	changdu(1,"逗比",5,9);
+	
+	changdu();
+
+</script>

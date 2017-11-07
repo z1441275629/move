@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+			[id^=floor]{
+				width: 1200px;
+				height: 600px;
+				border: 1px solid black;
+				background: #ccc;
+				margin: 10px auto;
+			}
+			ul{
+				position: fixed;
+				left:10px;
+				top:150px;
+			}
+			li{
+				margin: 5px;
+				background: #d7d7d7;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<br /><br /><br /><br /><br /><br /><br /><br />
+		<div id="floor1">1</div>
+		<div id="floor2"style="height:10px;">2</div>
+		<div id="floor3">3</div>
+		<div id="floor4">4</div>
+		<div id="floor5">5</div>
+		<div id="floor6" style="height:1000px;">6</div>
+		<div id="floor7">7</div>
+		<div id="floor8">8</div>
+		<div id="floor9">9</div>
+		<div id="floor10">10</div>
+		<br /><br /><br /><br /><br /><br /><br /><br />
+		<br /><br /><br /><br /><br /><br /><br /><br />
+		<br /><br /><br /><br /><br /><br /><br /><br />
+		<p class="floor_nav">
+			<ul>
+				<li>l</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+				<li>7</li>
+				<li>8</li>
+				<li>9</li>
+				<li>10</li>
+			</ul>
+		</p>
+	</body>
+</html>
+<script src="floor.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/move.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var lis=document.getElementsByTagName("ul")[0].getElementsByTagName("li");
+	var floor=document.getElementsByTagName("div");
+	new FloorEffect({
+		lis:lis,
+		floor:floor
+	});
+</script>
+<!--<script type="text/javascript">
+	var lis=document.getElementsByTagName("ul")[0].getElementsByTagName("li");
+	var floor=document.getElementsByTagName("div");
+	for(let i=0;i<lis.length;i++){
+		lis[i].s=floor[i].offsetTop;
+		lis[i].onclick=function(){
+			(document.documentElement.scrollTop=floor[i].offsetTop) || (document.body.scrollTop=floor[i].offsetTop);
+		}
+	}
+	window.onscroll=function(event){
+		for(j=0;j<lis.length;j++){
+			lis[j].style.background="#ccc";
+		}
+		var scrollTop=document.documentElement.scrollTop|| document.body.scrollTop;
+		for(let i=0;i<lis.length;i++){
+			if(scrollTop>=floor[i].offsetTop && scrollTop<floor[i].offsetTop+floor[i].offsetHeight){
+				lis[i].style.background="yellow";
+				return;
+			}
+		}
+	}
+</script>-->

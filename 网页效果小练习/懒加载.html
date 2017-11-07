@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title></title>
+    <!--<script src="js/toos.js"></script>-->
+</head>
+<body>
+<div class="box"></div>
+<div class="box box-aside"></div>
+<div class="box1 box-aside"></div>
+<div class="box1 box-aside"></div>
+<p><img data-src="img/banner1.jpg" class="load-img" width='528' height='304' /></p>
+<p><img data-src="img/banner2.jpg" class="load-img" width='528' height='304' /></p>
+<p><img data-src="img/banner3.jpg" class="load-img" width='528' height='304' /></p>
+<p><img data-src="img/banner1.jpg" class="load-img" width='528' height='304' /></p>
+<p><img data-src="img/banner2.jpg" class="load-img" width='528' height='304' /></p>
+<p><img data-src="img/banner3.jpg" class="load-img" width='528' height='304' /></p>
+<p><img data-src="img/banner1.jpg" class="load-img" width='528' height='304' /></p>
+<p><img data-src="img/banner2.jpg" class="load-img" width='528' height='304' /></p>
+<p><img data-src="img/banner3.jpg" class="load-img" width='528' height='304' /></p>
+<p><img data-src="img/banner1.jpg" class="load-img" width='528' height='304' /></p>
+<p><img data-src="img/banner2.jpg" class="load-img" width='528' height='304' /></p>
+<p><img data-src="img/banner3.jpg" class="load-img" width='528' height='304' /></p>
+<p><img data-src="img/banner1.jpg" class="load-img" width='528' height='304' /></p>
+<p><img data-src="img/banner2.jpg" class="load-img" width='528' height='304' /></p>
+<p><img data-src="img/banner3.jpg" class="load-img" width='528' height='304' /></p>
+<p><img data-src="img/banner1.jpg" class="load-img" width='528' height='304' /></p>
+<p><img data-src="img/banner2.jpg" class="load-img" width='528' height='304' /></p>
+<p><img data-src="img/banner3.jpg" class="load-img" width='528' height='304' /></p><p><img data-src="img/banner1.jpg" class="load-img" width='528' height='304' /></p>
+<p><img data-src="img/banner2.jpg" class="load-img" width='528' height='304' /></p>
+<p><img data-src="img/banner3.jpg" class="load-img" width='528' height='304' /></p>
+<p><img data-src="img/banner1.jpg" class="load-img" width='528' height='304' /></p>
+<p><img data-src="img/banner2.jpg" class="load-img" width='528' height='304' /></p>
+<p><img data-src="img/banner3.jpg" class="load-img" width='528' height='304' /></p>
+<p><img data-src="img/banner1.jpg" class="load-img" width='528' height='304' /></p>
+<p><img data-src="img/banner2.jpg" class="load-img" width='528' height='304' /></p>
+<p><img data-src="img/banner3.jpg" class="load-img" width='528' height='304' /></p>
+<p><img data-src="img/banner1.jpg" class="load-img" width='528' height='304' /></p>
+<p><img data-src="img/banner2.jpg" class="load-img" width='528' height='304' /></p>
+<p><img data-src="img/banner3.jpg" class="load-img" width='528' height='304' /></p>
+<p><img data-src="img/banner1.jpg" class="load-img" width='528' height='304' /></p>
+<p><img data-src="img/banner2.jpg" class="load-img" width='528' height='304' /></p>
+<p><img data-src="img/banner3.jpg" class="load-img" width='528' height='304' /></p>
+<p><img data-src="img/banner1.jpg" class="load-img" width='528' height='304' /></p>
+<p><img data-src="img/banner2.jpg" class="load-img" width='528' height='304' /></p>
+<p><img data-src="img/banner3.jpg" class="load-img" width='528' height='304' /></p>
+
+</body>
+</html>
+<script>
+    //html代码
+
+    //data-src储存src的数据，到需要加载的时候把data-src的值赋值给src属性，图片就会加载。
+    //详细可以查看testLoadImg.html
+
+
+
+
+    //图片没加载出来时用一张图片代替
+
+    //图片滚动懒加载
+    //@className {string} 要遍历图片的类名
+    //@num {number} 距离多少的时候开始加载 默认 0
+    //比如，一张图片距离文档顶部3000，num参数设置200，那么在页面滚动到2800的时候，图片加载。不传num参数就滚动，num默认是0，页面滚动到3000就加载
+    //html代码
+    //<p><img data-src="lawyerOtherImg.jpg" class="load-img" width='528' height='304' /></p>
+    //<p><img data-src="lawyerOtherImg.jpg" class="load-img" width='528' height='304' /></p>
+    //<p><img data-src="lawyerOtherImg.jpg" class="load-img" width='528' height='304' /></p>....
+    //data-src储存src的数据，到需要加载的时候把data-src的值赋值给src属性，图片就会加载。
+    //详细可以查看testLoadImg.html
+
+    //window.onload = function() {
+    //	loadImg('load-img',100);
+    //	window.onscroll = function() {
+    //		loadImg('load-img',100);
+    //		}
+    //}
+var ecDo={
+    aftLoadImg: function (obj, url, cb) {
+        var oImg = new Image(),_this=this;
+        oImg.src = url;
+        oImg.onload = function () {
+            obj.src = oImg.src;
+            if (cb && _this.istype(cb, 'function')) {
+                cb(obj);
+            }
+        }
+    },
+    trim: function (str, type) {
+        switch (type) {
+            case 1:
+                return str.replace(/\s+/g, "");
+            case 2:
+                return str.replace(/(^\s*)|(\s*$)/g, "");
+            case 3:
+                return str.replace(/(^\s*)/g, "");
+            case 4:
+                return str.replace(/(\s*$)/g, "");
+            default:
+                return str;
+        }
+    },
+    removeClass: function (obj, classStr) {
+        if((this.istype(obj,'array')||this.istype(obj,'elements'))&&obj.length>1){
+            for(var i=0,len=obj.length;i<len;i++){
+                if (this.hasClass(obj[i], classStr)) {
+                    var reg = new RegExp('(\\s|^)' + classStr + '(\\s|$)');
+                    obj[i].className = obj[i].className.replace(reg, '');
+                }
+            }
+        }
+        else{
+            if (this.hasClass(obj, classStr)) {
+                var reg = new RegExp('(\\s|^)' + classStr + '(\\s|$)');
+                obj.className = obj.className.replace(reg, '');
+            }
+        }
+    },
+    hasClass: function (obj, classStr) {
+        if(obj.className&&this.trim(obj.className,1)!==""){
+            var arr = obj.className.split(/\s+/); //这个正则表达式是因为class可以有多个,判断是否包含
+            return (arr.indexOf(classStr) == -1) ? false : true;
+        }
+        else{
+            return false;
+        }
+
+    },
+    istype: function (o, type) {
+        if(_type){
+            var _type = type.toLowerCase();
+        }
+        switch (_type) {
+            case 'string':
+                return Object.prototype.toString.call(o) === '[object String]';
+            case 'number':
+                return Object.prototype.toString.call(o) === '[object Number]';
+            case 'boolean':
+                return Object.prototype.toString.call(o) === '[object Boolean]';
+            case 'undefined':
+                return Object.prototype.toString.call(o) === '[object Undefined]';
+            case 'null':
+                return Object.prototype.toString.call(o) === '[object Null]';
+            case 'function':
+                return Object.prototype.toString.call(o) === '[object Function]';
+            case 'array':
+                return Object.prototype.toString.call(o) === '[object Array]';
+            case 'object':
+                return Object.prototype.toString.call(o) === '[object Object]';
+            case 'nan':
+                return isNaN(o);
+            case 'elements':
+                return Object.prototype.toString.call(o).indexOf('HTML')!==-1

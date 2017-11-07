@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		*{padding: 0;margin: 0;}
+		#list,li{
+			list-style: none;
+		}
+	</style>
+</head>
+<body>
+	<ul id="list"></ul>
+</body>
+</html>
+<script type="text/javascript">
+	var arr=["打球","下棋","旅游","打牌","打麻将","闲聊","跑步","游泳","斗鸡"];
+	var arrFlag=[];
+	var oLen=arr.length;
+	for(var i=0;i<oLen;i++){
+		arrFlag[i]=0;
+	}
+	//创建页面
+	var list=document.getElementById("list");
+	for(var i=0;i<oLen;i++){
+		var oli=document.createElement("li");
+		oli.innerHTML="<label><input type='checkbox' />"+arr[i]+"</label>";
+		list.appendChild(oli);
+	}
+	
+	var lis=list.getElementsByTagName("li");
+	var liLength=lis.length;
+	//默认选中前面的length-1个
+	for(var i=0;i<liLength-1;i++){
+		lis[i].getElementsByTagName("input")[0].checked=true;
+	}
+	//赋点击事件
+	for(let i=0;i<liLength;i++){
+		lis[i].onclick=function(){
+			var sum=0;//用来统计多少个被选中了
+			//arrFlag中根据checkbox的checked记录数据，选中状态用1，未选中用0
+			for(var j=0;j<liLength;j++){
+				if(lis[j].getElementsByTagName("input")[0].checked==true){
+					arrFlag[j]=1;
+				}else{
+					arrFlag[j]=0
+				}
+			}
+			console.log(arrFlag);
+			//求和，判断有多少个被选中了
+			for(var j=0;j<liLength;j++){
+				sum+=arrFlag[j]; 
+			}
+			console.log(sum)
+			//根据选中状态判断 是否可以选中当前的某一个
+			//你写点击事件时，浏览器已经把input的选中状态改变了
+			if(sum==1){
+				if(this.getElementsByTagName("input")[0].checked==false){
+					this.getElementsByTagName("input")[0].checked=true;
+					alert("亲，至少选两项哦");
+				}
+			}else if(sum==liLength){
+				console.log(9);
+				if(this.getElementsByTagName("input")[0].checked==true){
+					this.getElementsByTagName("input")[0].checked=false;
+					alert("亲，不能全选哦");
+				}
+			}else{
+				
+			}
+		}
+	}
+</script>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title> </title>
+	<style type="text/css">	
+		*{
+			padding: 0;
+			margin: 0;
+			user-select: none;
+		}
+		ul,li{
+			list-style: none;
+		}
+		#wrap{
+			width: 500px;
+			height: 400px;
+			margin: 100px auto;
+			position: relative;
+			overflow: hidden;
+		}
+		.bigimg{
+			width: 2500px;
+			height: 100%;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+		.bigimg>li{
+			width: 500px;
+			height: 100%;
+			float: left;
+		}
+		.bigimg>li>img{
+			width: 100%;
+			height: 100%;
+
+		}
+		span{
+			cursor: pointer;
+			display: block;
+			width: 50px;
+			height: 50px;
+			background: #ccc;
+			position: absolute;
+			top: 50%;
+			margin-top: -25px;
+			font-size: 40px;
+			text-align: center;
+			line-height: 50px;
+		} 
+		.left{
+			left: 0;
+		}
+		.right{
+			right: 0;
+		}
+		#btn{
+			cursor: pointer;
+			width: 120px;
+			height: 30px;
+			position: absolute;
+			bottom: 20px;
+			
+			left: 50%;
+			margin-left: -60px;
+		}
+		#btn>li{
+			width: 30px;
+			height: 30px;
+			float: left;
+			background: #ddd;
+			border-radius: 50%;
+		}
+		#btn .black{
+			background: #000;
+		}
+	</style>
+
+</head>
+<body>
+
+	<div id="wrap">
+		<ul class="bigimg" id="bigimg">
+			<li><img src="img/1.jpg" alt=""></li>
+			<li><img src="img/2.jpg" alt=""></li>
+			<li><img src="img/3.jpg" alt=""></li>
+			<li><img src="img/4.jpg" alt=""></li>
+			<li><img src="img/1.jpg" alt=""></li>
+			
+		</ul>
+
+		<span class="left" id="left"><</span>
+		<span class="right" id="right">></span>
+
+		<ul id="btn">
+			<li class="black"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+</body>
+<script src="js/move.js"></script>
+<script type="text/javascript">
+	function $(id) {
+		return document.getElementById(id);
+	}
+	var num =0;
+	var w=$("bigimg").children[0].offsetWidth;
+  //右边按钮点击
+  $("right").onclick=function(){
+        //alert(1)
+        num++;
+        if(num>=$("bigimg").children.length){
+        	num=1;
+        	$("bigimg").style.left  = "0px"
+
+        }
+        //$("bigimg").style.left  = -num * w+"px"
+        move($("bigimg"),"left",-num * w)
+        console.log(num)
+       //小圆圈
+       for (var j = 0; j < $("btn").children.length; j++) {
+       	$("btn").children[j].className=" "
+       }
+       if(num==$("btn").children.length){
+       	$("btn").children[0].className="black";
+       }else{
+
+       	$("btn").children[num].className="black";
+       }
+   }
+   //左边按钮点击
+   $("left").onclick=function(){
+        //alert(1)
+        num--;
+        if(num<0){
+        	num=$("bigimg").children.length-2;
+        	$("bigimg").style.left  =-($("bigimg").children.length-1)*w+ "px"
+
+        }
+        //$("bigimg").style.left  = -num * w+"px"
+        move($("bigimg"),"left",-num * w)  ;
+        console.log(num)
+         //小圆圈
+         for (var j = 0; j < $("btn").children.length; j++) {
+         	$("btn").children[j].className=" "
+         }
+
+         $("btn").children[num].className="black";
+
+     }
+//小圆圈
+for (var i = 0; i < $("btn").children.length; i++) {
+	$("btn").children[i].index =i;
+	$("btn").children[i].onmouseover=function(){
+		for (var j = 0; j < $("btn").children.length; j++) {
+			$("btn").children[j].className=" "
+		}
+		num =this.index
+		$("btn").children[this.index].className="black";
+		move($("bigimg"),"left",this.index * -w)
+		console.log(num)
+	} 
+}
+
+//
+var timer  =null;
+clearInterval(timer);
+timer = setInterval($("right").onclick,2000);
+
+$("wrap").onmouseover=function(){
+	clearInterval(timer);
+}
+$("wrap").onmouseout=function(){
+	clearInterval(timer);
+	timer = setInterval($("right").onclick,2000);
+}
+</script>
+</html>

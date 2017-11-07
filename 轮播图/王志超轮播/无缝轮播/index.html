@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>无缝轮播</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+			 user-select: none;/* 阻止用户选中内容 */
+		}
+		ul,li{
+			list-style: none;
+		}
+		#box{
+        	width: 640px;
+        	height: 512px;
+			    margin: 3% auto 0 auto;
+        	overflow: hidden;
+        	position: relative;
+        	box-shadow: #242424 0px 0px 10px;
+		}
+        #wrap{
+        	width: 3200px;
+        	height: 512px;
+            position: absolute;
+            left: 0;
+            
+        }
+        
+        #wrap>li,#wrap>li img{
+        	width: 640px;
+        	height: 512px;
+        }
+        #wrap>li {
+        	float:left;
+        }
+       /* 底部圆圈按钮*/
+        #btn{
+        	z-index: 2;
+        	height: 20px;
+        	position: absolute;
+        	bottom: 1%;
+        	left:50%;
+        	margin-left: -50px;
+        	cursor: pointer;
+        }
+        #btn>li{
+        	width:20px;
+        	height: 100%;
+        	margin:0 5px;
+        	float: left;
+        	border-radius: 50%;
+        	
+        }
+        .ccc{
+        	background: #ccc;
+        }
+        .black{
+        	background: #000;
+        }
+       /* 左右按钮*/
+        span{
+        	position: absolute;
+        	top:50%;
+        	display: block;
+        	width :50px;
+        	height: 80px;
+        	background:#242424;
+        	margin-top:-40px;
+        	z-index: 2;
+        	color: #fff;
+        	font-size: 30px;
+        	line-height: 80px;
+        	text-align: center;
+        	cursor: pointer;
+        	display: none;
+        	
+        }
+        #left{
+        	left:0
+        }
+        #right{
+        	right: 0;
+        }
+	</style>
+	<script src="js/move.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div id="box">
+		<ul id="wrap">
+			<li><img src="img/1.jpg" alt=""></li>
+			<li><img src="img/2.jpg" alt=""></li>
+			<li><img src="img/3.jpg" alt=""></li>
+			<li><img src="img/4.jpg" alt=""></li>
+			<li><img src="img/5.jpg" alt=""></li> 
+			<li><img src="img/6.jpg" alt=""></li> 
+			
+			
+		</ul>	
+		<!--底部圆圈按钮-->
+		<ul id="btn">
+			<li class="black"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<!--左右按钮-->
+		<span id="left"><</span>
+		<span id="right">></span>
+	</div>
+		
+	    
+</body>
+<script type="text/javascript">
+       function $(id){
+       	return document.getElementById(id);
+       };
+       
+       var Li = document.getElementsByTagName("li")[0].offsetWidth;//获取单个图片li的宽
+       var btn = document.getElementById("btn").children;//获取底部圆圈
+       var obannerimg = document.getElementById("wrap").children;//获取li
+       var cbannerimg = obannerimg[0].cloneNode(true)//克隆
+       $("wrap").appendChild(cbannerimg);
+       $("wrap").style.width = Li*obannerimg.length+"px"
+       /* 右按钮*/
+      var num = 0;
+   
+       $("right").onclick = function(){
+       	   num++;
+       	  
+       	   if(num>=obannerimg.length){
+       	   	num=1	;
+       	    //$("wrap").style.transition = ""
+       	   	$("wrap").style.left = 0+"px";
+       	   }
+       	    console.log(num)
+       	 // $("wrap").style.transition = "left 2s"
+       	  // $("wrap").style.left = -Li*num+"px";
+       	 move($("wrap"),"left",-Li*num);
+       	  
+       	   /*底部小圆圈*/
+       	 
+       	   for (var j in btn) {
+     			btn[j].className="ccc";
+     		}
+       	  if(num==obannerimg.length-1){
+       	  	 btn[0].className="black";
+       	  }else{
+       	  	 btn[num].className="black";
+       	  }
+       	  
+       }
+       
+         /* 左按钮*/
+       $("left").onclick = function(){
+       	   num--;
+       	  
+       	   if(num<0){
+       	   	num=obannerimg.length-2;
+       	   	$("wrap").style.left = -Li*(obannerimg.length-1)+"px";
+       	   }
+       	    console.log(num)
+       	   move($("wrap"),"left",-Li*num);
+       	  /*底部小圆圈*/
+       	   for (var j in btn) {
+     			btn[j].className="ccc";
+     		}
+       	   btn[num].className="black";
+       }
+       
+      /* 底部小圆圈鼠标移入*/
+     
+     for (var i in btn) {
+     	btn[i].className="ccc";
+     	btn[0].className="black";
+     	btn[i].index = i;
+     	btn[i].onmouseover = function(){
+     		for (var j in btn) {
+     			btn[j].className="ccc";
+     		}
+        num=this.index
+     		btn[this.index].className="black";
+     		console.log(this.index)
+     		  move($("wrap"),"left",-Li*this.index)
+     	}
+     }
+    /*让轮播图自己走，设置定时器*/
+    var time = null;  
+    time = setInterval($("right").onclick,3000)
+    
+    /* 左右按钮的显示与隐藏*/
+       $("box").onmouseover= function(){
+       	  $("left").style.display = "block";
+       	  $("right").style.display = "block";
+       	  clearInterval(time)
+       	};
+       $("box").onmouseout = function(){
+       	  $("left").style.display = "none";
+       	  $("right").style.display = "none";
+       	  clearInterval(time)
+         time = setInterval($("right").onclick,3000);
+         console.log("鼠标移出，打开定时器,自动播放")
+       };
+</script>
+</html>

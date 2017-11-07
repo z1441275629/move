@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<style type="text/css">
+.show{
+	width:700px;
+	height:460px;
+	background:#cdcdcd;
+	background:1px solid black;
+	border-radius:5px;
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-top:-230px;
+	margin-left:-350px;
+	display:none;
+	z-index:101;
+}
+.showbtn{
+	width:700px; 
+	height:70px;
+	border-bottom:1px solid black;
+}
+.showbtn a{
+	text-decoration:none;
+	float:right;
+	height:70px;
+	line-height:70px;
+	margin-right:20px;
+	font-size:26px;
+}
+.show .showtv{
+	width:640px; 
+	height:360px; 
+	margin:12px auto;
+}
+.shadow{
+	position:absolute;
+	
+	bootom:0;
+	left:0;
+	rigth:0;
+	top:0;
+	background:#000;
+	opcity:.6;
+	z-index:100px;
+	display:none;
+
+}
+.J-video{
+	width:640px;
+	height:360px;
+}
+
+</style>
+<body style="height:2000px;">
+	<div class="btn" id="btn">
+		<a href="javascript:;">点我</a>
+	</div>
+	
+	<div class="shadow" id="shadow">
+		<div class="show" id="show">
+		
+			<div class="showbtn" id="showbtn">视频播放<a href="" id="shut">X</a></div>
+			<div class="showtv" id="showtv">
+				<video src="http://cpmall-cdn.coolpad.com/video/1.mp4" controls="controls" autoplay="" class="J-video">您的浏览器不支持 video 标签。</video>
+			</div>
+		</div>
+	
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	function $(id){
+		return document.getElementById(id);
+	}
+	$("btn").onclick=function(){
+		$("show").style.display="block";
+		$("shadow").style,display="block";
+
+	}
+	$("shut").onclick=function(){
+		$("show").style.display="none";
+		$("shadow").style,display="block";
+	}
+
+</script>

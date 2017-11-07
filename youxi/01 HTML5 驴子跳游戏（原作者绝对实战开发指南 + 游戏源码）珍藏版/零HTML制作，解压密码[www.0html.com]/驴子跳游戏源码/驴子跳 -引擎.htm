@@ -1,0 +1,1285 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0034)http://www.iteye.com/topic/1122395 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>完全分享，共同进步——我开发的第一款HTML5游戏《驴子跳》 - JavaScript,HTML5,canvas,HTML5游戏开发,驴子跳 - web - ITeye论坛</title>
+    <meta name="description" content="   在线演示：http://yujianshenbing.w108.mc-test.com/game/donkeyjump/index.html（如果无法访问，请大家暂时先直接下载源码运行）  源码下载：请查看附件  操作方法：游戏开始后，按键盘“A”或“D”控制左右方向，也可以通过方向键控制。  　　（请了解：游戏中所有图片和音乐均来自手机版同名游戏，本游戏仅供学习参考。本文所有内容及结论均属个 ...">
+    <meta name="keywords" content="JavaScript HTML5 canvas HTML5游戏开发 驴子跳 web">
+    <link rel="shortcut icon" href="http://www.iteye.com/images/favicon.ico" type="image/x-icon">
+    <link href="http://www.iteye.com/rss/board/web" rel="alternate" title="ITeye论坛" type="application/rss+xml">
+    <link rel="search" type="application/opensearchdescription+xml" href="http://www.iteye.com/open_search.xml" title="ITeye">
+    <link href="./驴子跳 -引擎_files/forum.css" media="screen" rel="stylesheet" type="text/css">
+    <script type="text/javascript" async="" src="./驴子跳 -引擎_files/ga.js"></script><script src="./驴子跳 -引擎_files/application.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-535605-1']);
+  _gaq.push(['_setDomainName', 'iteye.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+      <link href="./驴子跳 -引擎_files/SyntaxHighlighter.css" media="screen" rel="stylesheet" type="text/css">
+  <script src="./驴子跳 -引擎_files/shCoreCommon.js" type="text/javascript"></script>
+<script src="./驴子跳 -引擎_files/hotkey.js" type="text/javascript"></script>
+  <script src="./驴子跳 -引擎_files/code_favorites.js" type="text/javascript"></script>
+          <script src="./驴子跳 -引擎_files/dragdrop.js" type="text/javascript"></script>
+          </head>
+  <body>
+    <div id="page">
+      <div id="header">
+        <div class="clearfix"><div id="user_nav">
+  
+        <a href="http://tian--dian.iteye.com/" title="查看我的博客首页" class="welcome">欢迎Tian__Dian</a>
+    <a id="notifications_count" href="http://my.iteye.com/notifications" class="" title="没有未读消息">0</a>
+    
+      <a href="http://my.iteye.com/messages" title="发送站内短信">收件箱</a>
+    
+    <a href="http://my.iteye.com/" title="我的应用首页">我的应用</a>
+    <div class="quick_menu" style="display:none;">
+      <a href="http://my.iteye.com/feed" title="我关注的好友动态消息">我的关注</a>
+      <a href="http://my.iteye.com/mygroup" title="我加入的群组最新话题">我的群组</a>
+      <a href="http://my.iteye.com/myresume" title="我的个人简历">我的简历</a>
+      <a href="http://my.iteye.com/admin/album" title="我的个人简历">我的相册</a>
+      <a href="http://my.iteye.com/admin/link" title="我收藏的网络资源链接">我的收藏</a>
+      <a href="http://my.iteye.com/admin/code" title="我收藏的代码">我的代码</a>
+      <a href="http://my.iteye.com/admin/weibo" title="用微博发表简短的话题">我的微博</a>
+    </div>
+    <a href="http://tian--dian.iteye.com/admin" title="管理我的博客">我的博客</a>
+    <a href="http://my.iteye.com/profile" title="修改我的个人设置">设置</a>
+    <a href="http://www.iteye.com/logout" class="nobg" onclick="var f = document.createElement(&#39;form&#39;); f.style.display = &#39;none&#39;; this.parentNode.appendChild(f); f.method = &#39;POST&#39;; f.action = this.href;var m = document.createElement(&#39;input&#39;); m.setAttribute(&#39;type&#39;, &#39;hidden&#39;); m.setAttribute(&#39;name&#39;, &#39;_method&#39;); m.setAttribute(&#39;value&#39;, &#39;put&#39;); f.appendChild(m);var s = document.createElement(&#39;input&#39;); s.setAttribute(&#39;type&#39;, &#39;hidden&#39;); s.setAttribute(&#39;name&#39;, &#39;authenticity_token&#39;); s.setAttribute(&#39;value&#39;, &#39;gYPZaumEbIvx5ovBdNkoNcfWEBaKbCSQg+2fXY8CssA=&#39;); f.appendChild(s);f.submit();return false;">退出</a>
+  </div>
+</div>
+        <div class="clearfix">
+          <div id="branding">
+            <a href="http://www.iteye.com/"><img alt="ITeye-最棒的软件开发交流社区" src="./驴子跳 -引擎_files/logo.gif" title="ITeye-最棒的软件开发交流社区"></a>
+          </div>
+          <div id="gg"><iframe src="./驴子跳 -引擎_files/797.htm" scrolling="no" width="728" height="90" frameborder="0"></iframe></div>
+        </div>
+      </div>
+
+      <div id="content" class="clearfix">
+        <div id="main">
+          
+
+
+
+          
+
+<div class="clearfix">
+  <div class="crumbs">
+    <a href="http://www.iteye.com/forums">论坛首页</a> <span class="arrow">→</span>
+    <a href="http://www.iteye.com/forums/board/web">Web前端技术论坛</a> <span class="arrow">→</span>
+    <h1>完全分享，共同进步——我开发的第一款HTML5游戏《驴子跳》</h1>
+  </div>
+</div>
+
+
+  <div id="forum_tag_list">
+    <a href="http://www.iteye.com/forums/board/web">全部</a>
+          <a href="http://www.iteye.com/forums/tag/JavaScript">JavaScript</a>
+          <a href="http://www.iteye.com/forums/tag/HTML5">HTML5</a>
+          <a href="http://www.iteye.com/forums/tag/jQuery">jQuery</a>
+          <a href="http://www.iteye.com/forums/tag/CSS">CSS</a>
+              <a href="http://www.iteye.com/forums/tag/EXT">EXT</a>
+          <a href="http://www.iteye.com/forums/tag/Ajax">Ajax</a>
+          <a href="http://www.iteye.com/forums/tag/Web%E7%BB%BC%E5%90%88">Web综合</a>
+          <a href="http://www.iteye.com/forums/tag/%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1">界面设计</a>
+          <a href="http://www.iteye.com/forums/tag/DWR">DWR</a>
+      </div>
+
+
+<div class="actions">
+  <div class="buttons"><a href="http://www.iteye.com/forums/41/topics/1122395/posts/new" class="new_post" title="发表回复">&nbsp;</a></div>
+  <div class="wrapper">
+    <div id="forum_recommended_f4"><a href="http://www.iteye.com/clicks/849" target="_blank"><span style="font-weight:bold;color:red">Java开发新方式：专注UI，快速开发</span></a></div>
+    <div class="pagination"><span class="disabled prev_page">« 上一页</span> <span class="current">1</span> <a href="http://www.iteye.com/topic/1122395?page=2" rel="next">2</a> <a href="http://www.iteye.com/topic/1122395?page=3">3</a> <span class="gap">…</span> <a href="http://www.iteye.com/topic/1122395?page=9">9</a> <a href="http://www.iteye.com/topic/1122395?page=10">10</a> <a href="http://www.iteye.com/topic/1122395?page=2" class="next_page" rel="next">下一页 »</a></div>
+    <div class="info">浏览 24341 次</div>
+  </div>
+</div>
+
+
+
+<table id="forum_main" cellspacing="1">
+  <thead>
+    <tr>
+      <th colspan="2" class="topic_title">
+        <div class="wrapper"> <a href="./驴子跳 -引擎_files/驴子跳 -引擎.htm">主题：完全分享，共同进步——我开发的第一款HTML5游戏《驴子跳》</a></div>
+        <div id="topic_rate_box"><strong class="highlight">该帖已经被评为精华帖</strong></div>
+      </th>
+    </tr>
+    <tr>
+      <td class="first_col">作者</td>
+      <td class="last_col">正文
+      
+      </td>
+    </tr>
+  </thead>
+  <tbody id="posts">
+    <tr id="2336199">
+  <td class="postauthor">
+    <ul>
+      <li class="name">yujianshenbing</li>
+      <li>等级: <img src="./驴子跳 -引擎_files/star1.gif" alt="一星会员" title="一星会员"></li>
+      <li><a href="http://yujianshenbing.iteye.com/" target="_blank"><img alt="yujianshenbing的博客" class="logo" src="./驴子跳 -引擎_files/d7fba2b1-9aa0-3697-bf6b-56083cbf1c7a.jpg" title="yujianshenbing的博客: 御剑神兵的博客"></a></li>
+      <li>性别: <img src="./驴子跳 -引擎_files/icon_minigender_1.gif" title="男"></li>      <li>文章: 24</li>
+      <li>积分: 140</li>
+      <li>来自: 深圳</li>
+      <li><img src="./驴子跳 -引擎_files/offline.gif"></li>
+    </ul>
+  </td>
+  <td class="postcontent">
+    <div class="postactions">
+      <div class="description">
+        &nbsp;&nbsp;
+        发表时间：2012-04-03&nbsp;&nbsp;
+        最后修改：2012-06-05
+      </div>
+      <div class="links">
+        <a href="http://www.iteye.com/forums/41/topics/1122395/posts/2336199/quote" class="quote">引用</a>
+        
+          
+          
+            <a href="http://www.iteye.com/admin/link?user_favorite%5Btitle%5D=%E5%AE%8C%E5%85%A8%E5%88%86%E4%BA%AB%EF%BC%8C%E5%85%B1%E5%90%8C%E8%BF%9B%E6%AD%A5%E2%80%94%E2%80%94%E6%88%91%E5%BC%80%E5%8F%91%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AC%BEHTML5%E6%B8%B8%E6%88%8F%E3%80%8A%E9%A9%B4%E5%AD%90%E8%B7%B3%E3%80%8B&user_favorite%5Burl%5D=http%3A%2F%2Fwww.iteye.com%2Ftopic%2F1122395" target="_blank" class="favorite" onclick="$$(&#39;.favorite_form_spinner&#39;)[0].show();new Ajax.Request(&#39;/admin/link/new_xhr?user_favorite%5Btitle%5D=%E5%AE%8C%E5%85%A8%E5%88%86%E4%BA%AB%EF%BC%8C%E5%85%B1%E5%90%8C%E8%BF%9B%E6%AD%A5%E2%80%94%E2%80%94%E6%88%91%E5%BC%80%E5%8F%91%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AC%BEHTML5%E6%B8%B8%E6%88%8F%E3%80%8A%E9%A9%B4%E5%AD%90%E8%B7%B3%E3%80%8B&amp;user_favorite%5Burl%5D=http%3A%2F%2Fwww.iteye.com%2Ftopic%2F1122395&#39;, {method: &#39;get&#39;, onSuccess: function(response){$(document.getElementsByTagName(&#39;body&#39;)[0]).insert({bottom:response.responseText});$$(&#39;.favorite_form_spinner&#39;)[0].hide();}});return false;">收藏</a><img alt="Spinner" class="favorite_form_spinner" src="./驴子跳 -引擎_files/spinner.gif" style="vertical-align:bottom;margin-left:7px;display:none;">
+          
+        
+      </div>
+    </div>
+    <div class="postbody clearfix">
+      
+        
+              <script type="text/javascript">
+      var hunters = ["\u003Ca href='/jobs/2504' target='_blank' style='color:#000;'\u003E\u003Cspan style='font-weight:bold;'\u003E\u9655\u897f: \u003C/span\u003E \u897f\u5b89\uff1asenior java engineer  \u003C/a\u003E"]
+      var hunter_id = Math.ceil(Math.random() * hunters.length) - 1;
+      if(hunter_id == -1) hunter_id = 0;
+    </script>
+    <div id="hunter_recommended" style="background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); padding: 4px; margin-bottom: 10px; float: left; width: 557px; background-position: initial initial; background-repeat: initial initial;">
+      <span id="hunters_nav" style="margin-right:5px;">
+        <a href="http://www.iteye.com/topic/1122395#" onclick="hunter_id &lt;= 0 ? hunter_id = hunters.length - 1 : hunter_id--; $(&#39;hunters&#39;).update(hunters[hunter_id]);return false;" style="border:1px solid #ccc;padding: 0 3px;size: 13px;text-decoration: none;">&lt;</a>
+        <a href="http://www.iteye.com/topic/1122395#" onclick="hunter_id &gt;= hunters.length - 1 ? hunter_id = 0 : hunter_id++; $(&#39;hunters&#39;).update(hunters[hunter_id]);return false;" style="border:1px solid #ccc;padding: 0 3px;size :13px;text-decoration: none;">&gt;</a>
+      </span>
+      猎头职位: <span id="hunters"><a href="http://www.iteye.com/jobs/2504" target="_blank" style="color:#000;"><span style="font-weight:bold;">陕西: </span> 西安：senior java engineer  </a></span>
+      <script type="text/javascript">$('hunters').update(hunters[hunter_id]);</script>
+    </div>
+
+        
+      
+                                            <div id="related_topics" style="position: relative; z-index: 0; left: 0px; top: 0px;">相关文章: <span class="close"><a href="http://www.iteye.com/topic/1122395#" onclick="$(&#39;related_topics&#39;).hide();if($(&#39;hunter_recommended&#39;)){$(&#39;hunter_recommended&#39;).style.width=&#39;780px&#39;};if($(&#39;topic_tags&#39;)){$(&#39;topic_tags&#39;).style.width=&#39;790px&#39;};return false;" title="关闭">&nbsp;</a></span>
+              <ul>
+                                  <li><a href="http://www.iteye.com/topic/785109" title="JSGF(JavaScript Game Framework)，示例游戏最新发布。" target="_blank">JSGF(JavaScript Game Framework)，示例游戏最新发布。</a></li>
+                                  <li><a href="http://www.iteye.com/topic/1126092" title="HTML5 ，真的适合游戏开发吗？我认为不会。" target="_blank">HTML5 ，真的适合游戏开发吗？我认为不会。</a></li>
+                                  <li><a href="http://www.iteye.com/topic/602187" title="HTML5尝鲜(让canvas像flash一样工作,从而制作复杂的动画)" target="_blank">HTML5尝鲜(让canvas像flash一样工作,从而制作复杂的动画)</a></li>
+                              </ul>
+              <br><span>推荐群组: <a href="http://html5.group.iteye.com/" target="_blank">HTML5</a></span>
+              <br><a href="http://www.iteye.com/wiki/topic/1122395" target="_blank">更多相关推荐</a>
+            </div>
+            <script type="text/javascript">
+              document.observe("dom:loaded", function() {
+                if($('hunter_recommended')) {
+                  $('hunter_recommended').setStyle({cssFloat: 'left', width: '557px'})
+                }
+                if($('topic_tags')) {
+                  $('topic_tags').setStyle({width: '567px'})
+                }
+                new Draggable("related_topics");
+              });
+            </script>
+                          
+          <div id="topic_tags" class="news_tag" style="width: 567px;">
+                          <a href="http://www.iteye.com/forums/tag/JavaScript">JavaScript</a>
+                          <a href="http://www.iteye.com/forums/tag/HTML5">HTML5</a>
+                          <a href="http://www.iteye.com/forums/tag/canvas">canvas</a>
+                          <a href="http://www.iteye.com/forums/tag/HTML5%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91">HTML5游戏开发</a>
+                          <a href="http://www.iteye.com/forums/tag/%E9%A9%B4%E5%AD%90%E8%B7%B3">驴子跳</a>
+                      </div>
+        
+      
+      <p>
+</p>
+<p><span style="font-size: small;"><span style="font-size: medium;">在线演示：</span><a href="http://yujianshenbing.w108.mc-test.com/game/donkeyjump/index.html" target="_blank" style="font-size: medium;">http://yujianshenbing.w108.mc-test.com/game/donkeyjump/index.html</a><span style="font-size: small;"><strong>（如果无法访问，请大家暂时先直接下载源码运行）</strong></span></span></p>
+<p><span style="font-size: medium;"><span style="font-size: small;">源码下载：请查看附件</span></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">操作方法：游戏开始后，按键盘“A”或“D”控制左右方向，也可以通过方向键控制。</span></p>
+<p class="MsoNormal"><span style="color: #ff0000; font-size: medium;">　　（请了解：游戏中所有图片和音乐均来自手机版同名游戏，本游戏仅供学习参考。本文所有内容及结论均属个人意见，如有不同见解，欢迎指正。）</span></p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　经过两个多月断断续续的开发，我的第一款游戏《驴子跳》终于完成了，此时，我已经迫不及待地想跟大家分享这个过程，包括学习方法、游戏源码、和经验心得；本文的目的，是希望能帮助更多的人快速地加入到HTML5的大团队，同时也希望能得到各种大侠的指点。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　本文所有内容基于个人的学习过程和经验，因此在整理文章的过程中，我也假设你目前对游戏开发一无所知，甚至对HTML和JavaScript也不太了解。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　我将文章分为5个部分：</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<ol>
+<li><span style="font-size: medium;">我将会告诉你如何学习游戏开发，如何入门HTML5</span></li>
+<li><span style="font-size: medium;">以我的游戏框架为例，初步了解游戏模型和组成</span></li>
+<li><span style="font-size: medium;">通过讲解我的“游戏逻辑结构”，让你真正可以开始动手创建HTML5游戏</span></li>
+<li><span style="font-size: medium;">分享诸多亲身体验的性能问题和解决方案</span></li>
+<li><span style="font-size: medium;">一些其它的东西</span></li>
+</ol>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<h1><span style="font-size: large;">一、如何学习HTML5游戏开发？</span></h1>
+<p class="MsoNormal"><span style="font-size: medium;">　　如果是刚接触HTML5，也是第一次开发游戏，过程中难免会遇到这样那样的问题，我所遇到的第一个问题就是：我对HTML5还不是很了解。因此我首先要分享的就是学习方法和路线：</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　如果你还不是很熟悉HTML、CSS、和JavaScript，请不要急于求成，只要打好基础，一切都会变得容易起来。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　如何才算是“熟悉”？</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<ol>
+<li><span style="font-size: medium;">HTML常用标签你全都认识并能说出它们相同、和不同的特性吗？</span></li>
+<li><span style="font-size: medium;">CSS中所有属性是否熟悉？特别是CSS3中的新特性和动画？</span></li>
+<li><span style="font-size: medium;">是否已经完全明白JavaScript面向对象、闭包、原型链、作用域等概念，并能熟练运用？</span></li>
+<li><span style="font-size: medium;">是否掌握了一系列JavaScript性能优化的方法和经验？</span></li>
+</ol>
+<p>&nbsp;</p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　如果你在回答这些问题时还不是很有信心，我建议先补充下这方面的知识。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　也许你会问：做HTML5游戏不是主要使用Canvas画布和JavaScript吗？为什么对HTML和CSS还有这么多要求？最开始，我也是这样以为的，不过后来我发现HTML5游戏中并非只有Canvas，其实CSS仍然显得非常重要，Canvas应该只做一些它更擅长的事，比如动画和特效，而其它的事情交给其它方式来实现吧。</span></p>
+<p class="MsoNormal"><span style="color: #808080; font-size: medium;"><em>　　（题外话：这就像前几年流行web2.0时，不少公司和客户，都明确规定页面不允许出现table标签，于是乎我们写了一堆UL标签和CSS代码，来实现类似于表格的效果，并担心各浏览器的差异。我至今仍在怀疑，这种做法除了符合所谓的“标准”，还有什么明显的优势？）</em></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　言归正传，例如我们要开发一个游戏“热血传奇”，首先分析下图：图中蓝色背景的部分应该使用Canvas来绘制，而红色背景的部分则应该使用普通的HTML标签和CSS来开发。</span></p>
+<p class="MsoNormal" style="text-align: center;"><img height="479" width="640" src="./驴子跳 -引擎_files/af201721-77b1-3ece-ae98-2eb914c0f6f4.jpg" alt=""></p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　判定标准主要是依据该模块的效果复杂度、和刷新频率，在“热血传奇”中，界面包含人物、地图、技能效果等主场景（蓝色背景部分）；还有状态工具栏、人物属性窗口、物品窗口、技能窗口等（红色背景部分）。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　很明显，主场景中的人物、技能效果、地图等随时都在发生变化，这种场景才能体现出Canvas的优势；而其它的例如状态工具栏、人物属性窗口等，更新的频率很低，只有在用户驱动下才会发生改变，且不包含复杂的效果，因此我们可以把它当成是一个普通页面的一部分，使用普通的HTML结构和CSS样式，再加上一些控制逻辑，即可实现。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　为什么一定要尽量使用HTML结构和CSS的方式来实现呢？因为这会降低开发的复杂度、工作量和成本，更重要的是，在性能上会有更好的体现（关于性能上的问题，后面会详细讨论）。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　假设你对这些知识都已经非常了解了，下一步要做的，就是全面了解Canvas画布。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　刚开始了解它时，你会发现它并非你想象中的那么完美，它只提供了一系列“简陋”的方法，你甚至会怀疑使用它们真的能开发出效果绚丽的游戏吗？不过仔细想想，只要在这套API上稍作扩展，还有什么事情是我们办不到的呢？</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　关于Canvas的API具体内容，这里不作讨论，还不清楚的同学，可以参考官方文档，或中文版API：<a href="http://wenku.baidu.com/view/d841013d0912a2161479292d.html" target="_blank">http://wenku.baidu.com/view/d841013d0912a2161479292d.html</a></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　在获取到这些文档之后，如何入手呢？别想太多，先从头到尾用几遍，只要记住它有哪些方法，以及这些方法都是用来做什么的、怎么用的就可以了。关于API中不明白的地方，百度和Google会告诉你答案。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　如果你已经了解了API中的方法，可能会很迷惑：如何才能将这些API熟练地运用到游戏开发中？那么请看这里吧：</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　你可以试着了解一些游戏中的基本概念和组织结构，这会让你开始“忙起来”，如果你看不懂网上那么多专业的游戏开发资料，或者是不知道该从何入手，我推荐可以看看“大城小胖”的视频教程《手把手教你开发HTML5游戏》，地址是：<a href="http://v.youku.com/v_playlist/f5711740o1p0.html" target="_blank">http://v.youku.com/v_playlist/f5711740o1p0.html</a>，我感觉这是一个很详细的入门视频，因为我也是看它入门的（入门之前，可能我跟你现在一样，对游戏开发一窍不通，因此你完全可以有信心比我做的更好）。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　看视频的时候，你应该先动手创建一个工程，跟着视频写同样的代码，视频中没有讲清楚的概念和环节，网上可以查的到；如果看完视频感觉没有彻底明白的话，可以再看几次，直到你感觉视频中介绍的内容你全都掌握了（这个视频我看了不下10遍，同时一边写、一边在网上扩展更多的相关知识，这个过程大约花了我两到三个星期。）</span></p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　当学习完以上部分内容后，你对游戏开发的内容有了一些了解，也知道自己首先应该做的，就是编写一个简单的游戏引擎。但你却还不知道一个完整的游戏引擎在技术上到底包含了哪些部分？应该划分为哪些模块？各个模块间的耦合关系如何确定？确实，对于一个没有任何游戏开发经验的人来说，这部分内容需要一段时间去琢磨（至少我花了不少的时间在这个阶段）。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　这时，我建议你可以多分析目前已有的游戏框架源码，仔细阅读，认真体会；如果你对AS3和Flex比较熟悉，那么还可以了解一些Flex游戏框架，毕竟这东西和开发语言关系不大。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　下面我推荐一些国产的框架给大家参考：</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　casualjs：<a href="http://code.google.com/p/casualjs/" target="_blank">http://code.google.com/p/casualjs/</a>，flashlizi久久之前就开发出来的一款HTML5游戏框架，风格、组件和事件管理与AS3非常类似，目前已经停止更新了；且源码中有一些地方还有问题，比如常用的copy函数；源码和设计结构很值得学习。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　quarkjs：<a href="https://github.com/quark-dev-team/quarkjs" target="_blank">https://github.com/quark-dev-team/quarkjs</a>，这套框架是我最近才发现，更新频率很高，跟casualjs同一作者，我理解应该算是casualjs的升级版本了。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　最后推荐的就是我分享的游戏源码了，虽有还有许多不完善的地方，但格式清晰，注释完整，比较适合学习（下载源码后，myEngine目录为游戏框架源码）。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　这个过程中最重要的就是坚持，困难肯定是有的，但问题一定也是可以解决的。</span></p>
+<p class="MsoNormal"><span style="color: #808080; font-size: medium;"><em>　　（小插曲：我在学习过程中，经常会向各种大侠请教，虽然他们并不认识我。我有段时间连续几天通过微博求 助于“大城小胖”，估计那段时间他快被我搞烦了，其实那段时间我自己也快被自己搞疯了；在这里感谢小胖~）</em></span></p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　好了，看到这里，你已经掌握了一套学习方法，它会带着你，完成你的第一个HTML5游戏。更重要的是，完成之后，请记得一定要分享出来，因为这样做不仅仅会帮助更多的人，你也会得到进一步的提高。</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="font-size: medium;"><br><br></span></p>
+<h1><span style="font-size: large;">二、以myEngine为例开发一套游戏框架</span></h1>
+<p>&nbsp;</p>
+<p class="MsoNormal">　　接下来我们进入第二步，我将介绍这个游戏的相关目录和组件，在这之前，请先下载游戏的源码。</p>
+<p class="MsoNormal"><span style="font-size: medium;">　　当你打开donkeyjump目录后，能看到这里存放着游戏中的所有资源，包括源码、音频和图像文件。我先介绍一下目录的结构，请看下图：</span></p>
+<p class="MsoNormal" style="text-align: center;"><img height="368" width="360" src="./驴子跳 -引擎_files/015a707c-eb46-35a3-ade7-6e42d72a91bf.jpg" alt=""></p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="color: #888888; font-size: medium;"><em>　　（如果你也想把某一款手机游戏移植到HTML5版本，首先可以先下载一个该游戏的APK安装包，一般在安卓市场都可以搜索的到：<a href="http://game.hiapk.com/" target="_blank">http://game.hiapk.com/</a>，前提是这款游戏存在对应的Android版本。下载之后将apk扩展名修改为rar并解压，这样你就可以从解压后的目录中找到所有的图片和音频资源。注意：有些游戏对资源进行了压缩和处理，这样你就很难获取到了。）</em></span></p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　在游戏源码的根目录，当你打开index.html就可以快速预览游戏的效果了（当然，这需要你的浏览器支持HTML5部分特性）。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　游戏的核心框架是myEngine目录，这也是本节介绍的重要。myEngine目录中包含了与游戏业务逻辑无关的核心库，它与你所接触过的jQuery、Ext等框架一样，封装了一系列常用的处理逻辑；在它的基础上，你可以更简单地编写少量的代码，来完成你的游戏。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　按照游戏index.html文件中引入的脚本顺序，我将依次说明游戏框架中每个文件的含义：</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<ul>
+<li><span style="font-size: medium;">首先是<strong><em>core</em></strong>目录下的<strong><em>my.js</em></strong>，这是框架的核心文件，它包含了一些常用的公共函数，如果你已经了解了JavaScript面向对象相关的知识，那么很容易可以看懂文件中所有的代码。</span></li>
+<li><span style="font-size: medium;"><strong><em>component/Component.js</em></strong>：Component是所有游戏组件的基类，所有的游戏组件均继承自它，Component类提供了组件对象的创建、初始化、销毁等公共方法。</span></li>
+<li><span style="font-size: medium;"><strong><em>component/DisplayObject.js</em></strong>：DisplayObject是所有可显示组件的基类，游戏中所有能显示的组件，都应该继承它，因为它提供了一套统一的处理对象显示的方法：显示隐藏控制、透明度、旋转、翻转、缩放、渲染控制等。</span></li>
+<li><span style="font-size: medium;"><strong><em>component/DisplayObjectContainer.js</em></strong>：DisplayObjectContainer是一个组件容器类，它本身也是一个DisplayObject对象，但它可以容纳其它更多的DisplayObject和DisplayObjectContainer对象，便于统一管理。例如：一个房间内的场景包含了桌子、椅子、衣柜、书架等DisplayObject（或DisplayObjectContainer）对象，而这个房间就是一个DisplayObjectContainer对象，房间被销毁，房间内的所有东西也不会再存在；这样你就不需要再把房间内的东西一个个地销毁掉。</span></li>
+<li><span style="font-size: medium;"><strong><em>component/Bitmap.js</em></strong>：图像对象，如果你要在游戏中显示一副图像，可以创建一个Bitmap对象。</span></li>
+<li><span style="font-size: medium;"><strong><em>component/Animation.js</em></strong>：帧动画控制类，由多幅图像组成，在固定的频率中不断切换，形成动画的效果。使用它，可以方便地创建一个帧动画，并控制它的显示、隐藏和播放等行为。</span></li>
+<li><span style="font-size: medium;"><strong><em>component/Sprite.js</em></strong>：游戏中所有精灵的基类，如果对“精灵”的概念还不是很清楚，建议按照第一节中介绍的学习过程再巩固一下。它提供了一个精灵的基础方法和属性，包括移动、动画控制和碰撞检测。</span></li>
+<li><span style="font-size: medium;"><strong><em>component/Viewport.js</em></strong>：视口对象，游戏地图可能会很大，但能够同时看得到的区域可能只是一个固定的尺寸，当游戏角色或场景移动时，地图也会移动，玩家会感觉是通过一个视口在观察角色和地图的移动。这里的视口对象，就是用来处理视口的移动，以及保存视口状态的。</span></li>
+<li>
+<span style="font-size: medium;"><strong><em>component/Layer.js</em></strong>：游戏的分层，一个游戏中可能包含许多内容，比如主角、玩家、NPC、怪兽、道具、效果、地图和其它场景，我们没必要把它们堆到一起，这样你无法进行管理和维护，因此我将它们放到多个层级，就可以方便地对每个层级内的元素进行统一控制。<br></span>这里的分层不仅仅是在逻辑上将不同类型的元素分离开，不同的Layer对象还可以配置到不同的Canvas画布上，这是提升性能的一种重要的方式，后面会详细讨论。</li>
+<li><span style="font-size: medium;"><strong><em>component/Game.js</em></strong>：游戏基类，用于控制游戏的帧频、画布的刷新、开始和结束游戏，以及游戏时间相关的记录。</span></li>
+<li><span style="font-size: medium;"><strong><em>event/KeyEvent.js</em></strong>：监听用户按键事件，如果你查看过这个文件的源码，相信我不用作太多介绍你就会明白。它不会绑定具体的事件在用户的某个按键上，它只提供一些控制和查询当前按键状态的方法。</span></li>
+<li><span style="font-size: medium;"><strong><em>utils/ImageManager.js</em></strong>：图像管理类，使用Canvas绘图前，首先需要保证图片已经被完全加载完毕，而游戏中使用的图片非常多，因此如何统一控制加载和管理，就由ImageManager来发挥了。</span></li>
+<li><span style="font-size: medium;"><strong><em>utils/DOM.js</em></strong>：提供了一套类似于jQuery的DOM操作方法，之所以不使用jQuery，是因为对这个游戏来说，jQuery显得有些大材小用，没有必要为了使用其中的几个方法，加载整个库。</span></li>
+<li><span style="font-size: medium;"><strong><em>utils/Math.js</em></strong>：提供一些基础的算数运算方法。</span></li>
+<li><span style="font-size: medium;"><strong><em>utils/buzz.js</em></strong>：这是一个第三方音频管理库，作用和ImageManager类似，不过是用于控制音频文件的加载和播放。其实框架中是包含了一个我自己写的音频管理类，这里之所以使用第三方库，是因为我还不能完全确保那个音频管理类的稳定性。</span></li>
+<li><span style="font-size: medium;">另外，框架中还包含了一些游戏中没有使用到的文件，比如：<strong><em>ScriptManager</em></strong>（脚本动态加载和管理）和<strong><em>Astar</em></strong>（自动寻路算法），这里我就不作介绍了。</span></li>
+</ul>
+<p>&nbsp;</p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　以上是游戏框架中的全部内容，具体细节建议阅读源码，源码中标注有详细的注释。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　如果你接触过Ext框架或Flex，你会很容易理解这里大部分类的作用和功能，因为它们有许多相似之处。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　这套框架我一共重写了4次，每一次都会有许多提升。这里所说的提升并非是指功能的增强，相反，这个版本和第1次完成时相比，功能已经被删减掉了一大部分，之所以这样做，仅仅是为了做到需求、工作量和性能之间的平衡（性能相关的问题，我们放到后面再讨论），我认为在能实现需求的前提下，最重要的就是尽可能的简单、快速。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　我在这里回顾一下之前删减掉的一些功能：</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<ul>
+<li><span style="font-size: medium;">类似DOM Level 2中的事件模型，包含<strong><em>Event</em></strong>、<strong><em>EventDispatcher</em></strong>、<strong><em>EventManager</em></strong>和Component下具体子类的事件模型类。之所以删掉它们，是因为我完全可以使用类似DOM Level 1中的事件模型来代替它们，而这样做会更简单，更高效。当然也会牺牲一些扩展性和耦合度，但我认为这是值得的。</span></li>
+<li><span style="font-size: medium;">以前的Animation类，是一个继承自DisplayObjectContainer的子类，它包含了一系列Frame（单帧）对象，而Frame对象中又包含了Bitmap（图像）对象和CollRect（碰撞区域）对象；当初之所以有这么多东西，是因为考虑到动画对图像文件和绘制图形之间的转换，以及支持多种碰撞检测方式。这种做法后来也被我否决了，原因与和前面一点一样，出于简单开发和高效性能的考虑。<br>而现在优化后的Animation类十分简单，它本身只是一个Component组件，通过简单配置图像URL和帧数据，就可以实现一个帧动画。当然，这种做法就受到许多约束，例如：一个动画中所有的帧图像必须是同一个Image对象，还有Animation本身不提供渲染的方法，它必须依附在一个Sprite（精灵）对象中。</span></li>
+<li><span style="font-size: medium;">删除了<strong><em>Level</em></strong>和<strong><em>Scene</em></strong>类，Level类是用来做游戏关卡控制和调度关卡数据的，而Scene类用作场景的切换、初始化、缓存场景数据以及处理Layer（分层）的视差效果。</span></li>
+</ul>
+<p>&nbsp;</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="font-size: medium;">　　现在我把分层的视差效果直接放到了Layer本身，通过定义Layer对象的distance属性（即定义分层与视口之间的距离），就会自动形成视差效果。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　例如：在这个游戏中，驴子刚开始跳跃时，驴子身后的房子、山丘、高山、和天空在视觉上的移动速度是不一样的，物体距离相对驴子越远，视觉上移动距离越小；这些背景实际上是存储在多个Layer中，而我只需要通过定义每个Layer的distance属性，就可以实现这个效果。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　如果你想开发一套成熟的游戏框架，这些功能或许是非常必要的。因此，我并不能保证删减这些功能是正确的做法，但对于具体需求来说，我认为这样做会更合适。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　<span style="color: #888888;"><em>（如果你也需要这些代码，可以联系我。）</em></span></span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="font-size: medium;"><br><br></span></p>
+<h1><span style="font-size: large;">三、开发一个“驴子跳”游戏</span></h1>
+<p>&nbsp;</p>
+<p class="MsoNormal"><span style="font-size: medium;">　　到目前为止，我已经介绍了学习方法、和基础框架的搭建；此时你应该花更多的时间去编写和优化你的框架，让它更简单、更稳定以及更加“坚固”。如果你还有不明白的地方，可能是我描述的不够清楚和准确，也可能是你所花的时间还不够多；无论如何，你都可以联系我一起研究学习。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　如果你对前面讲解的内容没有太多的困惑，本节将着重讨论如何在框架库的基础上，开始开发游戏。这个过程会让你非常心动，因为不久你就可以看到游戏的样子了。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　我第一步要做的就是将整理游戏资源，提取游戏中图片和音频文件的方法可以参考第二点中的内容。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　首先是整理图片资源，我使用Photoshop对图片尺寸进行调整，更重要的是将图片进行合并；这将减少资源的请求数，提高加载效率；另外，这也是我框架库中Animation类所强制要求的（前面提到过，Animation要求动画中所有的帧图像为同一个Image对象）</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　其次是整理音频文件，目前各浏览器还没有统一支持的音频格式，因此我们必须使用两套同样的音频文件，关于目前各浏览器所支持的音频格式如下：</span></p>
+<p>&nbsp;</p>
+<table style="border-top-color: #999999; border-right-color: #999999; border-bottom-color: #999999; border-left-color: #999999; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px;">
+<tbody><tr>
+<td><span style="font-size: medium;"><strong><em>浏览器　　</em></strong></span></td>
+<td><span style="font-size: medium;"><strong><em>支持的音频格式</em></strong></span></td>
+</tr>
+<tr>
+<td><span style="font-size: medium;">IE9</span></td>
+<td><span style="font-size: medium;">mp3, aac wav</span></td>
+</tr>
+<tr>
+<td><span style="font-size: medium;">Firefox</span></td>
+<td><span style="font-size: medium;">ogg, wav</span></td>
+</tr>
+<tr>
+<td><span style="font-size: medium;">Chrome</span></td>
+<td><span style="font-size: medium;">ogg, mp3, aac, wav</span></td>
+</tr>
+<tr>
+<td><span style="font-size: medium;">Safari</span></td>
+<td><span style="font-size: medium;">mp3, aac, wav</span></td>
+</tr>
+<tr>
+<td><span style="font-size: medium;">Opera</span></td>
+<td><span style="font-size: medium;">ogg, wav</span></td>
+</tr>
+</tbody></table>
+<p class="MsoNormal"><span style="font-size: medium;">　　游戏中的音频文件是mp3格式，为了兼容Firefox和Opera，我同时还选择了wav格式。wav格式的文件非常大，为了减小文件大小，我将音频进行了压缩，减小比特率，但音质受到了明显的影响。可能你会疑惑，为什么我不选择ogg格式呢？这是因为我购买的虚拟主机竟然不支持访问ogg格式的文件，Why？</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　这里，我建议你可以仍然使用ogg格式，在保持和mp3同样音质的情况下，文件大小会比wav小很多。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　资源的整理可能需要花上好几天的时间，不过幸运的是，这些资源我已经整理过一遍，你可以copy过去直接使用。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　资源整理完毕后，我创建一个了项目，分好目录结构，并将资源放在对应的目录下。然后创建游戏页面index.html。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　经过分析，我将尽量能使用HTML和CSS来做的内容独立开来，使用HTML和CSS进行开发（index.html文件中包含了所有的HTML，css目录下包含了所有的样式）；还缺少什么呢？对了，还缺少对DOM的控制逻辑，这么多的HTML，在游戏进行到什么时候显示？什么时候隐藏？如何控制？这些具体的逻辑我们都用不管，先编写一个统一的UI控制类，代码存放在js/classes/UI.js，UI类不包含任何游戏逻辑，它只负责处理DOM相关的UI展现和控制，在游戏中需要使用到它的时候，调用相应的方法即可。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　另外在UI类中，也包含了类似于DOM Level 1的事件管理方式，这是为了降低DOM对象与游戏逻辑间的耦合度。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　当这部分内容完成的时候，游戏就有了一个可以看到的雏形，但我们还没有真正开始呢，因为我们编写的游戏框架库还没有派上用场。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　我先在js目录下创建一个main.js，用作游戏主逻辑的入口文件（在上一节中，我们介绍过，js目录只用于存放游戏相关的业务逻辑）。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">在main.js中，我先加载了游戏资源，在资源加载完毕后，创建游戏对象，并开始监听和处理DOM相关的事件；当你点击“开始”按钮后，游戏就正式开始了。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　游戏开始后，具体是怎么运行的，这里就不做描述，源码中有详细的注释，但我觉得还是有必要简单描述下js目录下的所有文件的结构，便于大家查找。</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<ul>
+<li><span style="font-size: medium;"><strong><em>js/main.js</em></strong>：这个文件刚才介绍过，是游戏的主逻辑入口文件。</span></li>
+<li><span style="font-size: medium;"><strong><em>js/classes</em></strong>：游戏中所有的逻辑代码都存放在这里。</span></li>
+<li><span style="font-size: medium;"><strong><em>js/classes/Audio.js</em></strong>：Audio类提供一些基础方法，用于控制游戏中音效的播放。</span></li>
+<li><span style="font-size: medium;"><strong><em>js/classes/Cloud.js</em></strong>：当驴子踩到云朵上时，会产生践踏效果，Cloud就是践踏效果类，用于产生践踏效果对象。</span></li>
+<li><span style="font-size: medium;"><strong><em>js/classes/Donkey.js</em></strong>：驴子类，用于创建驴子实例，提供控制驴子状态相关的方法。Donkey类继承自Sprite（精灵）类。</span></li>
+<li><span style="font-size: medium;"><strong><em>js/classes/DonkeyJump.js</em></strong>：DonkeyJump（驴子跳），该类继承自Game类，是整个游戏的核心类，主导游戏整体逻辑和状态，用于创建游戏中的分层，负责游戏初始化、开始、暂停等操作。</span></li>
+<li><span style="font-size: medium;"><strong><em>js/classes/Prop.js</em></strong>：游戏道具类，游戏中一共有7种道具，但它们都是Prop类的生成对象。</span></li>
+<li><span style="font-size: medium;"><strong><em>js/classes/Stair.js</em></strong>：云朵类，游戏中的云朵也有7种，包括5种普通云、脆弱的云和会移动的云。云朵的类型是随机的，在云朵被创建时，有一定的几率会同时出现一个道具（道具的类型也是随机选择的）。</span></li>
+<li><span style="font-size: medium;"><strong><em>js/classes/UI.js</em></strong>：UI类用于控制DOM的展现逻辑，上文中已经进行过讨论。</span></li>
+<li><span style="font-size: medium;"><strong><em>js/frames</em></strong>：游戏中所有精灵的帧动画配置数据都存放在这里；每个文件存放不同精灵的帧动画数据，此处不一一介绍，只以donke.js为例，当你打开这个文件，会发现里面存储的内容几乎完全一样，它定义了每个动画需要使用的所有帧数据：<br><div class="dp-highlighter" id=""><div class="bar"><div class="tools">Js代码 <embed wmode="transparent" src="/javascripts/syntaxhighlighter/clipboard_new.swf" width="14" height="15" flashvars="clipboard=%7B%20%2F%2F%20%E8%BF%99%E6%98%AF%E6%9F%90%E4%B8%80%E5%B8%A7%E7%9A%84%E9%85%8D%E7%BD%AE%E6%95%B0%E6%8D%AE%0A%20%20%20%20x%20%3A%200%2C%20%2F%2F%20%E5%BD%93%E5%89%8D%E5%B8%A7%E5%9C%A8%E5%8A%A8%E7%94%BB%E7%9A%84Image%E5%AF%B9%E8%B1%A1%E5%87%BA%E7%8E%B0%E7%9A%84x%E8%BD%B4%E4%BD%8D%E7%BD%AE%0A%20%20%20%20y%20%3A%200%2C%20%2F%2F%20%E5%BD%93%E5%89%8D%E5%B8%A7%E5%9C%A8%E5%8A%A8%E7%94%BB%E7%9A%84Image%E5%AF%B9%E8%B1%A1%E5%87%BA%E7%8E%B0%E7%9A%84y%E8%BD%B4%E4%BD%8D%E7%BD%AE%0A%20%20%20%20duration%20%3A%2010%2C%20%2F%2F%20%E5%BD%93%E5%89%8D%E5%B8%A7%E6%92%AD%E6%94%BE%E7%9A%84%E6%97%B6%E9%97%B4%EF%BC%88ms%EF%BC%89%0A%20%20%20%20collRect%20%3A%20%5B%5B50%2C%2093%2C%2028%2C%2015%5D%5D%20%2F%2F%20%E5%BD%93%E5%89%8D%E5%B8%A7%E7%9A%84%E7%9F%A9%E5%BD%A2%E7%A2%B0%E6%92%9E%E5%8C%BA%E5%9F%9F%0A%7D" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">&nbsp;<a href="javascript:void()" title="收藏这段代码" onclick="code_favorites_do_favorite(this);return false;"><img class="star" src="./驴子跳 -引擎_files/icon_star.png" alt="收藏代码"><img class="spinner" src="./驴子跳 -引擎_files/spinner(1).gif" style="display:none"></a></div></div><ol start="1" class="dp-c"><li><span><span>{&nbsp;</span><span class="comment">//&nbsp;这是某一帧的配置数据</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;:&nbsp;0,&nbsp;<span class="comment">//&nbsp;当前帧在动画的Image对象出现的x轴位置</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;y&nbsp;:&nbsp;0,&nbsp;<span class="comment">//&nbsp;当前帧在动画的Image对象出现的y轴位置</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;duration&nbsp;:&nbsp;10,&nbsp;<span class="comment">//&nbsp;当前帧播放的时间（ms）</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;collRect&nbsp;:&nbsp;[[50,&nbsp;93,&nbsp;28,&nbsp;15]]&nbsp;<span class="comment">//&nbsp;当前帧的矩形碰撞区域</span><span>&nbsp;&nbsp;</span></span></li><li><span>}&nbsp;&nbsp;</span></li></ol></div><pre class="js" name="code" style="display: none;" codeable_type="Post" codeable_id="2336199" source_url="http://www.iteye.com/topic/1122395#2336199" pre_index="0" title="完全分享，共同进步——我开发的第一款HTML5游戏《驴子跳》">{ // 这是某一帧的配置数据
+    x : 0, // 当前帧在动画的Image对象出现的x轴位置
+    y : 0, // 当前帧在动画的Image对象出现的y轴位置
+    duration : 10, // 当前帧播放的时间（ms）
+    collRect : [[50, 93, 28, 15]] // 当前帧的矩形碰撞区域
+}</pre>
+</span></li>
+</ul>
+<p class="MsoNormal"><span style="font-size: medium;">　　单帧配置中的duration表示该帧在动画过程中所播放的时间，而collRect表示动画被播放到该帧时，精灵对象的碰撞区域。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　目前我只支持了矩形碰撞，通过分割定义多个矩形碰撞区域，可以提高碰撞监测的准确度。如果需要更加精确的碰撞检测，就需要使用其它的方式实现，例如像素检测。</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<ul>
+<li><span style="font-size: medium;"><strong><em>js/resources</em></strong>：定义游戏所需要的图片和音频资源路径和配置。</span></li>
+<li><span style="font-size: medium;"><strong><em>js/resources/audios.js</em></strong>：对游戏中所有的音频资源进行定义</span></li>
+<li><span style="font-size: medium;"><strong><em>js/resources/images.js</em></strong>：对游戏中所有图片资源进行定义</span></li>
+</ul>
+<p>&nbsp;</p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　当你了解了这个游戏的组成，你可以参考游戏的源码，并试着自己也写一遍。当然，我的源码写的不一定好，至少我目前觉得在游戏各对象的耦合关系上处理地还不太好，这也是因为开始写的之前没有全面规划。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　到目前为止，你通过阅读以上全文，并付之实践，相信一定可以开发出一个你喜欢的HTML5游戏了。</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="font-size: medium;"><br><br></span></p>
+<h1><span style="font-size: large;">四、性能优化</span></h1>
+<p>&nbsp;</p>
+<p class="MsoNormal"><span style="font-size: medium;">　　在本节，我将分享游戏过程中遇到的种种性能问题，和解决方案，以及一些性能测试数据。在分享这些测试数据之前，我得先说明一下我的机器配置：</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　ThinkPad SL410K（属于ThinkPad系列中最低端的一款了，伤心ing）</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　操作系统：Windows 7 旗舰版</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　CPU：Intel 奔腾双核 T44 主频2.2GHz&nbsp;</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　内存：4GB（标配2GB，自己加了2GB）</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　硬盘：320G SAT 5400转</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　显卡：Intel GMA X4500集显 显存256M</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　<span style="color: #ff0000;">（说明：因为只在我一个客户端环境中做测试，因此以下结论可能并非完全正确。）</span></span></p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　说到前端的性能优化，不得不提到《高性能JavaScript》一书，书中对网络性能和代码结构优化等方面都有非常全面的解说，在这里我就不班门弄斧了，仅仅说一下在我这个游戏中所涉及到部分内容：</span></p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　<strong><em>图片合并</em></strong>：这会减少HTTP请求数，提高加载效率，你懂的。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　<strong><em>代码合并</em></strong>：这会减少网络传输大小，同样用于提高加载效率，有一些工具可以快速压缩合并你的多个脚本文件，我使用的是JsMinGUI：<a href="http://download.csdn.net/tag/JsMinGUI">http://download.csdn.net/tag/JsMinGUI</a>和JSZipper：<a href="http://download.csdn.net/download/zz2soft/3204081">http://download.csdn.net/download/zz2soft/3204081</a></span></p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　<strong><em>音频文件压缩</em></strong>：其实像我这样的非专业人士，对音质要求并不高，好一点或差一点几乎感觉不出来，但是如果文件大小影响到我的游戏性能，那我就会有意见了。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　游戏中原生的音频格式是ogg，以游戏中最大的音频文件ogg_background.ogg为例，原生ogg格式文件是578KB，在不损坏音质的情况下，转成mp3格式是1.37M，这大小已经放大了一倍。对于网速200kb/s的用户来说，这个我还可以接受，再加上有加载进度提示，不会对用户体验产生太大的影响。同样的一个文件，在不损坏音质的情况下，转换成wav格式，是10.7M，这比原来的ogg格式整整大了19倍，因此我无条件压缩文件，压缩后的大小是936kb，虽然音质上有天壤之别，但首先要保证用户的正常操作流程。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　<em><span style="color: #808080;">（关于音频文件的格式转换，我使用的软件是“格式工厂”，百度一下，你就知道。）</span></em></span></p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　<strong><em>关于Canvas的渲染性能</em></strong>：不同的浏览器，Canvas渲染性能的表现差异还挺大，其中属IE9和Chrome表现最佳（IE9这次没有让我失望，可能是由于硬件加速的原因）。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　我选择了一张5.62M的图片，尺寸为1920* 1920，在480* 800的画布上循环渲染1000次，各浏览器下测试10次后对结果取平均值得到以下数据：</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<table style="border-top-color: #999999; border-right-color: #999999; border-bottom-color: #999999; border-left-color: #999999; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px;">
+<tbody><tr>
+<td><span style="font-size: medium;"><strong><em>浏览器　　　　　</em></strong></span></td>
+<td><span style="font-size: medium;"><strong><em>首次渲染（ms）</em></strong></span></td>
+<td><span style="font-size: medium;"><strong><em>非首次渲染（ms）</em></strong></span></td>
+</tr>
+<tr>
+<td><span style="font-size: medium;">Chrome 18</span></td>
+<td><span style="font-size: medium;">303</span></td>
+<td><span style="font-size: medium;">9</span></td>
+</tr>
+<tr>
+<td><span style="font-size: medium;">IE9</span></td>
+<td><span style="font-size: medium;">42</span></td>
+<td><span style="font-size: medium;">27</span></td>
+</tr>
+<tr>
+<td><span style="font-size: medium;">Firefox 11</span></td>
+<td><span style="font-size: medium;">1542</span></td>
+<td><span style="font-size: medium;">1250</span></td>
+</tr>
+<tr>
+<td><span style="font-size: medium;">Safari 5.1</span></td>
+<td><span style="font-size: medium;">1462</span></td>
+<td><span style="font-size: medium;">1333</span></td>
+</tr>
+<tr>
+<td><span style="font-size: medium;">Opera 11</span></td>
+<td><span style="font-size: medium;">1284</span></td>
+<td><span style="font-size: medium;">1244</span></td>
+</tr>
+</tbody></table>
+<p class="MsoNormal"><span style="font-size: medium;">　　从以上测试结果中可以看出，除了Chrome和IE9，其它浏览器表现都差不多，而Chrome应该使用某些措施，使已渲染过的图像在第二次渲染时，大大降低了渲染成本。而IE9的快速渲染和稳定性比较好。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　<strong><em>关于图像渲染方式</em></strong>：关于图像的渲染方式，网上有流传说使用getImageData缓存图片数据，在每次渲染时再使用putImageData进行渲染，性能会高于直接使用drawImage绘制；于是我准备将我程序中渲染图形的方式进行修改，但经过亲身测试，我发现各浏览器下表现出来的效果均不令人满意：在不加任何逻辑代码的情况下，仅对比putImageData和drawImage方法，putImageData相对drawImage就要慢了一倍。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　如果测试方法正确，那是我的客户端环境问题？还是浏览器现在已经优化了drawImage方法的实现？或者说putImageData确实比drawImage方法要慢？于是我暂时保留了现有drawImage的渲染方式。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　<strong><em>关于渲染大图像文件方式</em></strong>：如果我的背景图片尺寸是1920*1920，但我同时只能显示480*800一块区域，那么如何才能更高效地渲染呢？我们一般会这样写：</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　第一种方式：</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<div class="dp-highlighter" id=""><div class="bar"><div class="tools">Js代码 <embed wmode="transparent" src="/javascripts/syntaxhighlighter/clipboard_new.swf" width="14" height="15" flashvars="clipboard=drawImage(image%2C%20-100%2C%20-200%2C%201290%2C%201920%2C%200%2C%200%2C%201920%2C%201920)%3B" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">&nbsp;<a href="javascript:void()" title="收藏这段代码" onclick="code_favorites_do_favorite(this);return false;"><img class="star" src="./驴子跳 -引擎_files/icon_star.png" alt="收藏代码"><img class="spinner" src="./驴子跳 -引擎_files/spinner(1).gif" style="display:none"></a></div></div><ol start="1" class="dp-c"><li><span><span>drawImage(image,&nbsp;-100,&nbsp;-200,&nbsp;1290,&nbsp;1920,&nbsp;0,&nbsp;0,&nbsp;1920,&nbsp;1920);&nbsp;&nbsp;</span></span></li></ol></div><pre class="js" name="code" style="display: none;" codeable_type="Post" codeable_id="2336199" source_url="http://www.iteye.com/topic/1122395#2336199" pre_index="1" title="完全分享，共同进步——我开发的第一款HTML5游戏《驴子跳》">drawImage(image, -100, -200, 1290, 1920, 0, 0, 1920, 1920);</pre>
+&nbsp;
+<p>&nbsp;</p>
+<p class="MsoNormal"><span style="font-size: medium;">　　第二种方式：</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<div class="dp-highlighter" id=""><div class="bar"><div class="tools">Js代码 <embed wmode="transparent" src="/javascripts/syntaxhighlighter/clipboard_new.swf" width="14" height="15" flashvars="clipboard=drawImage(image%2C%20100%2C%20200%2C%20480%2C%20800%2C%200%2C%200%2C%20480%2C%20800)%3B" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">&nbsp;<a href="javascript:void()" title="收藏这段代码" onclick="code_favorites_do_favorite(this);return false;"><img class="star" src="./驴子跳 -引擎_files/icon_star.png" alt="收藏代码"><img class="spinner" src="./驴子跳 -引擎_files/spinner(1).gif" style="display:none"></a></div></div><ol start="1" class="dp-c"><li><span><span>drawImage(image,&nbsp;100,&nbsp;200,&nbsp;480,&nbsp;800,&nbsp;0,&nbsp;0,&nbsp;480,&nbsp;800);&nbsp;&nbsp;</span></span></li></ol></div><pre class="js" name="code" style="display: none;" codeable_type="Post" codeable_id="2336199" source_url="http://www.iteye.com/topic/1122395#2336199" pre_index="2" title="完全分享，共同进步——我开发的第一款HTML5游戏《驴子跳》">drawImage(image, 100, 200, 480, 800, 0, 0, 480, 800);</pre>
+&nbsp;
+<p>&nbsp;</p>
+<p class="MsoNormal"><span style="font-size: medium;">　　这两种方式除了参数不同，没有其它区别，我们来仔细分析一下这两种方式：</span></p>
+<p class="MsoNormal">　　首先是第一种方式：它将原图片的尺寸大小原封不动地全部读取并绘制到画布上。</p>
+<p class="MsoNormal"><span style="font-size: medium;">　　而第二种方式，则预先计算了需要绘制的区域，从参数上看起来读取和绘制的尺寸会更小，感觉会比第一种方式更好。但这样做真的会得到性能上的提升吗？</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　我想做一个测试，通过数据说明两种方式的性能差异到底有多大：和之前的测试条件一样，但是为了便于看到更直观的效果，我循环了10000次，针对两段代码进行分别测试，测试结果为：</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<table style="border-top-color: #999999; border-right-color: #999999; border-bottom-color: #999999; border-left-color: #999999; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px;">
+<tbody><tr>
+<td><span style="font-size: medium;"><strong><em>浏览器　　　　　</em></strong></span></td>
+<td><span style="font-size: medium;"><strong><em>第一种方式（ms）</em></strong></span></td>
+<td><span style="font-size: medium;"><strong><em>第二种方式（ms）</em></strong></span></td>
+</tr>
+<tr>
+<td><span style="font-size: medium;">Chrome 18</span></td>
+<td><span style="font-size: medium;">74</span></td>
+<td><span style="font-size: medium;">85</span></td>
+</tr>
+<tr>
+<td><span style="font-size: medium;">IE9</span></td>
+<td><span style="font-size: medium;">2216</span></td>
+<td><span style="font-size: medium;">782</span></td>
+</tr>
+<tr>
+<td><span style="font-size: medium;">Firefox 11</span></td>
+<td><span style="font-size: medium;">14233</span></td>
+<td><span style="font-size: medium;">13426</span></td>
+</tr>
+<tr>
+<td><span style="font-size: medium;">Safari 5.1</span></td>
+<td><span style="font-size: medium;">13636</span></td>
+<td><span style="font-size: medium;">13526</span></td>
+</tr>
+<tr>
+<td><span style="font-size: medium;">Opera 11</span></td>
+<td><span style="font-size: medium;">12423</span></td>
+<td><span style="font-size: medium;">13344</span></td>
+</tr>
+</tbody></table>
+<p class="MsoNormal"><span style="font-size: medium;">　　通过分析上面的测试数据，我们除了可以看到各个浏览器所凸显出来的性能差别，还可以得出结论：使用drawImage渲染图像时，参数中指定的尺寸大小并不能直接影响渲染效率和性能（除了IE9还是有一些差别，但考虑到循环次数比较多，可以评估出实际应用时性能不会受到明显影响。）</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　由此我们可以得出另一种结论：浏览器在调用drawImage方法渲染一个图像时，会在内部先计算好最终渲染的位置和尺寸，对于不会被渲染到画布上部分，即使我们调用drawImage方法时在参数中指定了这些区域，浏览器则不会读取和渲染它们。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　这样一来，我们可以放心大胆的把图像的尺寸直接全部渲染，而不用担心会有性能问题，更省去了一大堆用来计算位置和尺寸的逻辑。（一开始，我确实担心这样做会有性能问题，甚至考虑过把一张大地图文件切分为多个小图，然后拼装渲染，从这个测试结果中可以看出，这样做是完全多余的。当然，如果你考虑到图像太大时的网络加载问题，这样做也没有问题。）</span></p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　<strong><em>图像平铺渲染时的要点</em></strong>：我们在游戏中经常会遇到图像平铺的需求，例如游戏“超级玛丽”中的砖头、地面、草丛和天空等，都可以通过平铺一张小图来实现。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　这时我们会使用createPattern方法创建一个重复图像的模型，再使用fillRect方法将模型填充到画布；对于使用createPattern方法，有两点需要注意的地方，它们可能会引起错误或性能下降。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　第一点：createPattern方法的第2个参数用来指定图像的重复类型，包括repeat、repeat-x和repeat-y三种方式，这和CSS中的背景平铺一样。但实际上Firefox目前只支持repeat一种方式。我们必须通过填充时设定固定宽度或高度，来实现类似repeat-x和repeat-y的效果。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　第二点：我们一般会在游戏每一帧渲染时调用fillRect方法来渲染填充模型，但创建模型的操作一定要放在初始化的时候，或者在渲染前先检查是否已经创建过填充模型，如果没有创建，则创建一个新的模型并把它缓存在对象的属性中，便于下一次直接调用。因为使用createPattern方法创建一个模型的性能开销非常大。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　为了解决createPattern方法的性能开销问题，我尝试过使用其它的一些方法来完成图像平铺，比如我计算好画布的位置和尺寸，使用drawImage方法多次将图像绘制到画布；或者先将计算好的平铺图像数据存储到一个ImageData，再使用putImageData一次性绘制到画布。但这些做法的性能远远赶不上createPattern，因此只能通过其它角度去解决这个问题了。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　<strong><em>关于画布分层渲染控制</em></strong>：第1次完成游戏的初步模型时，我就发现了性能问题，在除了Chrome和IE9的其它浏览器下，游戏几乎跑不起来，经过排查，我发现这完全是由drawImage方法引起的，因为游戏在每更新一帧时，画布内的所有内容都将被重绘。除去所有的逻辑代码，仅渲染这部分操作就已经让浏览器吃不消了。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　后来我决定将游戏分为多个Canvas来绘制，源码几乎全部重新写了一遍，于是就有了现在的Layer（分层）类。一个Layer对象里只存放相关的精灵对象，因此整个游戏就被分成了多个层：天空层、远景山丘层、近景山丘层、房子层、云朵层、驴子层、效果层，这样做让我更容易控制它们之间的层级关系和业务逻辑。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　如果单纯只是分成多个Canvas，只会增加性能的压力；因此我给每个Layer对象增加了一个更新状态，当Layer中的内容发生变化时，通过change方法可以改变这个状态，状态被改变后，Layer就会被重新渲染。如果Layer中的内容没有发生变化，那么它会维持当前状态，不再重新绘制。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　这样一来，当我游戏中驴子在跳的时候，也许就只有驴子被重新渲染了，而云朵和天空等实际上并没有发生变化，从而性能提升非常明显。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　对于类似天空这样的分层，它只会移动而不会发生其它变化，我开始尝试使用一个DIV来做移动动画，这样也许会更快，但DIV确是不擅长动画，最终的效果还是让我放弃了这个念想。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　<strong><em>局部重绘</em></strong>：目前游戏中每一帧更新，都会将Canvas清空并重绘（如果这个Layer的状态发生变化的话），通过上面的分层方法我们已经解决了一部分性能问题，但这样明显还不够，更好的方式是只重绘画布上被更新的一部分，如今我正在寻找一些更好的方法去实现它，如果大家已经有成熟的经验希望也能分享一下。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　<strong><em>关于画布的清空方式</em></strong>：关于画布的清空，通过内置方法clearRect即可实现；但我们有时候也会通过重置Canvas的尺寸来实现同样的效果，例如:</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<div class="dp-highlighter" id=""><div class="bar"><div class="tools">Js代码 <embed wmode="transparent" src="/javascripts/syntaxhighlighter/clipboard_new.swf" width="14" height="15" flashvars="clipboard=canvas.width%20%3D%20canvas.width%3B" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">&nbsp;<a href="javascript:void()" title="收藏这段代码" onclick="code_favorites_do_favorite(this);return false;"><img class="star" src="./驴子跳 -引擎_files/icon_star.png" alt="收藏代码"><img class="spinner" src="./驴子跳 -引擎_files/spinner(1).gif" style="display:none"></a></div></div><ol start="1" class="dp-c"><li><span><span>canvas.width&nbsp;=&nbsp;canvas.width;&nbsp;&nbsp;</span></span></li></ol></div><pre class="js" name="code" style="display: none;" codeable_type="Post" codeable_id="2336199" source_url="http://www.iteye.com/topic/1122395#2336199" pre_index="3" title="完全分享，共同进步——我开发的第一款HTML5游戏《驴子跳》">canvas.width = canvas.width;</pre>
+&nbsp;
+<p>&nbsp;</p>
+<p class="MsoNormal"><span style="font-size: medium;">　　这两种方式的性能差别到底有多大呢？我只需要简单测试一下就知道了，这里我仍然使用之前的测试的条件，我会在每一次绘制后，分别使用两种方式来清空画布，测试结果如下：</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<table style="border-top-color: #999999; border-right-color: #999999; border-bottom-color: #999999; border-left-color: #999999; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px;">
+<tbody><tr>
+<td><span style="font-size: medium;"><strong><em>浏览器　　　　　</em></strong></span></td>
+<td><span style="font-size: medium;"><strong><em>使用clearRect方式（ms）</em></strong></span></td>
+<td><span style="font-size: medium;"><strong><em>通过设置尺寸方式（ms）</em></strong></span></td>
+</tr>
+<tr>
+<td><span style="font-size: medium;">Chrome 18</span></td>
+<td><span style="font-size: medium;">22</span></td>
+<td><span style="font-size: medium;">67</span></td>
+</tr>
+<tr>
+<td><span style="font-size: medium;">IE9</span></td>
+<td><span style="font-size: medium;">48</span></td>
+<td><span style="font-size: medium;">261</span></td>
+</tr>
+<tr>
+<td><span style="font-size: medium;">Firefox 11</span></td>
+<td><span style="font-size: medium;">2079</span></td>
+<td><span style="font-size: medium;">3160</span></td>
+</tr>
+<tr>
+<td><span style="font-size: medium;">Safari 5.1</span></td>
+<td><span style="font-size: medium;">2236</span></td>
+<td><span style="font-size: medium;">3162</span></td>
+</tr>
+<tr>
+<td><span style="font-size: medium;">Opera 11</span></td>
+<td><span style="font-size: medium;">2092</span></td>
+<td><span style="font-size: medium;">2163</span></td>
+</tr>
+</tbody></table>
+<p class="MsoNormal"><span style="font-size: medium;">　　通过以上数据可以得知，我会推荐大家使用clearRect来清空画布，因为它更加高效。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　还有一点值得注意的是：通过重置Canvas尺寸来清空画布的方式，会将画布中所有内容清空。这就意味着如果你需要实现上面提到的局部重绘效果，那么这种清空方式是行不通的。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　<span style="color: #808080;"><em>（这里所说的重置Canvas尺寸，只能通过设置画布的width或height属性来实现。如果你想控制样式中的尺寸，比如canvas.style.width，那样做只会将你的画布内容拉伸）</em></span></span></p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　介绍了这么多关于性能优化的东西，最后说一下这个游戏的性能情况。现在我配置的帧频是60帧/秒，这意味着游戏每帧必须在16.6毫秒内全部更新和渲染完成，目前看来压力并不大。在我的客户端上，各浏览器平均每帧消耗的时间也各不相同：</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<table style="border-top-color: #999999; border-right-color: #999999; border-bottom-color: #999999; border-left-color: #999999; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px;">
+<tbody><tr>
+<td><span style="font-size: medium;"><strong><em>浏览器　　　　　</em></strong></span></td>
+<td><span style="font-size: medium;"><strong><em>平均单帧时间（ms）</em></strong></span></td>
+</tr>
+<tr>
+<td><span style="font-size: medium;">Chrome 18</span></td>
+<td><span style="font-size: medium;">&lt;= 5</span></td>
+</tr>
+<tr>
+<td><span style="font-size: medium;">IE9</span></td>
+<td><span style="font-size: medium;">&lt;= 2</span></td>
+</tr>
+<tr>
+<td><span style="font-size: medium;">Firefox 11</span></td>
+<td><span style="font-size: medium;">&lt;= 10</span></td>
+</tr>
+<tr>
+<td><span style="font-size: medium;">Safari 5.1</span></td>
+<td><span style="font-size: medium;">&lt;= 12</span></td>
+</tr>
+<tr>
+<td><span style="font-size: medium;">Opera 11</span></td>
+<td><span style="font-size: medium;">&lt;= 8</span></td>
+</tr>
+</tbody></table>
+<p class="MsoNormal"><span style="font-size: medium;">　　而在使用以上方法优化之前，只能跑到30帧/秒，且Firefox和Safari同时表示压力很大；因此，我相信上面介绍的优化方法，会对大家有所帮助。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　由于我的屏幕刷新率只能支持到60帧/秒，暂时无法做一些极限测试，有资源的同学们可以试一试。</span></p>
+<p class="MsoNormal" style="font-size: 12px; font-weight: normal;"><span style="font-size: medium;"><br><br></span></p>
+<h1><span style="font-size: large;">五、一些其它的东西</span></h1>
+<p class="MsoNormal"><span style="font-size: medium;">　　开发过程中，我们会使用到各种各样的工具；这里把我所使用到的各种工具分享给大家，如果大家有更好的工具，也希望能分享出来。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　首先是各种浏览器，你懂的。</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　主要编码工具：Aptana 3.0（3.0中可以把背景设置为黑色，看起来很酷）</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　辅助编码工具：Notepad++（选择它，同样是因为它可以把背景设置为黑色）</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　代码调试工具：firebug、Chrome和IE的开发人员工具</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　性能分析工具：Firefox YSlow插件、YSlow for Chrome、IE9下使用自带的探查器</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　Web服务器环境：nginx</span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　HTTP请求及性能监控：HTTPWatch（实际上IE9已经不再需要）、Firebug和Chrome Network、Fiddler2</span></p>
+<p class="MsoNormal"><span style="font-size: medium;"><br></span></p>
+<p class="MsoNormal"><span style="font-size: medium;">　　写到这里，本文也快收尾了。整理这篇文章花费了好几天时间，希望大家能够多多支持。目前我已经开始下一个游戏的整理和开发工作，在完成后，会继续跟大家分享，希望大家多提建议，为更多人提供一个更加优质的学习资源。</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="font-size: medium;">转载时请注明原文地址：</span><a href="./驴子跳 -引擎_files/驴子跳 -引擎.htm" style="font-size: medium;">http://www.iteye.com/topic/1122395</a></p>
+
+    </div>
+    
+  <div class="attachments">
+    
+      
+        <ul>
+          <li><a href="http://dl.iteye.com/topics/download/bbd204f0-2656-30e0-bd1f-524fe5351c95">donkeyjump.zip</a> (9.6 MB)</li>
+          
+          <li>下载次数: 2786</li>
+        </ul>
+      
+    
+    
+  </div>
+
+
+          <div id="topic_copyright">声明：ITeye文章版权属于作者，受法律保护。没有作者书面许可不得转载。 </div>
+      <div id="forum_recommended_f5"><span>推荐链接</span><ul><li><a href="http://www.iteye.com/clicks/609" target="_blank"><script type="text/javascript">/*468*60，iteye新闻内页页底*/ var cpro_id = 'u671994';</script><script src="./驴子跳 -引擎_files/c.js" type="text/javascript"></script><script type="text/javascript" charset="utf-8" src="./驴子跳 -引擎_files/ecom"></script><div style="display:none">-</div> <iframe id="cproIframe1" src="./驴子跳 -引擎_files/uijs.htm" width="468" height="60" align="center,center" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" allowtransparency="true"></iframe></a></li><li><a href="http://www.iteye.com/clicks/716" target="_blank"><span style="font-weight:bold;color:blue">想进外企，出国，跳槽，找工作？英语不好,快来充电吧</span></a></li></ul></div>
+            </td>
+  </tr>
+  <tr>
+    <td class="postauthor"><a href="http://www.iteye.com/topic/1122395#">返回顶楼</a></td>
+    <td class="postcontent">
+      <div class="icons">
+        <a href="http://yujianshenbing.iteye.com/" class="icon_www" title="浏览作者的博客">&nbsp;</a>
+        <a href="http://yujianshenbing.iteye.com/blog/profile" class="icon_profile" title="浏览作者资料">&nbsp;</a>
+        <a href="http://my.iteye.com/messages/new?message%5Breceiver_name%5D=yujianshenbing" class="icon_pm" title="发送站内短信">&nbsp;</a>
+        <a href="http://yujianshenbing.iteye.com/blog/guest_book" class="icon_guestbook" title="给作者留言">&nbsp;</a>
+        <a href="http://my.iteye.com/feed?subscription%5Bsubscribed_user_name%5D=yujianshenbing" class="icon_rss" onclick="var f = document.createElement(&#39;form&#39;); f.style.display = &#39;none&#39;; this.parentNode.appendChild(f); f.method = &#39;POST&#39;; f.action = this.href;var s = document.createElement(&#39;input&#39;); s.setAttribute(&#39;type&#39;, &#39;hidden&#39;); s.setAttribute(&#39;name&#39;, &#39;authenticity_token&#39;); s.setAttribute(&#39;value&#39;, &#39;gYPZaumEbIvx5ovBdNkoNcfWEBaKbCSQg+2fXY8CssA=&#39;); f.appendChild(s);f.submit();return false;" title="关注作者">&nbsp;</a>
+              </div>
+                    </td>
+</tr>
+<tr class="sep2"><td colspan="2"></td></tr>
+<tr id="2336226">
+  <td class="postauthor">
+    <ul>
+      <li class="name">yangmingjiayou</li>
+      <li>等级: 初级会员</li>
+      <li><a href="http://yangmingjiayou.iteye.com/" target="_blank"><img alt="yangmingjiayou的博客" class="logo" src="./驴子跳 -引擎_files/3de1806c-35a4-31ca-9908-cd1a7a0598e4.jpg" title="yangmingjiayou的博客: yangmingjiayou"></a></li>
+      <li>性别: <img src="./驴子跳 -引擎_files/icon_minigender_1.gif" title="男"></li>      <li>文章: 22</li>
+      <li>积分: 30</li>
+      <li>来自: 深圳</li>
+      <li><img src="./驴子跳 -引擎_files/offline.gif"></li>
+    </ul>
+  </td>
+  <td class="postcontent">
+    <div class="postactions">
+      <div class="description">
+        &nbsp;&nbsp;
+        发表时间：2012-04-04&nbsp;&nbsp;
+        
+      </div>
+      <div class="links">
+        <a href="http://www.iteye.com/forums/41/topics/1122395/posts/2336226/quote" class="quote">引用</a>
+        
+          
+          
+            <a href="http://www.iteye.com/admin/link?user_favorite%5Btitle%5D=yangmingjiayou%E5%9B%9E%E5%B8%96%3A%E5%AE%8C%E5%85%A8%E5%88%86%E4%BA%AB%EF%BC%8C%E5%85%B1%E5%90%8C%E8%BF%9B%E6%AD%A5%E2%80%94%E2%80%94%E6%88%91%E5%BC%80%E5%8F%91%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AC%BEHTML5%E6%B8%B8%E6%88%8F%E3%80%8A%E9%A9%B4%E5%AD%90%E8%B7%B3%E3%80%8B&user_favorite%5Burl%5D=http%3A%2F%2Fwww.iteye.com%2Ftopic%2F1122395%232336226" target="_blank" class="favorite" onclick="$$(&#39;.favorite_form_spinner&#39;)[0].show();new Ajax.Request(&#39;/admin/link/new_xhr?user_favorite%5Btitle%5D=yangmingjiayou%E5%9B%9E%E5%B8%96%3A%E5%AE%8C%E5%85%A8%E5%88%86%E4%BA%AB%EF%BC%8C%E5%85%B1%E5%90%8C%E8%BF%9B%E6%AD%A5%E2%80%94%E2%80%94%E6%88%91%E5%BC%80%E5%8F%91%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AC%BEHTML5%E6%B8%B8%E6%88%8F%E3%80%8A%E9%A9%B4%E5%AD%90%E8%B7%B3%E3%80%8B&amp;user_favorite%5Burl%5D=http%3A%2F%2Fwww.iteye.com%2Ftopic%2F1122395%232336226&#39;, {method: &#39;get&#39;, onSuccess: function(response){$(document.getElementsByTagName(&#39;body&#39;)[0]).insert({bottom:response.responseText});$$(&#39;.favorite_form_spinner&#39;)[0].hide();}});return false;">收藏</a><img alt="Spinner" class="favorite_form_spinner" src="./驴子跳 -引擎_files/spinner.gif" style="vertical-align:bottom;margin-left:7px;display:none;">
+            
+          
+          
+        
+      </div>
+    </div>
+    <div class="postbody clearfix">
+      
+      
+      沙发支持楼主。楼主的文档写得很详细，看得出来费了很大的一番功夫。楼主的共享精神让人钦佩啊。我现在看第三遍了，可惜没有了解过，还是看不懂啊。
+<br>
+<br>力挺楼主。
+    </div>
+    
+
+            </td>
+  </tr>
+  <tr>
+    <td class="postauthor"><a href="http://www.iteye.com/topic/1122395#">返回顶楼</a></td>
+    <td class="postcontent">
+      <div class="icons">
+        <a href="http://yangmingjiayou.iteye.com/" class="icon_www" title="浏览作者的博客">&nbsp;</a>
+        <a href="http://yangmingjiayou.iteye.com/blog/profile" class="icon_profile" title="浏览作者资料">&nbsp;</a>
+        <a href="http://my.iteye.com/messages/new?message%5Breceiver_name%5D=yangmingjiayou" class="icon_pm" title="发送站内短信">&nbsp;</a>
+        <a href="http://yangmingjiayou.iteye.com/blog/guest_book" class="icon_guestbook" title="给作者留言">&nbsp;</a>
+        <a href="http://my.iteye.com/feed?subscription%5Bsubscribed_user_name%5D=yangmingjiayou" class="icon_rss" onclick="var f = document.createElement(&#39;form&#39;); f.style.display = &#39;none&#39;; this.parentNode.appendChild(f); f.method = &#39;POST&#39;; f.action = this.href;var s = document.createElement(&#39;input&#39;); s.setAttribute(&#39;type&#39;, &#39;hidden&#39;); s.setAttribute(&#39;name&#39;, &#39;authenticity_token&#39;); s.setAttribute(&#39;value&#39;, &#39;gYPZaumEbIvx5ovBdNkoNcfWEBaKbCSQg+2fXY8CssA=&#39;); f.appendChild(s);f.submit();return false;" title="关注作者">&nbsp;</a>
+                  <a href="http://www.iteye.com/topic/1122395#2336226" title="yangmingjiayou回帖:完全分享，共同进步——我开发的第一款HTML5游戏《驴子跳》">回帖地址</a>
+              </div>
+                        <div id="post_rate_box_2336226" class="post_rate_box"><a href="http://www.iteye.com/topic/1122395#" onclick="return false;" class="good" title="好">0</a> <a href="http://www.iteye.com/topic/1122395#" onclick="return false;" class="hidden" title="差">0</a> 已投票</div>              </td>
+</tr>
+<tr class="sep2"><td colspan="2"></td></tr>
+<tr id="2336227">
+  <td class="postauthor">
+    <ul>
+      <li class="name">yangmingjiayou</li>
+      <li>等级: 初级会员</li>
+      <li><a href="http://yangmingjiayou.iteye.com/" target="_blank"><img alt="yangmingjiayou的博客" class="logo" src="./驴子跳 -引擎_files/3de1806c-35a4-31ca-9908-cd1a7a0598e4.jpg" title="yangmingjiayou的博客: yangmingjiayou"></a></li>
+      <li>性别: <img src="./驴子跳 -引擎_files/icon_minigender_1.gif" title="男"></li>      <li>文章: 22</li>
+      <li>积分: 30</li>
+      <li>来自: 深圳</li>
+      <li><img src="./驴子跳 -引擎_files/offline.gif"></li>
+    </ul>
+  </td>
+  <td class="postcontent">
+    <div class="postactions">
+      <div class="description">
+        &nbsp;&nbsp;
+        发表时间：2012-04-04&nbsp;&nbsp;
+        
+      </div>
+      <div class="links">
+        <a href="http://www.iteye.com/forums/41/topics/1122395/posts/2336227/quote" class="quote">引用</a>
+        
+          
+          
+            <a href="http://www.iteye.com/admin/link?user_favorite%5Btitle%5D=yangmingjiayou%E5%9B%9E%E5%B8%96%3A%E5%AE%8C%E5%85%A8%E5%88%86%E4%BA%AB%EF%BC%8C%E5%85%B1%E5%90%8C%E8%BF%9B%E6%AD%A5%E2%80%94%E2%80%94%E6%88%91%E5%BC%80%E5%8F%91%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AC%BEHTML5%E6%B8%B8%E6%88%8F%E3%80%8A%E9%A9%B4%E5%AD%90%E8%B7%B3%E3%80%8B&user_favorite%5Burl%5D=http%3A%2F%2Fwww.iteye.com%2Ftopic%2F1122395%232336227" target="_blank" class="favorite" onclick="$$(&#39;.favorite_form_spinner&#39;)[0].show();new Ajax.Request(&#39;/admin/link/new_xhr?user_favorite%5Btitle%5D=yangmingjiayou%E5%9B%9E%E5%B8%96%3A%E5%AE%8C%E5%85%A8%E5%88%86%E4%BA%AB%EF%BC%8C%E5%85%B1%E5%90%8C%E8%BF%9B%E6%AD%A5%E2%80%94%E2%80%94%E6%88%91%E5%BC%80%E5%8F%91%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AC%BEHTML5%E6%B8%B8%E6%88%8F%E3%80%8A%E9%A9%B4%E5%AD%90%E8%B7%B3%E3%80%8B&amp;user_favorite%5Burl%5D=http%3A%2F%2Fwww.iteye.com%2Ftopic%2F1122395%232336227&#39;, {method: &#39;get&#39;, onSuccess: function(response){$(document.getElementsByTagName(&#39;body&#39;)[0]).insert({bottom:response.responseText});$$(&#39;.favorite_form_spinner&#39;)[0].hide();}});return false;">收藏</a><img alt="Spinner" class="favorite_form_spinner" src="./驴子跳 -引擎_files/spinner.gif" style="vertical-align:bottom;margin-left:7px;display:none;">
+            
+          
+          
+        
+      </div>
+    </div>
+    <div class="postbody clearfix">
+      
+      
+      再占一个位置，这么精心原创的帖子必定是火，是初学者的福音。向楼主致敬...
+    </div>
+    
+
+            </td>
+  </tr>
+  <tr>
+    <td class="postauthor"><a href="http://www.iteye.com/topic/1122395#">返回顶楼</a></td>
+    <td class="postcontent">
+      <div class="icons">
+        <a href="http://yangmingjiayou.iteye.com/" class="icon_www" title="浏览作者的博客">&nbsp;</a>
+        <a href="http://yangmingjiayou.iteye.com/blog/profile" class="icon_profile" title="浏览作者资料">&nbsp;</a>
+        <a href="http://my.iteye.com/messages/new?message%5Breceiver_name%5D=yangmingjiayou" class="icon_pm" title="发送站内短信">&nbsp;</a>
+        <a href="http://yangmingjiayou.iteye.com/blog/guest_book" class="icon_guestbook" title="给作者留言">&nbsp;</a>
+        <a href="http://my.iteye.com/feed?subscription%5Bsubscribed_user_name%5D=yangmingjiayou" class="icon_rss" onclick="var f = document.createElement(&#39;form&#39;); f.style.display = &#39;none&#39;; this.parentNode.appendChild(f); f.method = &#39;POST&#39;; f.action = this.href;var s = document.createElement(&#39;input&#39;); s.setAttribute(&#39;type&#39;, &#39;hidden&#39;); s.setAttribute(&#39;name&#39;, &#39;authenticity_token&#39;); s.setAttribute(&#39;value&#39;, &#39;gYPZaumEbIvx5ovBdNkoNcfWEBaKbCSQg+2fXY8CssA=&#39;); f.appendChild(s);f.submit();return false;" title="关注作者">&nbsp;</a>
+                  <a href="http://www.iteye.com/topic/1122395#2336227" title="yangmingjiayou回帖:完全分享，共同进步——我开发的第一款HTML5游戏《驴子跳》">回帖地址</a>
+              </div>
+                        <div id="post_rate_box_2336227" class="post_rate_box"><a href="http://www.iteye.com/topic/1122395#" onclick="return false;" class="good" title="好">0</a> <a href="http://www.iteye.com/topic/1122395#" onclick="return false;" class="hidden" title="差">0</a> 已投票</div>              </td>
+</tr>
+<tr class="sep2"><td colspan="2"></td></tr>
+<tr id="2336228">
+  <td class="postauthor">
+    <ul>
+      <li class="name">yangmingjiayou</li>
+      <li>等级: 初级会员</li>
+      <li><a href="http://yangmingjiayou.iteye.com/" target="_blank"><img alt="yangmingjiayou的博客" class="logo" src="./驴子跳 -引擎_files/3de1806c-35a4-31ca-9908-cd1a7a0598e4.jpg" title="yangmingjiayou的博客: yangmingjiayou"></a></li>
+      <li>性别: <img src="./驴子跳 -引擎_files/icon_minigender_1.gif" title="男"></li>      <li>文章: 22</li>
+      <li>积分: 30</li>
+      <li>来自: 深圳</li>
+      <li><img src="./驴子跳 -引擎_files/offline.gif"></li>
+    </ul>
+  </td>
+  <td class="postcontent">
+    <div class="postactions">
+      <div class="description">
+        &nbsp;&nbsp;
+        发表时间：2012-04-04&nbsp;&nbsp;
+        
+      </div>
+      <div class="links">
+        <a href="http://www.iteye.com/forums/41/topics/1122395/posts/2336228/quote" class="quote">引用</a>
+        
+          
+          
+            <a href="http://www.iteye.com/admin/link?user_favorite%5Btitle%5D=yangmingjiayou%E5%9B%9E%E5%B8%96%3A%E5%AE%8C%E5%85%A8%E5%88%86%E4%BA%AB%EF%BC%8C%E5%85%B1%E5%90%8C%E8%BF%9B%E6%AD%A5%E2%80%94%E2%80%94%E6%88%91%E5%BC%80%E5%8F%91%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AC%BEHTML5%E6%B8%B8%E6%88%8F%E3%80%8A%E9%A9%B4%E5%AD%90%E8%B7%B3%E3%80%8B&user_favorite%5Burl%5D=http%3A%2F%2Fwww.iteye.com%2Ftopic%2F1122395%232336228" target="_blank" class="favorite" onclick="$$(&#39;.favorite_form_spinner&#39;)[0].show();new Ajax.Request(&#39;/admin/link/new_xhr?user_favorite%5Btitle%5D=yangmingjiayou%E5%9B%9E%E5%B8%96%3A%E5%AE%8C%E5%85%A8%E5%88%86%E4%BA%AB%EF%BC%8C%E5%85%B1%E5%90%8C%E8%BF%9B%E6%AD%A5%E2%80%94%E2%80%94%E6%88%91%E5%BC%80%E5%8F%91%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AC%BEHTML5%E6%B8%B8%E6%88%8F%E3%80%8A%E9%A9%B4%E5%AD%90%E8%B7%B3%E3%80%8B&amp;user_favorite%5Burl%5D=http%3A%2F%2Fwww.iteye.com%2Ftopic%2F1122395%232336228&#39;, {method: &#39;get&#39;, onSuccess: function(response){$(document.getElementsByTagName(&#39;body&#39;)[0]).insert({bottom:response.responseText});$$(&#39;.favorite_form_spinner&#39;)[0].hide();}});return false;">收藏</a><img alt="Spinner" class="favorite_form_spinner" src="./驴子跳 -引擎_files/spinner.gif" style="vertical-align:bottom;margin-left:7px;display:none;">
+            
+          
+          
+        
+      </div>
+    </div>
+    <div class="postbody clearfix">
+      
+      
+      再占一个位置，以后会见证奇迹的。
+    </div>
+    
+
+            </td>
+  </tr>
+  <tr>
+    <td class="postauthor"><a href="http://www.iteye.com/topic/1122395#">返回顶楼</a></td>
+    <td class="postcontent">
+      <div class="icons">
+        <a href="http://yangmingjiayou.iteye.com/" class="icon_www" title="浏览作者的博客">&nbsp;</a>
+        <a href="http://yangmingjiayou.iteye.com/blog/profile" class="icon_profile" title="浏览作者资料">&nbsp;</a>
+        <a href="http://my.iteye.com/messages/new?message%5Breceiver_name%5D=yangmingjiayou" class="icon_pm" title="发送站内短信">&nbsp;</a>
+        <a href="http://yangmingjiayou.iteye.com/blog/guest_book" class="icon_guestbook" title="给作者留言">&nbsp;</a>
+        <a href="http://my.iteye.com/feed?subscription%5Bsubscribed_user_name%5D=yangmingjiayou" class="icon_rss" onclick="var f = document.createElement(&#39;form&#39;); f.style.display = &#39;none&#39;; this.parentNode.appendChild(f); f.method = &#39;POST&#39;; f.action = this.href;var s = document.createElement(&#39;input&#39;); s.setAttribute(&#39;type&#39;, &#39;hidden&#39;); s.setAttribute(&#39;name&#39;, &#39;authenticity_token&#39;); s.setAttribute(&#39;value&#39;, &#39;gYPZaumEbIvx5ovBdNkoNcfWEBaKbCSQg+2fXY8CssA=&#39;); f.appendChild(s);f.submit();return false;" title="关注作者">&nbsp;</a>
+                  <a href="http://www.iteye.com/topic/1122395#2336228" title="yangmingjiayou回帖:完全分享，共同进步——我开发的第一款HTML5游戏《驴子跳》">回帖地址</a>
+              </div>
+                        <div id="post_rate_box_2336228" class="post_rate_box"><a href="http://www.iteye.com/topic/1122395#" onclick="return false;" class="good" title="好">0</a> <a href="http://www.iteye.com/topic/1122395#" onclick="return false;" class="hidden" title="差">0</a> 已投票</div>              </td>
+</tr>
+<tr class="sep2"><td colspan="2"></td></tr>
+<tr id="2336320">
+  <td class="postauthor">
+    <ul>
+      <li class="name">jshever</li>
+      <li>等级: 初级会员</li>
+      <li><a href="http://jshever.iteye.com/" target="_blank"><img alt="jshever的博客" class="logo" src="./驴子跳 -引擎_files/user-logo.gif" title="jshever的博客: "></a></li>
+      <li>性别: <img src="./驴子跳 -引擎_files/icon_minigender_1.gif" title="男"></li>      <li>文章: 1</li>
+      <li>积分: 30</li>
+      <li>来自: 北京</li>
+      <li><img src="./驴子跳 -引擎_files/offline.gif"></li>
+    </ul>
+  </td>
+  <td class="postcontent">
+    <div class="postactions">
+      <div class="description">
+        &nbsp;&nbsp;
+        发表时间：2012-04-04&nbsp;&nbsp;
+        
+      </div>
+      <div class="links">
+        <a href="http://www.iteye.com/forums/41/topics/1122395/posts/2336320/quote" class="quote">引用</a>
+        
+          
+          
+            <a href="http://www.iteye.com/admin/link?user_favorite%5Btitle%5D=jshever%E5%9B%9E%E5%B8%96%3A%E5%AE%8C%E5%85%A8%E5%88%86%E4%BA%AB%EF%BC%8C%E5%85%B1%E5%90%8C%E8%BF%9B%E6%AD%A5%E2%80%94%E2%80%94%E6%88%91%E5%BC%80%E5%8F%91%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AC%BEHTML5%E6%B8%B8%E6%88%8F%E3%80%8A%E9%A9%B4%E5%AD%90%E8%B7%B3%E3%80%8B&user_favorite%5Burl%5D=http%3A%2F%2Fwww.iteye.com%2Ftopic%2F1122395%232336320" target="_blank" class="favorite" onclick="$$(&#39;.favorite_form_spinner&#39;)[0].show();new Ajax.Request(&#39;/admin/link/new_xhr?user_favorite%5Btitle%5D=jshever%E5%9B%9E%E5%B8%96%3A%E5%AE%8C%E5%85%A8%E5%88%86%E4%BA%AB%EF%BC%8C%E5%85%B1%E5%90%8C%E8%BF%9B%E6%AD%A5%E2%80%94%E2%80%94%E6%88%91%E5%BC%80%E5%8F%91%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AC%BEHTML5%E6%B8%B8%E6%88%8F%E3%80%8A%E9%A9%B4%E5%AD%90%E8%B7%B3%E3%80%8B&amp;user_favorite%5Burl%5D=http%3A%2F%2Fwww.iteye.com%2Ftopic%2F1122395%232336320&#39;, {method: &#39;get&#39;, onSuccess: function(response){$(document.getElementsByTagName(&#39;body&#39;)[0]).insert({bottom:response.responseText});$$(&#39;.favorite_form_spinner&#39;)[0].hide();}});return false;">收藏</a><img alt="Spinner" class="favorite_form_spinner" src="./驴子跳 -引擎_files/spinner.gif" style="vertical-align:bottom;margin-left:7px;display:none;">
+            
+          
+          
+        
+      </div>
+    </div>
+    <div class="postbody clearfix">
+      
+      
+      楼主辛苦了，这么用心，我们初学者的福音<img src="./驴子跳 -引擎_files/icon_idea.gif"> 。。<img src="./驴子跳 -引擎_files/icon_idea.gif"> 
+    </div>
+    
+
+            </td>
+  </tr>
+  <tr>
+    <td class="postauthor"><a href="http://www.iteye.com/topic/1122395#">返回顶楼</a></td>
+    <td class="postcontent">
+      <div class="icons">
+        <a href="http://jshever.iteye.com/" class="icon_www" title="浏览作者的博客">&nbsp;</a>
+        <a href="http://jshever.iteye.com/blog/profile" class="icon_profile" title="浏览作者资料">&nbsp;</a>
+        <a href="http://my.iteye.com/messages/new?message%5Breceiver_name%5D=jshever" class="icon_pm" title="发送站内短信">&nbsp;</a>
+        <a href="http://jshever.iteye.com/blog/guest_book" class="icon_guestbook" title="给作者留言">&nbsp;</a>
+        <a href="http://my.iteye.com/feed?subscription%5Bsubscribed_user_name%5D=jshever" class="icon_rss" onclick="var f = document.createElement(&#39;form&#39;); f.style.display = &#39;none&#39;; this.parentNode.appendChild(f); f.method = &#39;POST&#39;; f.action = this.href;var s = document.createElement(&#39;input&#39;); s.setAttribute(&#39;type&#39;, &#39;hidden&#39;); s.setAttribute(&#39;name&#39;, &#39;authenticity_token&#39;); s.setAttribute(&#39;value&#39;, &#39;gYPZaumEbIvx5ovBdNkoNcfWEBaKbCSQg+2fXY8CssA=&#39;); f.appendChild(s);f.submit();return false;" title="关注作者">&nbsp;</a>
+                  <a href="http://www.iteye.com/topic/1122395#2336320" title="jshever回帖:完全分享，共同进步——我开发的第一款HTML5游戏《驴子跳》">回帖地址</a>
+              </div>
+                        <div id="post_rate_box_2336320" class="post_rate_box"><a href="http://www.iteye.com/topic/1122395#" onclick="return false;" class="good" title="好">0</a> <a href="http://www.iteye.com/topic/1122395#" onclick="return false;" class="hidden" title="差">0</a> 已投票</div>              </td>
+</tr>
+<tr class="sep2"><td colspan="2"></td></tr>
+<tr id="2336359">
+  <td class="postauthor">
+    <ul>
+      <li class="name">xyztony1985</li>
+      <li>等级: 初级会员</li>
+      <li><a href="http://xyztony1985.iteye.com/" target="_blank"><img alt="xyztony1985的博客" class="logo" src="./驴子跳 -引擎_files/user-logo.gif" title="xyztony1985的博客: "></a></li>
+      <li>性别: <img src="./驴子跳 -引擎_files/icon_minigender_1.gif" title="男"></li>      <li>文章: 25</li>
+      <li>积分: 30</li>
+      <li>来自: 广州</li>
+      <li><img src="./驴子跳 -引擎_files/offline.gif"></li>
+    </ul>
+  </td>
+  <td class="postcontent">
+    <div class="postactions">
+      <div class="description">
+        &nbsp;&nbsp;
+        发表时间：2012-04-04&nbsp;&nbsp;
+        
+      </div>
+      <div class="links">
+        <a href="http://www.iteye.com/forums/41/topics/1122395/posts/2336359/quote" class="quote">引用</a>
+        
+          
+          
+            <a href="http://www.iteye.com/admin/link?user_favorite%5Btitle%5D=xyztony1985%E5%9B%9E%E5%B8%96%3A%E5%AE%8C%E5%85%A8%E5%88%86%E4%BA%AB%EF%BC%8C%E5%85%B1%E5%90%8C%E8%BF%9B%E6%AD%A5%E2%80%94%E2%80%94%E6%88%91%E5%BC%80%E5%8F%91%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AC%BEHTML5%E6%B8%B8%E6%88%8F%E3%80%8A%E9%A9%B4%E5%AD%90%E8%B7%B3%E3%80%8B&user_favorite%5Burl%5D=http%3A%2F%2Fwww.iteye.com%2Ftopic%2F1122395%232336359" target="_blank" class="favorite" onclick="$$(&#39;.favorite_form_spinner&#39;)[0].show();new Ajax.Request(&#39;/admin/link/new_xhr?user_favorite%5Btitle%5D=xyztony1985%E5%9B%9E%E5%B8%96%3A%E5%AE%8C%E5%85%A8%E5%88%86%E4%BA%AB%EF%BC%8C%E5%85%B1%E5%90%8C%E8%BF%9B%E6%AD%A5%E2%80%94%E2%80%94%E6%88%91%E5%BC%80%E5%8F%91%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AC%BEHTML5%E6%B8%B8%E6%88%8F%E3%80%8A%E9%A9%B4%E5%AD%90%E8%B7%B3%E3%80%8B&amp;user_favorite%5Burl%5D=http%3A%2F%2Fwww.iteye.com%2Ftopic%2F1122395%232336359&#39;, {method: &#39;get&#39;, onSuccess: function(response){$(document.getElementsByTagName(&#39;body&#39;)[0]).insert({bottom:response.responseText});$$(&#39;.favorite_form_spinner&#39;)[0].hide();}});return false;">收藏</a><img alt="Spinner" class="favorite_form_spinner" src="./驴子跳 -引擎_files/spinner.gif" style="vertical-align:bottom;margin-left:7px;display:none;">
+            
+          
+          
+        
+      </div>
+    </div>
+    <div class="postbody clearfix">
+      
+      
+      用心的文章，值得支持
+    </div>
+    
+
+            </td>
+  </tr>
+  <tr>
+    <td class="postauthor"><a href="http://www.iteye.com/topic/1122395#">返回顶楼</a></td>
+    <td class="postcontent">
+      <div class="icons">
+        <a href="http://xyztony1985.iteye.com/" class="icon_www" title="浏览作者的博客">&nbsp;</a>
+        <a href="http://xyztony1985.iteye.com/blog/profile" class="icon_profile" title="浏览作者资料">&nbsp;</a>
+        <a href="http://my.iteye.com/messages/new?message%5Breceiver_name%5D=xyztony1985" class="icon_pm" title="发送站内短信">&nbsp;</a>
+        <a href="http://xyztony1985.iteye.com/blog/guest_book" class="icon_guestbook" title="给作者留言">&nbsp;</a>
+        <a href="http://my.iteye.com/feed?subscription%5Bsubscribed_user_name%5D=xyztony1985" class="icon_rss" onclick="var f = document.createElement(&#39;form&#39;); f.style.display = &#39;none&#39;; this.parentNode.appendChild(f); f.method = &#39;POST&#39;; f.action = this.href;var s = document.createElement(&#39;input&#39;); s.setAttribute(&#39;type&#39;, &#39;hidden&#39;); s.setAttribute(&#39;name&#39;, &#39;authenticity_token&#39;); s.setAttribute(&#39;value&#39;, &#39;gYPZaumEbIvx5ovBdNkoNcfWEBaKbCSQg+2fXY8CssA=&#39;); f.appendChild(s);f.submit();return false;" title="关注作者">&nbsp;</a>
+                  <a href="http://www.iteye.com/topic/1122395#2336359" title="xyztony1985回帖:完全分享，共同进步——我开发的第一款HTML5游戏《驴子跳》">回帖地址</a>
+              </div>
+                        <div id="post_rate_box_2336359" class="post_rate_box"><a href="http://www.iteye.com/topic/1122395#" onclick="return false;" class="good" title="好">0</a> <a href="http://www.iteye.com/topic/1122395#" onclick="return false;" class="hidden" title="差">0</a> 已投票</div>              </td>
+</tr>
+<tr class="sep2"><td colspan="2"></td></tr>
+<tr id="2336376">
+  <td class="postauthor">
+    <ul>
+      <li class="name">yq5858588</li>
+      <li>等级: 初级会员</li>
+      <li><a href="http://yq5858588.iteye.com/" target="_blank"><img alt="yq5858588的博客" class="logo" src="./驴子跳 -引擎_files/user-logo.gif" title="yq5858588的博客: "></a></li>
+      <li>性别: <img src="./驴子跳 -引擎_files/icon_minigender_1.gif" title="男"></li>      <li>文章: 12</li>
+      <li>积分: 30</li>
+      <li>来自: 西安</li>
+      <li><img src="./驴子跳 -引擎_files/offline.gif"></li>
+    </ul>
+  </td>
+  <td class="postcontent">
+    <div class="postactions">
+      <div class="description">
+        &nbsp;&nbsp;
+        发表时间：2012-04-04&nbsp;&nbsp;
+        
+      </div>
+      <div class="links">
+        <a href="http://www.iteye.com/forums/41/topics/1122395/posts/2336376/quote" class="quote">引用</a>
+        
+          
+          
+            <a href="http://www.iteye.com/admin/link?user_favorite%5Btitle%5D=yq5858588%E5%9B%9E%E5%B8%96%3A%E5%AE%8C%E5%85%A8%E5%88%86%E4%BA%AB%EF%BC%8C%E5%85%B1%E5%90%8C%E8%BF%9B%E6%AD%A5%E2%80%94%E2%80%94%E6%88%91%E5%BC%80%E5%8F%91%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AC%BEHTML5%E6%B8%B8%E6%88%8F%E3%80%8A%E9%A9%B4%E5%AD%90%E8%B7%B3%E3%80%8B&user_favorite%5Burl%5D=http%3A%2F%2Fwww.iteye.com%2Ftopic%2F1122395%232336376" target="_blank" class="favorite" onclick="$$(&#39;.favorite_form_spinner&#39;)[0].show();new Ajax.Request(&#39;/admin/link/new_xhr?user_favorite%5Btitle%5D=yq5858588%E5%9B%9E%E5%B8%96%3A%E5%AE%8C%E5%85%A8%E5%88%86%E4%BA%AB%EF%BC%8C%E5%85%B1%E5%90%8C%E8%BF%9B%E6%AD%A5%E2%80%94%E2%80%94%E6%88%91%E5%BC%80%E5%8F%91%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AC%BEHTML5%E6%B8%B8%E6%88%8F%E3%80%8A%E9%A9%B4%E5%AD%90%E8%B7%B3%E3%80%8B&amp;user_favorite%5Burl%5D=http%3A%2F%2Fwww.iteye.com%2Ftopic%2F1122395%232336376&#39;, {method: &#39;get&#39;, onSuccess: function(response){$(document.getElementsByTagName(&#39;body&#39;)[0]).insert({bottom:response.responseText});$$(&#39;.favorite_form_spinner&#39;)[0].hide();}});return false;">收藏</a><img alt="Spinner" class="favorite_form_spinner" src="./驴子跳 -引擎_files/spinner.gif" style="vertical-align:bottom;margin-left:7px;display:none;">
+            
+          
+          
+        
+      </div>
+    </div>
+    <div class="postbody clearfix">
+      
+      
+      好用心的文章，我这几天也在看一些html5的东西，这个刚好可以用上
+    </div>
+    
+
+            </td>
+  </tr>
+  <tr>
+    <td class="postauthor"><a href="http://www.iteye.com/topic/1122395#">返回顶楼</a></td>
+    <td class="postcontent">
+      <div class="icons">
+        <a href="http://yq5858588.iteye.com/" class="icon_www" title="浏览作者的博客">&nbsp;</a>
+        <a href="http://yq5858588.iteye.com/blog/profile" class="icon_profile" title="浏览作者资料">&nbsp;</a>
+        <a href="http://my.iteye.com/messages/new?message%5Breceiver_name%5D=yq5858588" class="icon_pm" title="发送站内短信">&nbsp;</a>
+        <a href="http://yq5858588.iteye.com/blog/guest_book" class="icon_guestbook" title="给作者留言">&nbsp;</a>
+        <a href="http://my.iteye.com/feed?subscription%5Bsubscribed_user_name%5D=yq5858588" class="icon_rss" onclick="var f = document.createElement(&#39;form&#39;); f.style.display = &#39;none&#39;; this.parentNode.appendChild(f); f.method = &#39;POST&#39;; f.action = this.href;var s = document.createElement(&#39;input&#39;); s.setAttribute(&#39;type&#39;, &#39;hidden&#39;); s.setAttribute(&#39;name&#39;, &#39;authenticity_token&#39;); s.setAttribute(&#39;value&#39;, &#39;gYPZaumEbIvx5ovBdNkoNcfWEBaKbCSQg+2fXY8CssA=&#39;); f.appendChild(s);f.submit();return false;" title="关注作者">&nbsp;</a>
+                  <a href="http://www.iteye.com/topic/1122395#2336376" title="yq5858588回帖:完全分享，共同进步——我开发的第一款HTML5游戏《驴子跳》">回帖地址</a>
+              </div>
+                        <div id="post_rate_box_2336376" class="post_rate_box"><a href="http://www.iteye.com/topic/1122395#" onclick="return false;" class="good" title="好">0</a> <a href="http://www.iteye.com/topic/1122395#" onclick="return false;" class="hidden" title="差">0</a> 已投票</div>              </td>
+</tr>
+<tr class="sep2"><td colspan="2"></td></tr>
+<tr id="2336377">
+  <td class="postauthor">
+    <ul>
+      <li class="name">amcucn</li>
+      <li>等级: 初级会员</li>
+      <li><a href="http://amcucn.iteye.com/" target="_blank"><img alt="amcucn的博客" class="logo" src="./驴子跳 -引擎_files/305c799d-8420-3cf0-896b-59ab799d9607.jpg" title="amcucn的博客: 面向对象"></a></li>
+      <li>性别: <img src="./驴子跳 -引擎_files/icon_minigender_1.gif" title="男"></li>      <li>文章: 61</li>
+      <li>积分: 50</li>
+      <li>来自: 上海</li>
+      <li><img src="./驴子跳 -引擎_files/offline.gif"></li>
+    </ul>
+  </td>
+  <td class="postcontent">
+    <div class="postactions">
+      <div class="description">
+        &nbsp;&nbsp;
+        发表时间：2012-04-04&nbsp;&nbsp;
+        
+      </div>
+      <div class="links">
+        <a href="http://www.iteye.com/forums/41/topics/1122395/posts/2336377/quote" class="quote">引用</a>
+        
+          
+          
+            <a href="http://www.iteye.com/admin/link?user_favorite%5Btitle%5D=amcucn%E5%9B%9E%E5%B8%96%3A%E5%AE%8C%E5%85%A8%E5%88%86%E4%BA%AB%EF%BC%8C%E5%85%B1%E5%90%8C%E8%BF%9B%E6%AD%A5%E2%80%94%E2%80%94%E6%88%91%E5%BC%80%E5%8F%91%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AC%BEHTML5%E6%B8%B8%E6%88%8F%E3%80%8A%E9%A9%B4%E5%AD%90%E8%B7%B3%E3%80%8B&user_favorite%5Burl%5D=http%3A%2F%2Fwww.iteye.com%2Ftopic%2F1122395%232336377" target="_blank" class="favorite" onclick="$$(&#39;.favorite_form_spinner&#39;)[0].show();new Ajax.Request(&#39;/admin/link/new_xhr?user_favorite%5Btitle%5D=amcucn%E5%9B%9E%E5%B8%96%3A%E5%AE%8C%E5%85%A8%E5%88%86%E4%BA%AB%EF%BC%8C%E5%85%B1%E5%90%8C%E8%BF%9B%E6%AD%A5%E2%80%94%E2%80%94%E6%88%91%E5%BC%80%E5%8F%91%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AC%BEHTML5%E6%B8%B8%E6%88%8F%E3%80%8A%E9%A9%B4%E5%AD%90%E8%B7%B3%E3%80%8B&amp;user_favorite%5Burl%5D=http%3A%2F%2Fwww.iteye.com%2Ftopic%2F1122395%232336377&#39;, {method: &#39;get&#39;, onSuccess: function(response){$(document.getElementsByTagName(&#39;body&#39;)[0]).insert({bottom:response.responseText});$$(&#39;.favorite_form_spinner&#39;)[0].hide();}});return false;">收藏</a><img alt="Spinner" class="favorite_form_spinner" src="./驴子跳 -引擎_files/spinner.gif" style="vertical-align:bottom;margin-left:7px;display:none;">
+            
+          
+          
+        
+      </div>
+    </div>
+    <div class="postbody clearfix">
+      
+      
+      这样行动一定要支持，希望楼主继续下去！
+    </div>
+    
+
+            </td>
+  </tr>
+  <tr>
+    <td class="postauthor"><a href="http://www.iteye.com/topic/1122395#">返回顶楼</a></td>
+    <td class="postcontent">
+      <div class="icons">
+        <a href="http://amcucn.iteye.com/" class="icon_www" title="浏览作者的博客">&nbsp;</a>
+        <a href="http://amcucn.iteye.com/blog/profile" class="icon_profile" title="浏览作者资料">&nbsp;</a>
+        <a href="http://my.iteye.com/messages/new?message%5Breceiver_name%5D=amcucn" class="icon_pm" title="发送站内短信">&nbsp;</a>
+        <a href="http://amcucn.iteye.com/blog/guest_book" class="icon_guestbook" title="给作者留言">&nbsp;</a>
+        <a href="http://my.iteye.com/feed?subscription%5Bsubscribed_user_name%5D=amcucn" class="icon_rss" onclick="var f = document.createElement(&#39;form&#39;); f.style.display = &#39;none&#39;; this.parentNode.appendChild(f); f.method = &#39;POST&#39;; f.action = this.href;var s = document.createElement(&#39;input&#39;); s.setAttribute(&#39;type&#39;, &#39;hidden&#39;); s.setAttribute(&#39;name&#39;, &#39;authenticity_token&#39;); s.setAttribute(&#39;value&#39;, &#39;gYPZaumEbIvx5ovBdNkoNcfWEBaKbCSQg+2fXY8CssA=&#39;); f.appendChild(s);f.submit();return false;" title="关注作者">&nbsp;</a>
+                  <a href="http://www.iteye.com/topic/1122395#2336377" title="amcucn回帖:完全分享，共同进步——我开发的第一款HTML5游戏《驴子跳》">回帖地址</a>
+              </div>
+                        <div id="post_rate_box_2336377" class="post_rate_box"><a href="http://www.iteye.com/topic/1122395#" onclick="return false;" class="good" title="好">0</a> <a href="http://www.iteye.com/topic/1122395#" onclick="return false;" class="hidden" title="差">0</a> 已投票</div>              </td>
+</tr>
+<tr class="sep2"><td colspan="2"></td></tr>
+<tr id="2336391">
+  <td class="postauthor">
+    <ul>
+      <li class="name">liu78778</li>
+      <li>等级: 初级会员</li>
+      <li><a href="http://liu78778.iteye.com/" target="_blank"><img alt="liu78778的博客" class="logo" src="./驴子跳 -引擎_files/6bb1388f-ca30-3c9c-b811-c9e944275c10.jpg" title="liu78778的博客: 苦中作乐"></a></li>
+      <li>性别: <img src="./驴子跳 -引擎_files/icon_minigender_1.gif" title="男"></li>      <li>文章: 101</li>
+      <li>积分: 0</li>
+      <li>来自: 南京</li>
+      <li><img src="./驴子跳 -引擎_files/offline.gif"></li>
+    </ul>
+  </td>
+  <td class="postcontent">
+    <div class="postactions">
+      <div class="description">
+        &nbsp;&nbsp;
+        发表时间：2012-04-04&nbsp;&nbsp;
+        
+      </div>
+      <div class="links">
+        <a href="http://www.iteye.com/forums/41/topics/1122395/posts/2336391/quote" class="quote">引用</a>
+        
+          
+          
+            <a href="http://www.iteye.com/admin/link?user_favorite%5Btitle%5D=liu78778%E5%9B%9E%E5%B8%96%3A%E5%AE%8C%E5%85%A8%E5%88%86%E4%BA%AB%EF%BC%8C%E5%85%B1%E5%90%8C%E8%BF%9B%E6%AD%A5%E2%80%94%E2%80%94%E6%88%91%E5%BC%80%E5%8F%91%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AC%BEHTML5%E6%B8%B8%E6%88%8F%E3%80%8A%E9%A9%B4%E5%AD%90%E8%B7%B3%E3%80%8B&user_favorite%5Burl%5D=http%3A%2F%2Fwww.iteye.com%2Ftopic%2F1122395%232336391" target="_blank" class="favorite" onclick="$$(&#39;.favorite_form_spinner&#39;)[0].show();new Ajax.Request(&#39;/admin/link/new_xhr?user_favorite%5Btitle%5D=liu78778%E5%9B%9E%E5%B8%96%3A%E5%AE%8C%E5%85%A8%E5%88%86%E4%BA%AB%EF%BC%8C%E5%85%B1%E5%90%8C%E8%BF%9B%E6%AD%A5%E2%80%94%E2%80%94%E6%88%91%E5%BC%80%E5%8F%91%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AC%BEHTML5%E6%B8%B8%E6%88%8F%E3%80%8A%E9%A9%B4%E5%AD%90%E8%B7%B3%E3%80%8B&amp;user_favorite%5Burl%5D=http%3A%2F%2Fwww.iteye.com%2Ftopic%2F1122395%232336391&#39;, {method: &#39;get&#39;, onSuccess: function(response){$(document.getElementsByTagName(&#39;body&#39;)[0]).insert({bottom:response.responseText});$$(&#39;.favorite_form_spinner&#39;)[0].hide();}});return false;">收藏</a><img alt="Spinner" class="favorite_form_spinner" src="./驴子跳 -引擎_files/spinner.gif" style="vertical-align:bottom;margin-left:7px;display:none;">
+            
+          
+          
+        
+      </div>
+    </div>
+    <div class="postbody clearfix">
+      
+      
+      不错。。上次见还是一个雏形，现在就做出来了
+    </div>
+    
+
+            </td>
+  </tr>
+  <tr>
+    <td class="postauthor"><a href="http://www.iteye.com/topic/1122395#">返回顶楼</a></td>
+    <td class="postcontent">
+      <div class="icons">
+        <a href="http://liu78778.iteye.com/" class="icon_www" title="浏览作者的博客">&nbsp;</a>
+        <a href="http://liu78778.iteye.com/blog/profile" class="icon_profile" title="浏览作者资料">&nbsp;</a>
+        <a href="http://my.iteye.com/messages/new?message%5Breceiver_name%5D=liu78778" class="icon_pm" title="发送站内短信">&nbsp;</a>
+        <a href="http://liu78778.iteye.com/blog/guest_book" class="icon_guestbook" title="给作者留言">&nbsp;</a>
+        <a href="http://my.iteye.com/feed?subscription%5Bsubscribed_user_name%5D=liu78778" class="icon_rss" onclick="var f = document.createElement(&#39;form&#39;); f.style.display = &#39;none&#39;; this.parentNode.appendChild(f); f.method = &#39;POST&#39;; f.action = this.href;var s = document.createElement(&#39;input&#39;); s.setAttribute(&#39;type&#39;, &#39;hidden&#39;); s.setAttribute(&#39;name&#39;, &#39;authenticity_token&#39;); s.setAttribute(&#39;value&#39;, &#39;gYPZaumEbIvx5ovBdNkoNcfWEBaKbCSQg+2fXY8CssA=&#39;); f.appendChild(s);f.submit();return false;" title="关注作者">&nbsp;</a>
+                  <a href="http://www.iteye.com/topic/1122395#2336391" title="liu78778回帖:完全分享，共同进步——我开发的第一款HTML5游戏《驴子跳》">回帖地址</a>
+              </div>
+                        <div id="post_rate_box_2336391" class="post_rate_box"><a href="http://www.iteye.com/topic/1122395#" onclick="return false;" class="good" title="好">0</a> <a href="http://www.iteye.com/topic/1122395#" onclick="return false;" class="hidden" title="差">0</a> 已投票</div>              </td>
+</tr>
+<tr class="sep2"><td colspan="2"></td></tr>
+<tr id="2336399">
+  <td class="postauthor">
+    <ul>
+      <li class="name">elkan1788</li>
+      <li>等级: 初级会员</li>
+      <li><a href="http://elkan1788.iteye.com/" target="_blank"><img alt="elkan1788的博客" class="logo" src="./驴子跳 -引擎_files/0f950c07-6481-314d-87e6-73cf01d3dab8.jpg" title="elkan1788的博客: 记住,没有伞的孩子必须努力奔跑!"></a></li>
+      <li>性别: <img src="./驴子跳 -引擎_files/icon_minigender_1.gif" title="男"></li>      <li>文章: 21</li>
+      <li>积分: 40</li>
+      <li>来自: 兴宁</li>
+      <li><img src="./驴子跳 -引擎_files/offline.gif"></li>
+    </ul>
+  </td>
+  <td class="postcontent">
+    <div class="postactions">
+      <div class="description">
+        &nbsp;&nbsp;
+        发表时间：2012-04-04&nbsp;&nbsp;
+        最后修改：2012-04-04
+      </div>
+      <div class="links">
+        <a href="http://www.iteye.com/forums/41/topics/1122395/posts/2336399/quote" class="quote">引用</a>
+        
+          
+          
+            <a href="http://www.iteye.com/admin/link?user_favorite%5Btitle%5D=elkan1788%E5%9B%9E%E5%B8%96%3A%E5%AE%8C%E5%85%A8%E5%88%86%E4%BA%AB%EF%BC%8C%E5%85%B1%E5%90%8C%E8%BF%9B%E6%AD%A5%E2%80%94%E2%80%94%E6%88%91%E5%BC%80%E5%8F%91%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AC%BEHTML5%E6%B8%B8%E6%88%8F%E3%80%8A%E9%A9%B4%E5%AD%90%E8%B7%B3%E3%80%8B&user_favorite%5Burl%5D=http%3A%2F%2Fwww.iteye.com%2Ftopic%2F1122395%232336399" target="_blank" class="favorite" onclick="$$(&#39;.favorite_form_spinner&#39;)[0].show();new Ajax.Request(&#39;/admin/link/new_xhr?user_favorite%5Btitle%5D=elkan1788%E5%9B%9E%E5%B8%96%3A%E5%AE%8C%E5%85%A8%E5%88%86%E4%BA%AB%EF%BC%8C%E5%85%B1%E5%90%8C%E8%BF%9B%E6%AD%A5%E2%80%94%E2%80%94%E6%88%91%E5%BC%80%E5%8F%91%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AC%BEHTML5%E6%B8%B8%E6%88%8F%E3%80%8A%E9%A9%B4%E5%AD%90%E8%B7%B3%E3%80%8B&amp;user_favorite%5Burl%5D=http%3A%2F%2Fwww.iteye.com%2Ftopic%2F1122395%232336399&#39;, {method: &#39;get&#39;, onSuccess: function(response){$(document.getElementsByTagName(&#39;body&#39;)[0]).insert({bottom:response.responseText});$$(&#39;.favorite_form_spinner&#39;)[0].hide();}});return false;">收藏</a><img alt="Spinner" class="favorite_form_spinner" src="./驴子跳 -引擎_files/spinner.gif" style="vertical-align:bottom;margin-left:7px;display:none;">
+            
+          
+          
+        
+      </div>
+    </div>
+    <div class="postbody clearfix">
+      
+      
+      <div class="quote_title">yujianshenbing 写道</div><div class="quote_div">
+<br>如何才算是“熟悉”？ 
+<br>HTML常用标签你全都认识并能说出它们相同、和不同的特性吗？
+<br>CSS中所有属性是否熟悉？特别是CSS3中的新特性和动画？
+<br>是否已经完全明白JavaScript面向对象、闭包、原型链、作用域等概念，并能熟练运用？
+<br>是否掌握了一系列JavaScript性能优化的方法和经验？
+<br></div>
+<br>
+<br> 看来自己要走的路还挺长的哪…………<img src="./驴子跳 -引擎_files/icon_cry.gif"> 
+<br>
+<br> 这游戏试玩了下，感觉不错，赞一个<img src="./驴子跳 -引擎_files/icon_idea.gif"> 
+    </div>
+    
+
+            </td>
+  </tr>
+  <tr>
+    <td class="postauthor"><a href="http://www.iteye.com/topic/1122395#">返回顶楼</a></td>
+    <td class="postcontent">
+      <div class="icons">
+        <a href="http://elkan1788.iteye.com/" class="icon_www" title="浏览作者的博客">&nbsp;</a>
+        <a href="http://elkan1788.iteye.com/blog/profile" class="icon_profile" title="浏览作者资料">&nbsp;</a>
+        <a href="http://my.iteye.com/messages/new?message%5Breceiver_name%5D=elkan1788" class="icon_pm" title="发送站内短信">&nbsp;</a>
+        <a href="http://elkan1788.iteye.com/blog/guest_book" class="icon_guestbook" title="给作者留言">&nbsp;</a>
+        <a href="http://my.iteye.com/feed?subscription%5Bsubscribed_user_name%5D=elkan1788" class="icon_rss" onclick="var f = document.createElement(&#39;form&#39;); f.style.display = &#39;none&#39;; this.parentNode.appendChild(f); f.method = &#39;POST&#39;; f.action = this.href;var s = document.createElement(&#39;input&#39;); s.setAttribute(&#39;type&#39;, &#39;hidden&#39;); s.setAttribute(&#39;name&#39;, &#39;authenticity_token&#39;); s.setAttribute(&#39;value&#39;, &#39;gYPZaumEbIvx5ovBdNkoNcfWEBaKbCSQg+2fXY8CssA=&#39;); f.appendChild(s);f.submit();return false;" title="关注作者">&nbsp;</a>
+                  <a href="http://www.iteye.com/topic/1122395#2336399" title="elkan1788回帖:完全分享，共同进步——我开发的第一款HTML5游戏《驴子跳》">回帖地址</a>
+              </div>
+                        <div id="post_rate_box_2336399" class="post_rate_box"><a href="http://www.iteye.com/topic/1122395#" onclick="return false;" class="good" title="好">0</a> <a href="http://www.iteye.com/topic/1122395#" onclick="return false;" class="hidden" title="差">0</a> 已投票</div>              </td>
+</tr>
+<tr class="sep2"><td colspan="2"></td></tr>
+
+  </tbody>
+</table>
+
+
+<div class="actions">
+  <div class="buttons"><a href="http://www.iteye.com/forums/41/topics/1122395/posts/new" class="new_post" title="发表回复">&nbsp;</a></div>
+  <div class="wrapper"><div class="pagination"><span class="disabled prev_page">« 上一页</span> <span class="current">1</span> <a href="http://www.iteye.com/topic/1122395?page=2" rel="next">2</a> <a href="http://www.iteye.com/topic/1122395?page=3">3</a> <span class="gap">…</span> <a href="http://www.iteye.com/topic/1122395?page=9">9</a> <a href="http://www.iteye.com/topic/1122395?page=10">10</a> <a href="http://www.iteye.com/topic/1122395?page=2" class="next_page" rel="next">下一页 »</a></div></div>
+</div>
+
+<div>
+  <div class="crumbs">
+    <a href="http://www.iteye.com/forums">论坛首页</a> <span class="arrow">→</span>
+    <a href="http://www.iteye.com/forums/board/web">Web前端技术版</a>
+    <br><br>跳转论坛:<select id="forum_urlname" name="forum[urlname]" onchange="window.location=&#39;/forums/board/&#39;+this.value"><option value="mobile">移动开发技术</option>
+<option value="web" selected="selected">Web前端技术</option>
+<option value="Java">Java企业应用</option>
+<option value="language">编程语言技术</option>
+<option value="Tech">综合技术</option>
+<option value="New">入门技术</option>
+<option value="Job">招聘求职</option>
+<option value="Life">海阔天空</option></select>
+     
+      <ul id="recommended_jobs" style="list-style-type:none;border:1px solid #f8aa4f;width:400px;height:110px;margin-top:5px;padding:7px 0;overflow:hidden;" onmousemove="marqueeing = false;" onmouseout="marqueeing = true;">
+        
+          <li style="padding-left:20px;margin-left:15px;background:transparent url(/images/board-tab-list.png) no-repeat scroll left center;"><a href="http://www.iteye.com/jobs/2302" target="_blank" title="云南:云南远信诚聘高级软件工程师(web) ">云南: 云南远信诚聘高级软件工程师(web) </a></li>
+        
+      </ul>
+      <script type="text/javascript">
+        var marqueeing = true;
+        function marquee(){
+          if(marqueeing) {
+            var container=document.getElementById("recommended_jobs");
+            container.appendChild(container.firstChild);
+          }
+        }
+        setInterval("marquee()", 4000);
+      </script>
+    
+  </div>
+
+  
+    <div class="quick_reply">
+      
+        <a href="http://www.iteye.com/index/forum_certify" target="_blank">完成论坛规则小测验以后，您才能在论坛发帖和回复。</a>
+      
+    </div>
+  
+</div>
+
+<div style="display:none">
+  <form action="http://www.iteye.com/posts/rate" id="post_rate_form" method="post" onsubmit="new Ajax.Request(&#39;/posts/rate&#39;, {asynchronous:true, evalScripts:true, parameters:Form.serialize(this)}); return false;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="gYPZaumEbIvx5ovBdNkoNcfWEBaKbCSQg+2fXY8CssA="></div>
+    <input type="hidden" id="post_rate_id" name="id">
+    <input type="hidden" id="post_rate_type" name="type">
+  </form></div>
+
+<script type="text/javascript">
+  dp.SyntaxHighlighter.HighlightAll('code', true, true);
+
+  fix_image_size($$('div.postbody img'), 760);
+  
+  $$('#forum_main > #posts > tr[id]').each(function(tr){
+    var post_id = tr.id;
+    $$("#"+post_id+" pre[name=code]").each(function(pre, index){
+      var location = window.location;
+      source_url = location.protocol + "//" + location.host + location.pathname + location.search;
+      source_url += "#" + post_id;
+      pre.writeAttribute('codeable_type', 'Post');
+      pre.writeAttribute('codeable_id', post_id);
+      pre.writeAttribute('source_url', source_url);
+      pre.writeAttribute('pre_index', index);
+      pre.writeAttribute('title', '完全分享，共同进步——我开发的第一款HTML5游戏《驴子跳》');
+    });
+  });
+  code_favorites_init();
+
+  function rate_post(id, type) {
+    Element.update('post_rate_box_' + id, '提交中...');
+    new Ajax.Request('/posts/rate', {asynchronous:true, evalScripts:true, parameters:{"id":id, "type":type}});
+  }
+
+  function rate_topic(type) {
+    Element.update('topic_rate_box', '提交中...');
+    new Ajax.Request('/topics/rate', {asynchronous:true, evalScripts:true, parameters:{"id":1122395, "type":type}});
+  }
+</script>
+
+
+
+        </div>
+        <div id="nav">
+  <div class="wrapper">
+    <ul>
+            <li><a href="http://www.iteye.com/">首页</a></li>
+      <li><a href="http://www.iteye.com/news">资讯</a></li>
+      <li><a href="http://www.iteye.com/magazines">精华</a></li>
+      <li><a href="http://www.iteye.com/forums" class="selected">论坛</a></li>
+      <li><a href="http://www.iteye.com/ask">问答</a></li>
+      <li><a href="http://www.iteye.com/blogs">博客</a></li>
+      <li><a href="http://www.iteye.com/blogs/subjects">专栏</a></li>
+      <li><a href="http://www.iteye.com/groups">群组</a></li>
+      <li><a target="_blank" href="http://job.iteye.com/iteye">招聘</a></li>
+      <li class="last"><a href="http://www.iteye.com/search">搜索</a></li>
+    </ul>
+  </div>
+</div>
+      </div>
+      <div id="footer">
+  <div id="site_nav">
+    <ul>
+      <li><a href="http://www.iteye.com/index/service">广告服务</a></li>
+      <li><a href="http://webmaster.iteye.com/">ITeye黑板报</a></li>
+      <li><a href="http://www.iteye.com/index/contactus">联系我们</a></li>
+      <li class="last"><a href="http://www.iteye.com/index/friend_links">友情链接</a></li>
+    </ul>
+  </div>
+  <div id="copyright">
+    © 2003-2012 ITeye.com.    [ <a href="http://www.miibeian.gov.cn/">京ICP证110151号</a>  京公网安备110105010620 ]<br>
+    百联优力(北京)投资有限公司  版权所有<br>
+  </div>
+</div>
+
+    </div>
+    <script type="text/javascript">
+  document.write("<img src='http://stat.iteye.com/?url="+ encodeURIComponent(document.location.href) + "&referrer=" + encodeURIComponent(document.referrer) + "&user_id=1052520' width='0' height='0' />");
+</script><img src="./驴子跳 -引擎_files/saved_resource" width="0" height="0">
+
+  
+
+<iframe style="position: absolute; width: 100px; height: 1px; z-index: -10240; visibility: hidden;" src="./驴子跳 -引擎_files/e.htm"></iframe></body></html>

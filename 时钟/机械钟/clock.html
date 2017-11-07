@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<title>clock</title>
+	<style>
+	body {padding:0;margin:0}
+	.wrap {
+		width:600px;
+		height:600px;
+		overflow:hidden;
+		position:relative;
+	}
+	.clockface {
+		width:600px;
+		height:600px;
+		background:url(image/clockface.jpg) no-repeat 0 0;
+		position:absolute;
+	}
+	.hour, .min, .sec {
+		position:absolute;
+		left:285px;
+		top:0px;
+		transform:rotate(0deg);
+	}
+	</style>
+	
+	
+</head>
+<body>
+	<div class="wrap">
+		<div class="clockface"></div>
+		<img class="hour" src="image/hourhand.png" />
+		<img class="min" src="image/minhand.png" />
+		<img class="sec" src="image/sechand.png" />
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	
+	//1、获取当前时间，并设置图片时间
+	var date=new Date();
+	var year = date.getFullYear();
+	var month = date.getMonth();
+	var dates = date.getDate();
+	var hour = date.getHours();
+	var minute = date.getMinutes();
+	var second = date.getSeconds();
+	document.getElementsByClassName("sec")[0].style.transform="rotate("+6*second+"deg)";
+	document.getElementsByClassName("min")[0].style.transform="rotate("+(6*minute+second/10)+"deg)";
+	document.getElementsByClassName("hour")[0].style.transform="rotate("+((hour%12)*30+minute/2)+"deg)";
+	//document.getElementsByClassName("sec")[0].style.transformOrin="300px,300px";
+	//2、走一秒
+	function runTime(){
+		second++;
+		if(second==60){
+			minute++;
+			second=0;
+		}
+		if(minute==60){
+			hour++;
+			minute=0;
+		}
+		document.getElementsByClassName("sec")[0].style.transform="rotate("+6*second+"deg)";
+		document.getElementsByClassName("min")[0].style.transform="rotate("+(6*minute+second/10)+"deg)";
+		document.getElementsByClassName("hour")[0].style.transform="rotate("+((hour%12)*30+minute/2)+"deg)";
+	}
+	
+	//3、一直走
+	setInterval(runTime,1000);
+</script>

@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<meta name="apple-mobile-web-app-capable" content="yes" />    
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="format-detection" content="telephone=yes"/>
+<meta name="msapplication-tap-highlight" content="no" />
+<link rel="stylesheet" href="css/public.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/animate.css">
+
+</head>
+<body>
+
+<div class="header">
+	<img class="left" src="images/3.png"/>
+	<input type="text" class="l" value="" placeholder="          熊本熊" />
+	<img class="right" src="images/4.png"/>
+</div>
+<div class="main">
+		<div class="banner"></div>
+		<div class="tu1">
+		<img src="images/7.jpg">
+		</div>
+		<div class="tu2">
+		<img src="images/8.jpg"> 
+		</div>
+		<div class="tu3">
+		<img src="images/9.jpg">
+		</div>
+		<div class="t1000">
+			<img class="l" src="images/1.jpg">
+			<img class="l" src="images/2.jpg">
+		</div>
+		<div class="t1000">
+			<img class="l" src="images/12.jpg">
+			<img class="l" src="images/13.jpg">
+		</div>
+		<div class="t1000">
+			<img class="l" src="images/3.jpg">
+			<img class="l" src="images/4.jpg">
+		</div>
+		<div class="t1000">
+			<img class="l" src="images/10.jpg">
+			<img class="l" src="images/11.jpg">
+		</div>
+		<div class="t1000">
+			<img class="l" src="images/5.jpg">
+			<img class="l" src="images/6.jpg">
+		</div>
+		<div class="t10">
+			<img class="l" src="images/14.jpg">
+		</div>
+		<div class="t1000">
+			<img class="l" src="images/15.jpg">
+			<img class="l" src="images/16.jpg">
+		</div>
+		<div class="t1000">
+			<img class="l" src="images/17.jpg">
+			<img class="l" src="images/18.jpg">
+		</div>
+		<div class="t10">
+			<img class="l" src="images/19.jpg">
+		</div>
+		<div class="t1001">
+			<img class="l" src="images/20.jpg">
+			<img class="l" src="images/21.jpg">
+		</div>
+		<div class="t1000">
+			<img class="l" src="images/22.jpg">
+			<img class="l" src="images/23.jpg">
+		</div>
+		<div class="t10">
+			<img class="l" src="images/24.jpg">
+		</div>
+		<div class="t1001">
+			<img class="l" src="images/25.jpg">
+			<img class="l" src="images/26.jpg">
+		</div>
+		<div class="t1000">
+			<img class="l" src="images/27.jpg">
+			<img class="l" src="images/28.jpg">
+		</div>
+		<div class="t1000">
+			<img class="l" src="images/29.jpg">
+			<img class="l" src="images/30.jpg">
+		</div>
+		<div class="t1000">
+			<img class="l" src="images/31.jpg">
+			<img class="l" src="images/32.jpg">
+		</div>
+		<div class="t10">
+			<img class="l" src="images/33.jpg">
+		</div>
+		<div class="t1001">
+			<img class="l" src="images/34.jpg">
+			<img class="l" src="images/35.jpg">
+		</div>
+		<div class="t1000">
+			<img class="l" src="images/36.jpg">
+			<img class="l" src="images/37.jpg">
+		</div>
+		<div class="t1000">
+			<img class="l" src="images/38.jpg">
+			<img class="l" src="images/39.jpg">
+		</div>
+		<div class="t1000">
+			<img class="l" src="images/40.jpg">
+			<img class="l" src="images/41.jpg">
+		</div>
+		<div class="t10">
+			<img class="l" src="images/42.jpg">
+		</div>
+		<div class="t11">
+			<img class="l" src="images/43.jpg">
+			<img class="l" src="images/44.jpg">
+		</div>
+		<div class="input">
+			<input type="text" class="l" value="登录">
+			<input type="text" class="l" value="注册">
+		</div>
+		<div class="box">
+			<img class="l" src="images/6.png">
+			<img class="l" src="images/7.png">
+			<img class="l" src="images/8.png">
+			<img class="l" src="images/9.png">
+		</div>
+		<p>京ICP证100557号</p>
+</div>
+<div class="footer">
+	<span class="l"><a href="#"></a></span>
+	<span class="l"><a href="#"></a></span>
+	<span class="l"><a href="#"></a></span>
+	<span class="l"><a href="#"></a></span>
+	<span class="l"><a href="#"></a></span>
+</div>
+</body>
+<script src="js/rem.js"></script>
+</html>

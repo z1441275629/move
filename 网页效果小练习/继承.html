@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+/*
+	function Objects(weight,volume){//物体（重量、体积）
+		this.weight=weight;
+		this.volume=volume;
+	}
+	Objects.prototype.color=function(str){//颜色
+		alert(str);
+	}
+	function Cup(shap){//水杯（形状）
+		this.shap=shap;
+	}
+	Cup.prototype = new Objects("100g","500ml");
+	window.onload=function(){
+		var c1=new Cup("cylinder");//圆柱状  （此处体现了不能传参的缺点）
+		alert("这个杯子的重量为"+c1.weight);//???
+		alert(c1.shap);
+		c1.color("black");//???
+	}*/
+	/*
+	function Objects(weight,volume){//物体（重量、体积）
+		this.weight=weight;
+		this.volume=volume;
+	}
+	Cup.prototype = new Objects("100g","500ml");
+	Objects.prototype.color=function(str){//颜色
+		alert(str);
+	}
+	function Cup(shap){//水杯（形状）
+		this.shap=shap;
+	}
+	
+	window.onload=function(){
+		var c1=new Cup("cylinder");//圆柱状  （此处体现了不能传参的缺点）
+		alert("这个杯子的重量为"+c1.weight);//???
+		c1.color("black");//???
+	}
+	*//*
+	function Objects(weight,volume){//物体（重量、体积）
+		this.weight=weight;
+		this.volume=volume;
+	}
+	Objects.prototype.color=function(str){//颜色
+		alert(str);
+	}
+	function Cup(shap){//水杯（形状）
+		this.shap=shap;
+	}
+	Cup.prototype = new Objects("100g","500ml");
+	Cup.prototype.size=function(str){
+		alert(str+"号");
+	}
+	window.onload=function(){
+		var c1=new Cup("cylinder");//圆柱状  （此处体现了不能传参的缺点）
+		alert("这个杯子的重量为"+c1.weight);//???
+		c1.color("black");//???
+		c1.size("大");//???
+	}
+*//*
+function Objects(weight,volume){//物体（重量、体积）
+	this.weight=weight;
+	this.volume=volume;
+}
+Objects.prototype.color=function(str){//颜色
+	alert(str);
+}
+function Cup(weight,volume,shap){//水杯（形状）
+	Objects.apply(this,[weight,volume]);
+	this.shap=shap;
+}
+window.onload=function(){
+	var c2=new Cup("1kg","2.5L","cylinder");
+	alert(c2.weight+" "+c2.volume+" "+c2.shap);
+	c2.color("black");//???
+}
+*/
+function Objects(weight,volume){//物体（重量、体积）
+this.weight=weight;
+this.volume=volume;
+}
+Objects.prototype.color=function(str){//颜色
+alert(str);
+}
+function Cup(weight,volume,shap){//水杯（形状）
+Objects.call(this,weight,volume);
+this.shap=shap;
+}
+Cup.prototype = new Objects();//注意此处没有参数，即不继承属性
+window.onload=function(){
+var c4=new Cup("1kg","2.5L","cylinder");
+alert(c4.weight+" "+c4.volume+" "+c4.shap);//???
+c4.color("red");//???
+}
+
+
+</script>

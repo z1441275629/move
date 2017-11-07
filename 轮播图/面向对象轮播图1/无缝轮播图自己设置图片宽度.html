@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			*{
+				padding:0;
+				margin:0;
+			}
+			ul,li{
+				list-style: none;
+			}
+		</style>
+	</head>
+	<body>
+		
+	</body>
+</html>
+<!--<script type="text/javascript">
+	function AutoPlay(ImgObj,btn){
+		this.width=ImgObj.width;
+		this.height=ImgObj.height;
+		//this.left=ImgObj.left;
+		//this.top=ImgObj.top;
+		//this.ImgPath=ImgObj.ImgPath;
+		this.imgs=ImgObj.imgs;
+		this.speed=ImgObj.speed;
+		this.timer=null;
+		this.initUI();
+	}
+	AutoPlay.prototype.initUI=function(){
+		var imgUl=document.createElement("ul");
+		imgUl.style.cssText="";
+	}
+</script>-->
+<script src="js/move.js"></script>
+<script type="text/javascript">
+	//this:当前对象；this肯定是在函数里面的。（this属于哪个函数里。要找function关键字）
+	//1、项目中的对象：轮播图
+	//box:容器的id
+	function AutoPlayerImgs(boxId,width,height,imgs,urls,speed,btn){
+		//属性：
+		this.boxId = boxId;
+		this.width = width;
+		this.height = height;
+		this.left = 0;
+		this.imgs = imgs;//所有的图片放在一个imgs数组里		
+		this.urls = urls;//点击图片跳转到对应的网址，放在一个数组里
+		this.speed = speed;
+		this.timer = null;
+		/*
+		this.btn ={
+			width:btn.width,
+			height:btn.height,
+			bgColor:btn.bgColor,
+			highLightColor:btn.highLightColor
+		};
+		*/
+		this.btn = btn;
+		this.currOrd = 0;//当前图片序号；
+		this.initUI();
+	}
+	
+	//创建页面
+	AutoPlayerImgs.prototype.initUI=function(){//创建页面
+		var boxObj = document.createElement("div");
+		boxObj.id=this.boxId;
+		boxObj.style.cssText="margin:0 auto;position:relative;overflow:hidden;width:"+this.width+"px;height:"+this.height+"px;"
+		var that = this;		
+		boxObj.onmouseover = function(){//鼠标移到div上停止轮播
+			that.stopPlay();	
+		};
+		
+		boxObj.onmouseout = function(){//鼠标移开继续轮播
+			that.go();	
+		};
+		//1、创建放图片的ul（创建3步法：a、创建元素  b、设置页面的内容属性等  c、添加到页面上）
+		var ulObj = document.createElement("ul");
+		ulObj.style.cssText = " width:9999px;height:100%;position:relative;left:0px";
+		//使用for循环创建li和图片
+		for(var i=0;i<this.imgs.length;i++){//imgs的数组里存放着图片的路径
+			var liObj = document.createElement("li");//创建放图片的li
+			liObj.style.cssText = "float:left;";//li左浮动
+			var imgObj = document.createElement("img");//创建图片
+			imgObj.src = this.imgs[i];//图片路径
+			imgObj.style.cssText="width:"+this.width+"px;height:"+this.height+"px";//让图片的宽和高等于所给div的宽高
+			liObj.appendChild(imgObj);//往li添加图片
+			liObj.ord = i;//记录当前li的序号，供改变位置用
+			var that = this;	//调用onclick时this指向改变，因此先记录当前this		
+			liObj.onclick = function(){//点击对应的图片（li）跳转到相应的网页
+				location.href = that.urls[this.ord];
+			}
+			ulObj.appendChild(liObj);//往ul添加li(li里面已经包含图片)
+		}
+		document.body.appendChild(boxObj);
+		document.getElementById(this.boxId).appendChild(ulObj);//往div里添加ul
+		
+		ulObj = document.createElement("ul");//创建下边按钮对应的ul
+		
+		
+		for(var i=0;i<this.imgs.length;i++){//动态创建 豆豆li
+			var liObj = document.createElement("li");
+			liObj.style.cssText = "float:left;width:"+this.btn.width+"px;height:"+this.btn.height+"px;border-radius: 50%;background:"+this.btn.bgColor+";margin-right:"+this.btn.width/4+"px;opacity:0.7";
+			liObj.ord = i;//用ord记录第几个豆豆
+			
+			//为了实现无缝轮播，需要在最后一张图片的后边添加一张第一张图片
+			if(i==this.imgs.length-1){
+				var boxObj = document.getElementById(this.boxId);
+				var ulImgObj = boxObj.getElementsByTagName("ul")[0];
+				//ulImgObj.innerHTML=ulImgObj.innerHTML+ulImgObj.innerHTML;//复制一份图片
+				ulImgObj.innerHTML+="<li><img src='"+this.imgs[0]+"'/></li>";
+				var IMG=ulImgObj.getElementsByTagName("img");
+				for(var mm=0;mm<IMG.length;mm++){
+					IMG[mm].style.cssText="width:"+this.width+"px;height:"+this.height+"px";//让图片的宽和高等于所给div的宽高
+				}
+				//ulImgObj.style.cssText="width:"+this.width+"px;height:"+this.height+"px";//让图片的宽和高等于所给div的宽高
+			}
+			
+		
+			var that = this;//鼠标移上豆豆时图片变成相应的图片
+			liObj.onmouseover = function(){
+				that.goImg(this.ord);	
+			};
+			
+			ulObj.appendChild(liObj);//往ul添加豆豆li
+		}
+		//ulObj.style.cssText = "position:absolute;left:180px;bottom:0;";//豆豆ul 绝对定位
+		
+		ulObj.style.cssText="position:absolute;bottom:2%;"
+		//ulObj.style.left=(document.getElementById(this.boxId).offsetWidth-parseInt(ulObj.offsetWidth))/2+"px";	///让放豆豆的ul居中
+		document.getElementById(this.boxId).appendChild(ulObj);//往div添加豆豆ul
+		
+		ulObj.style.left=(document.getElementById(this.boxId).offsetWidth-parseInt(ulObj.offsetWidth))/2+"px";	///让放豆豆的ul居中(先添加到界面上再获取ul的宽就可以获取宽了)
+		
+		ulObj.children[0].style.backgroundColor = this.btn.highLightColor;//页面加载时先把第一个豆豆设置为高亮
+	}
+	
+	//轮播一次（走一步）
+	AutoPlayerImgs.prototype.goStep = function(){
+		this.currOrd++;//当前的序号
+		//1、移动ul，相应的换图片
+		var boxObj = document.getElementById(this.boxId);
+		var ulImgObj = boxObj.getElementsByTagName("ul")[0];//获取放图片的ul
+		if(this.currOrd>=this.imgs.length+1){//判断是否超过图片的数量。超过了改为第一张
+			var ulImgObj = boxObj.getElementsByTagName("ul")[0];//获取放图片的ul
+			ulImgObj.style.left=0;
+			this.currOrd=1;
+		}
+		
+		
+		var temp = (-1)*this.currOrd*this.width;		
+		move(ulImgObj,{"left":temp});//应用move动画移动放图片的div
+		
+		//变换豆豆的颜色
+		var ulBtnObj = boxObj.getElementsByTagName("ul")[1];//获取豆豆ul
+		for(let i=0;i<ulBtnObj.children.length;i++){//把所有豆豆的背景改为初始值（此处为新方法，值得记住！！！）
+			ulBtnObj.children[i].style.backgroundColor = this.btn.bgColor;
+		}
+		ulBtnObj.children[(this.currOrd)%ulBtnObj.children.length].style.backgroundColor = this.btn.highLightColor;//把对应的豆豆改为高亮颜色
+	}
+	
+	//一直轮播（一直走），通过定时器实现
+	AutoPlayerImgs.prototype.go = function(){
+		var that = this;//遇到函数时先把this存到that中
+		var temp = this.speed;
+		var timerTask = function(){
+									that.goStep();
+						};
+							
+		this.timer = setInterval(timerTask,
+								 temp
+						);//timer之前定义为null
+	}
+	
+	//停止播放（清楚定时器）
+	AutoPlayerImgs.prototype.stopPlay = function(){		
+		clearInterval(this.timer);
+	}
+	
+	//修改页面（先获取元素，然后修改）
+	AutoPlayerImgs.prototype.goImg=function(ord){
+		
+		var boxObj = document.getElementById(this.boxId);
+		var ulImgObj = boxObj.getElementsByTagName("ul")[0];
+		//ulImgObj.innerHTML=ulImgObj.innerHTML+ulImgObj.innerHTML;//复制一份图片
+		//ulImgObj.innerHTML+="<img src='"+this.imgs[0]+"'/>";
+		move(ulImgObj,{"left":(-1)*ord*this.width});//改变图片
+		this.currOrd = ord;
+		
+		//改豆豆的背景色
+		var ulBtnObj = boxObj.getElementsByTagName("ul")[1];
+		for(let i=0;i<ulBtnObj.children.length;i++){
+			ulBtnObj.children[i].style.backgroundColor = this.btn.bgColor;
+		}
+		ulBtnObj.children[this.currOrd].style.backgroundColor = this.btn.highLightColor;
+		
+	}
+	
+	//2、逻辑
+	
+	
+	window.onload = function(){
+		//1、创建轮播图（包括页面）
+		var l = new AutoPlayerImgs(
+			"box",
+			560,
+			300,
+			["images/1a.jpg","images/2a.jpg","images/3a.jpg","images/4a.jpg","images/5a.jpg"],
+			["http://www.baidu.com","http://www.taobao.com","http://www.jd.cn","http://www.sohu.com","http://www.mobiletrain.org"],
+			2000,
+			{width:20,height:20,bgColor:"white",highLightColor:"red"}
+		);
+		l.go();	
+		
+		//1、创建轮播图（包括页面）
+		var l2 = new AutoPlayerImgs(
+			"lunbo",
+			280,
+			150,
+			["images/1a.jpg","images/2a.jpg","images/3a.jpg","images/4a.jpg","images/5a.jpg"],
+			["http://www.baidu.com","http://www.taobao.com","http://www.jd.cn","http://www.sohu.com","http://www.mobiletrain.org"],
+			1000,
+			{width:10,height:10,bgColor:"white",highLightColor:"yellow"}
+		);
+		l2.go();
+		
+		//1、创建轮播图（包括页面）
+		var l2 = new AutoPlayerImgs(
+			"lunbotu",
+			800,
+			500,
+			["images/1a.jpg","images/2a.jpg","images/3a.jpg","images/4a.jpg","images/5a.jpg"],
+			["http://www.baidu.com","http://www.taobao.com","http://www.jd.cn","http://www.sohu.com","http://www.mobiletrain.org"],
+			1000,
+			{width:50,height:50,bgColor:"black",highLightColor:"green"}
+		);
+		l2.go();
+	}
+</script>

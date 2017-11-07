@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		名字：<input type="text" id="txt1"  />
+		<br />
+		密码：<input type="text" id="txt2"  /><br />
+		性别：<input type="text" id="txt3"  /><br />
+		<input id="btn"	type="button" value="跳转到另一个页面，并把值带过去" />
+	</body>
+</html>
+<script type="text/javascript">
+	function getid(id){
+		return document.getElementById(id);
+	}
+//	getid("btn").onclick=function(){
+//		location.href="bb.html?name="+encodeURIComponent(getid("txt1").value)+"&pass="+encodeURIComponent(getid("txt2").value)+"&sex="+encodeURIComponent(getid("txt3").value);
+//	}
+	function gogogo(url,sendMsg){
+		var str="";
+		for(let key in sendMsg){
+			str+=encodeURIComponent(key)+"="+encodeURIComponent(sendMsg[key])+"&";//这样会在最后面多一个“&”
+		}
+		str=str.slice(0,str.length-1);
+		console.log(str);
+		location.href=""+url+"?"+str;
+	}
+	getid("btn").onclick=function(){
+		gogogo("bb.html",{
+						name:"付正义",
+						sex:"男",
+						age:"3岁"
+					}
+		);
+	}
+	console.log("付正义".toCharCode());
+</script>

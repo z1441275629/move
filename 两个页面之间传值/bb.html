@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	function getMsgFromLocation(){
+		var dizhi=decodeURIComponent(location.href);
+		var allMsg=dizhi.split("?")[1];//长字符串
+		allMsg=allMsg.replace(/%20/g," ");//把（%20）转换为空格
+		var arrAll=allMsg.split("&");
+		var arrJson=[];
+		for(var i=0;i<arrAll.length;i++){
+			arrJson[i]={};
+			arrJson[i].key=arrAll[i].split("=")[0];
+			arrJson[i].value=arrAll[i].split("=")[1];
+		}
+		//return arrJson;
+		console.log(arrJson);
+	}
+	getMsgFromLocation();
+	//console.log();
+</script>
+<script type="text/javascript">
+	function toCharCode(str){//把汉字转换为Unicode码
+		var strCode="";
+		for(let i=0;i<str.length;i++){
+			strCode+=str.charCodeAt(i)+",";
+		}
+		console.log(strCode);
+		strCode=strCode.slice(0,strCode.length-1);
+		console.log(strCode);
+		
+		return strCode;
+	}
+	toCharCode("赵德升");
+	function codeToSting(code){
+		console.log(code);
+		var arr=code.split(",");
+		var str="";
+		for(var i=0;i<arr.length;i++){
+			str+=String.fromCharCode(arr[i]);
+		}
+		console.log(str);
+		return str;
+	}
+	codeToSting(toCharCode("赵德升"));
+</script>

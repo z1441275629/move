@@ -1,0 +1,39 @@
+*{
+	padding:0;
+	margin: 0;
+}
+table{
+	width:500px;
+	/*height:500px;*/
+	margin: 50px auto;
+}
+table tr{
+	height: 50px;
+	min-height: 50px;
+	
+}
+table tr:first-of-type{
+	height: 30px;
+}
+table th{
+	height:30px;
+	text-align: center;
+}
+table tr td{
+	min-width: 80px;
+	min-height: 20px;
+	text-align: center;
+}
+.numInput{
+	width: 40px;
+	height:20px;
+	text-align: center;
+}
+.minus,.plus{
+	display: inline-block;
+	width:20px;
+	height:22px;
+	line-height: 22px;
+	background:#ccc;
+	border:1px solid #ccc;
+}

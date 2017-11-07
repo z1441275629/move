@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;padding: 0;
+			}
+			ul,ol{
+				list-style: none;
+			}
+			ul>li{
+				float:left;
+				list-style: none;
+				width:150px;
+				height:20px;
+				line-height: 20px;
+				position: relative;
+				background:#ccc;
+				margin-right:20px;
+			}
+			ul>li ol{
+				display: none;
+				position: absolute;
+				left:0px;
+				top:20px;
+			}
+			ul>li ol li:hover{
+				background: yellow;
+			}
+			/*ul>li:hover ol{
+				display: block;
+			}*/
+		</style>
+	</head>
+	<body>
+		<div class="nav">
+			<ul>
+				<li class="yijicaidan">11111
+					<ol>
+						<li>AAA</li>
+						<li>BBB</li>
+						<li>VVV</li>
+						<li>DDD</li>
+						<li>SSS</li>
+						<li>AAA</li>
+					</ol>
+				</li>
+				<li class="yijicaidan">22222
+					<ol>
+						<li>QQQ</li>
+						<li>WWW</li>
+						<li>EEE</li>
+						<li>RRR</li>
+						<li>TTT</li>
+						<li>YYYY</li>
+					</ol>
+				</li>
+				<li class="yijicaidan">33333
+					<ol>
+						<li>UUUU</li>
+						<li>IIII</li>
+						<li>OOO</li>
+						<li>PPP</li>
+						<li>LLL</li>
+						<li>KKK</li>
+					</ol>
+				</li>
+				<li class="yijicaidan">44444
+					<ol>
+						<li>JJJ</li>
+						<li>HHH</li>
+						<li>GGG</li>
+						<li>FFF</li>
+						<li>DDD</li>
+						<li>SSS</li>
+					</ol>
+				</li>
+				<li class="yijicaidan">55555
+					<ol>
+						<li>MMM</li>
+						<li>NNN</li>
+						<li>BBB</li>
+						<li>BBBB</li>
+						<li>VVVV</li>
+						<li>CCC</li>
+					</ol>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	var yiji_lis=document.getElementsByClassName("yijicaidan");
+	console.log(yiji_lis);
+/*	for(let i=0;i<yiji_lis.length;i++){
+		yiji_lis[i].onclick=function(){
+			var ol=yiji_lis[i].getElementsByTagName("ol")[0];
+			var state=ol.style.display;
+			if(state=="block"){
+				ol.style.display="none";
+			}else{
+				ol.style.display="block";
+			}
+		}
+	}*/
+	for(let i=0;i<yiji_lis.length;i++){
+		yiji_lis[i].flag=false;
+		yiji_lis[i].onclick=function(event){
+			var e=event || window.event;
+			e.cancelBubble=true || e.stopPropagation();
+			var status=yiji_lis[i].flag;
+			for(let j=0;j<yiji_lis.length;j++){
+				yiji_lis[j].flag=false;
+				yiji_lis[j].getElementsByTagName("ol")[0].style.display="none";
+			}
+			yiji_lis[i].flag=status;
+			var ol=yiji_lis[i].getElementsByTagName("ol")[0];
+			if(yiji_lis[i].flag==true){
+				ol.style.display="none";
+				yiji_lis[i].flag=false;
+			}else{
+				ol.style.display="block";
+				yiji_lis[i].flag=true;
+			}
+		}
+	}
+	var doc=document.body || document.documentElement;
+	console.log(doc);
+	window.onclick=function(){
+		for(let j=0;j<yiji_lis.length;j++){
+			yiji_lis[j].flag=false;
+			yiji_lis[j].getElementsByTagName("ol")[0].style.display="none";
+		}
+	}
+</script>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="input" />
+	</body>
+</html>
+<script src="js/jquery-1.12.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var input=document.getElementById("input");
+	input.oncompositionstart=function(){
+		console.log("start");
+	}
+	input.oncompositionend=function(){
+		console.log("end");
+	}
+	var cpLock = false;
+    $('#input').on('compositionstart', function () {
+    	console.log("start");
+        cpLock = true;
+    });
+    $('#input').on('compositionend', function () {
+    	console.log("end结束了");
+        cpLock = false;
+    });
+    $('#input').on('input', function () {
+    	console.log("input")
+        if (!cpLock) {
+            // TODO
+            console.log(cpLock);
+        }
+    });
+    console.log(CompositionEvent.prototype)
+</script>

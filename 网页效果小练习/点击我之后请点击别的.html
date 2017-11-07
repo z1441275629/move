@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+	</head>
+	<body>
+		<ul id="ul">
+			
+		</ul>
+	</body>
+</html>
+<script type="text/javascript">
+	var arrNeiRong=["老师","学生","校长","教育局局长","市长"];
+	var arrFlag=[];
+	var Len=arrNeiRong.length;
+	for(var i=0;i<Len;i++){
+		arrFlag[i]=0;
+	}
+	//console.log(arrFlag)
+	var ul=document.getElementById("ul");
+	for(var i=0;i<Len;i++){
+		var li=document.createElement("li");
+		li.innerHTML=arrNeiRong[i];
+		ul.appendChild(li);
+	}
+	
+	var lis=ul.getElementsByTagName("li");
+	//console.log(lis)
+	for(let i=0;i<Len;i++){
+		
+		lis[i].onclick=function(){
+			if(arrFlag[i]==0){
+				cb(this.innerHTML);
+				for(let j=0;j<arrFlag.length;j++){
+					arrFlag[j]=0;
+				}
+				arrFlag[i]=1;
+				//console.log(arrFlag)
+			}
+			
+		}
+	}
+	
+	function cb(val){
+		alert(val+"是个好人");
+	}
+</script>

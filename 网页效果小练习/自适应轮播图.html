@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#main_ad .carousel-inner .item {
+				background-size: cover;
+				/*让图片覆盖满整个div*/
+				background-position: center, center;
+				/*让图片在div里水平垂直居中*/
+				background-repeat: no-repeat;
+				height: 410px;
+			}
+			
+			@media (max-width:768px) {
+				#main_ad .carousel-inner .item {
+					height: auto;
+				}
+				#main_ad .carousel-inner .item img {
+					width: 100%;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<section id="main_ad" class="carousel slide" data-ride="carousel">
+			<!-- 活动指示器 -->
+			<ol class="carousel-indicators">
+				<li data-target="#main_ad" data-slide-to="0" class="active"></li>
+				<li data-target="#main_ad" data-slide-to="1"></li>
+				<li data-target="#main_ad" data-slide-to="2"></li>
+				<li data-target="#main_ad" data-slide-to="3"></li>
+			</ol>
+			<!-- 轮播项 -->
+			<div class="carousel-inner" role="listbox">
+				<div class="item active" data-image-lg="img/3.jpg" data-image-xs="img/3.jpg"></div>
+				<div class="item" data-image-lg="img/4.jpg" data-image-xs="img/4.jpg"></div>
+				<div class="item" data-image-lg="img/5.jpg" data-image-xs="img/5.jpg"></div>
+				<div class="item" data-image-lg="img/6.jpg" data-image-xs="img/6.jpg"></div>
+			</div>
+			<!-- 控制按钮 -->
+			<a class="left carousel-control" href="#main_ad" role="button" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#main_ad" role="button" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</section>
+	</body>
+
+</html>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		/**
+		 * 根据屏幕宽度的变化决定轮播图片应该展示什么 5    */
+		function resize() {
+			// 获取屏幕宽度
+			var windowWidth = $(window).width();
+			// 判断屏幕属于大还是小
+			var isSmallScreen = windowWidth < 768;
+			// 根据大小为界面上的每一张轮播图设置背景
+			$('#main_ad > .carousel-inner > .item').each(function(i, item) {
+				var $item = $(item);
+				// var imgSrc = $item.data(isSmallScreen ? 'image-xs' : 'image-lg');
+				var imgSrc =
+					isSmallScreen ? $item.data('image-xs') : $item.data('image-lg');
+				// 设置背景图片
+				$item.css('backgroundImage', 'url("' + imgSrc + '")');
+				//
+				// 因为我们需要小图时 尺寸等比例变化，所以小图时我们使用img方式
+				if(isSmallScreen) {
+					$item.html('<img src="' + imgSrc + '" alt="" />');
+				} else {
+					$item.empty();
+				}
+			});
+		}
+		// // 让window对象立即触发一下resize，初始化div的背景图
+		// $(window).trigger('resize');
+
+		$(window).on('resize', resize).trigger('resize');
+	});
+</script>

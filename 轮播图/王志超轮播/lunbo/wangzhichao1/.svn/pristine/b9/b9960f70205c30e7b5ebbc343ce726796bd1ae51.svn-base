@@ -1,0 +1,15 @@
+@charset "utf-8";
+/* CSS Document */
+
+body,h1,h2,h3,h4,h5,p,a,img,ul,ol,dl,dd,dt,li,input,figure,figcation{padding:0;margin:0;}
+*{box-sizing:border-box;}
+body,html{ height:100%;}
+ul,dl{list-style:none;}
+img{display:block;border:0}
+input{outline:none;border:0}
+header,main,arcticle,section,aside,footer,nav,figure,figcation,summary,details{display:block;}
+body{font-size:0.512rem;color:#000;font-family:"微软雅黑";background:#f2f2f2;}
+a{text-decoration:none;color:#000;}
+a:hover{color:#db2726;}
+.l{float:left;}
+.r{float:right;}

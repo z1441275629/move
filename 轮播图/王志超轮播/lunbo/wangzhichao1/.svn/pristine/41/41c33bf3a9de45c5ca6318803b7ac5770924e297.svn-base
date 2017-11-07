@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>项目</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<meta name="apple-mobile-web-app-capable" content="yes" />    
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="format-detection" content="telephone=yes"/>
+<meta name="msapplication-tap-highlight" content="no" />
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/animate.css">
+<link rel="stylesheet" href="css/swiper.min.css">
+
+<link rel="stylesheet" type="text/css" href="css/index.css">
+
+</head>
+<body>
+<!-- afabaa
+fdfcfa -->
+
+<!-- header --> 
+	<div class="header">
+		<img src="img/sing.svg">
+		<div class="input">
+		<input type="text" value="搜索音乐、歌词、电台" style="font-size:0.512rem;color:#e2e2e2; outline:none;" onfocus="this.value=''" onblur="this.value='搜索音乐、歌词、电台'">
+			
+		</div> 
+		<img src="img/shu.svg">
+	</div>
+<!-- main -->
+	<div class="main">
+	
+	   	 <ul class="nav">
+	   	 	<li><a href="" class="border">个性推荐</a></li>
+	   	 	<li><a href="">歌单</a></li>
+	   	 	<li><a href="">主播电台</a></li>
+	   	 	<li><a href="">排行榜</a></li>
+	   	 </ul>
+	   	 <!-- banner -->
+	   	 <div class="swiper-container swiperwrap">
+		    <div class="swiper-wrapper">
+		        <div class="swiper-slide"><img src="img/banner.jpg"></div>
+		        <div class="swiper-slide"><img src="img/banner1.jpg"></div>
+		        <div class="swiper-slide"><img src="img/banner2.jpg"></div>
+		    </div>
+		    <!-- 如果需要分页器 -->
+		    <div class="swiper-pagination"></div>
+
+		</div>
+		<!-- fmfmfmffmfmfmf -->
+		<div class="fm">
+			<div class="three">
+				<div class="yuan"></div>
+				<p>私人FM</p>
+			</div>
+			<div class="three">
+				<div class="yuan"></div>
+				<p>每日歌曲推荐</p>
+			</div>
+			<div class="three">
+				<div class="yuan"></div>
+				<p>云音乐热歌榜</p>
+			</div>
+		</div>
+	   <!--  每日推荐 -->
+	   <div class="day">
+	   	   <a>推荐歌单</a>
+	   </div>
+	   <div class="musiclist">
+	   	  <div class="list">
+	   	  	 <img src="img/18864320998015039.webp">
+	   	  	 <div class="down">90万</div>
+	   	  	 <p>七月份的尾巴|原来你是狮子座！</p>
+	   	  </div>
+	   	  <div class="list">
+	   	  	 <img src="img/1366692955540180.webp">
+	   	  	  <div class="down">80万</div>
+	   	  	 <p>致前任 | 予你后妈般的关怀</p>
+	   	  </div>
+	   	  <div class="list">
+	   	  	 <img src="img/3400789465289028.webp">
+	   	  	  <div class="down">30万</div>
+	   	  	 <p>「冷门佳曲」质感美学的艺术</p>
+	   	  </div>
+	   	    <div class="list">
+	   	  	 <img src="img/18786255674057660.webp">
+	   	  	  <div class="down">60万</div>
+	   	  	 <p>执剑天涯，武侠配乐系列</p>
+	   	  </div>
+	   	  <div class="list">
+	   	  	 <img src="img/109951162921235619.webp">
+	   	  	  <div class="down">20万</div>
+	   	  	 <p>欧美丨欢快节奏 尽享夏日好心情</p>
+	   	  </div>
+	   	  <div class="list">
+	   	  	 <img src="img/109951162983152556.webp">
+	   	  	  <div class="down">110万</div>
+	   	  	 <p>蓝草精选 I 触碰三月暖阳，哼唱轻快小调</p>
+	   	  </div>
+	   </div>
+       <!-- 最新音乐 -->
+	     <div class="day">
+	   	   <a>最新音乐</a>
+	   </div>
+	   <div class="newlist">
+	   	  <div class="newmusic">
+		   	  <div class="music">
+		   	  		<div class="musicname">小荃拳玩年史</div>
+		   	  		<i></i>
+		   	  	    <div class="musicpeo">戴荃-小荃拳玩年史</div>
+		   	  </div>
+	   	      <div class="span">
+	   	      	
+	   	      </div>
+	   	  </div>
+	   	   <div class="newmusic">
+		   	  <div class="music">
+		   	  		<div class="musicname">隧道</div>
+		   	  		<i></i>
+		   	  	    <div class="musicpeo">G.G(张思源） / ZDev-隧道</div>
+		   	  </div>
+	   	      <div class="span">
+	   	      	
+	   	      </div>
+	   	  </div>
+	   	   <div class="newmusic">
+		   	  <div class="music">
+		   	  		<div class="musicname">三生三世十里桃花
+		   	  		<span class="move">电影《三生三世十里桃花》主题曲</span></div>
+		   	  		<i></i>
+		   	  	    <div class="musicpeo">那英-三生三世十里桃花</div>
+		   	  </div>
+	   	      <div class="span">
+	   	      	
+	   	      </div>
+	   	  </div>
+	   	   <div class="newmusic">
+		   	  <div class="music">
+		   	  		<div class="musicname">もっとGO!GO!
+		   	  		<span class="move">(Motto Go! Go!)</span></div>
+		   	  		<i></i>
+		   	  	    <div class="musicpeo">Apink-もっとGO!GO!</div>
+		   	  </div>
+	   	      <div class="span">
+	   	      	
+	   	      </div>
+	   	  </div>
+	   	   <div class="newmusic">
+		   	  <div class="music">
+		   	  		<div class="musicname">SWIMMING</div>
+		   	  		<i></i>
+		   	  	    <div class="musicpeo">任炫植-Piece of BTOB Vol.4</div>
+		   	  </div>
+	   	      <div class="span">
+	   	      	
+	   	      </div>
+	   	  </div>
+	   	   <div class="newmusic">
+		   	  <div class="music">
+		   	  		<div class="musicname">河
+		   	  		<span class="move">网络剧《河神》主题曲</span></div>
+		   	  		<i></i>
+		   	  	    <div class="musicpeo">萧敬腾-河</div>
+		   	  </div>
+	   	      <div class="span">
+	   	      	
+	   	      </div>
+	   	  </div>
+	   </div>
+	</div>
+<!-- footer -->
+	<div class="footer">
+		<ul>
+			<li class="white"><img src="img/music1_1.svg"><p>发现音乐</p></li>
+			<li><img src="img/music2_1.svg"><p>我的音乐</p></li>
+			<li><img src="img/music3_1.svg"><p>朋友</p></li>
+			<li><img src="img/music4_1.svg"><p>账号</p></li>
+		</ul>
+		
+	</div>
+
+</body>
+<script type="text/javascript" src="js/rem.js"></script>
+ <script src="js/zepto.js"></script>
+ <script src="js/swiper.min.js"></script>
+ <script>        
+  var mySwiper = new Swiper ('.swiper-container', {
+    autoplay: 3000,
+    loop: true,
+    
+    // 如果需要分页器
+    pagination: '.swiper-pagination',
+    
+   
+  })        
+  </script>  
+
+</html>

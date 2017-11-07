@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		名字：<input type="text" id="txt1"  />
+		<br />
+		密码：<input type="text" id="txt2"  /><br />
+		性别：<input type="text" id="txt3"  /><br />
+		<input id="btn"	type="button" value="跳转到另一个页面，并把值带过去" />
+	</body>
+</html>
+<!--<script src="js/deliverValue.js" type="text/javascript" charset="utf-8"></script>-->
+<script src="js/deliverValueByString.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	function getid(id){
+		return document.getElementById(id);
+	}
+	getid("btn").onclick=function(){
+		gogogo("dd.html",{name:getid("txt1").value,pass:getid("txt2").value,sex:getid("txt3").value});
+		//location.href="bb.html?name="+encodeURIComponent(getid("txt1").value)+"&pass="+encodeURIComponent(getid("txt2").value)+"&sex="+encodeURIComponent(getid("txt3").value);
+	}
+</script>

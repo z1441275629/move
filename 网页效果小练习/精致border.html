@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{padding: 0;margin: 0;}
+			#yiguo{margin: 10px auto;width:100px;line-height:20px;height:20px;border: 1px solid red;position: relative;}
+			ul,li{list-style: none;}
+			ul{display: none;position: absolute;left:-1px;top:20px;border: 1px solid red;width:150px;}
+			#noboder{display: none;width:100px;height:0px;border-bottom: 5px solid #fff;position: absolute;left:0px;top:20px;}
+			#yiguo:hover{
+				border-bottom:none;
+			}
+			#yiguo:hover ul{display: block;}
+			#yiguo:hover #noboder{display: block;}
+		</style>
+	</head>
+	<body>
+		<p>设计思路：把一个白背景的边框定位到交界处，就可以实现缺少边框的假象</p>
+		<div id="yiguo">
+			<span>我的易果</span>
+			<ul>
+				<li>我的购物车</li>
+				<li>我的悠币数量</li>
+				<li>我的收货地址</li>
+				<li>我的联系方式</li>
+				<li>我的订单</li>
+				<li>切换账号</li>
+			</ul>
+			<div id="noboder"></div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 300px;
+				height: 200px;
+			}
+			div img{
+				width:100%;
+				height:100%;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="box1"><img src="img/2.jpg" alt="" /></div>
+		<div id="box2"><img src="img/asd.jpg" alt="" /></div>
+		<div id="box3"><img src="img/eee.jpg" alt="" /></div>
+	</body>
+</html>
+<script src="js/复制 面向对象showBigImg.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var divs=document.getElementsByTagName("div");
+	function getId(id){
+		return document.getElementById(id);
+	}
+	//ShowBigImg(obj,multiple,_json)
+	/*for(var i=divs.length-1;i>=0;i--){
+		new ShowBigImg(divs[i],5,{width:"60",height:"40"});
+	}*/
+	
+	new ShowBigImg(getId("box1"),5,{width:"50",height:"50"});
+	new ShowBigImg(getId("box2"),3,{width:"50",height:"50"});
+	new ShowBigImg(getId("box3"),2,{width:"50",height:"50"});
+	
+	//为什么用TagName获取的元素不能正常显示？？？？而通过Id获取的却可以正常显示？？？
+	//用TagName获取的元素从后面向前面添加是正确的？而从前向后添加放大镜确实错误的？？？
+</script>

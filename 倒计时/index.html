@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>倒计时</title>
+		<link rel="icon" type="images/x-icon" sizes="any" href="img/baidu.svg" />
+	</head>
+	<body>
+		<!--<span>请输入结束时间</span>
+		<input type="text" id="iday" />日
+		<input type="text" id="ihours" />时
+		<input type="text" id="iminute" />分
+		<input type="text" id="isecond" />秒
+		<br />
+		<span>剩余时间	</span>
+		<input type="text" id="day" />天
+		<input type="text" id="hours" />时
+		<input type="text" id="minute" />分
+		<input type="text" id="second" />秒-->
+		
+		<table border="1" cellspacing="0" cellpadding="5">
+			<tr>
+				<td>请选择年份</td>
+				<td>
+				<select id="yearSel" name="yearSel">
+					<option value="">请选择年份</option>
+				</select>
+				</td>
+			</tr>
+			<tr>
+				<td>请选择月份</td>
+				<td>
+				<select id="monthSel" name="monthSel">
+					<option value="">请选择月份</option>
+				</select>
+				</td>
+			</tr>
+			<tr>
+				<td>请选择天</td>
+				<td>
+				<select id="daySel" name="daySel">
+					<option value="">请选择天</option>
+				</select>
+				</td>
+			</tr>
+			<tr>
+				<td>请选择小时</td>
+				<td>
+				<select id="hourSel" name="hourSel">
+					<option value="">请选择小时</option>
+				</select>
+				</td>
+			</tr>
+			<tr>
+				<td>请选择分钟</td>
+				<td>
+				<select id="minuteSel" name="minuteSel">
+					<option value="">请选择分钟</option>
+				</select>
+				</td>
+			</tr>
+			<tr>
+				<td>请选择秒</td>
+				<td>
+				<select id="secondSel" name="secondSel">
+					<option value="">请选择秒</option>
+				</select>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="button"value="确定" id="sure" /></td>
+			</tr>
+			<tr>
+				<td>设定时间:</td>
+				<td id="aimTime"></td>
+			</tr>
+			<tr>
+				<td>当前时间:</td>
+				<td id="nowTime"></td>
+			</tr>
+			<tr>
+				<td>剩余时间:</td>
+				<td id="leftTime"></td>
+			</tr>
+		</table>
+	</body>
+</html>
+<script src="js/cookieTools.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	function getId(id){
+		return document.getElementById(id);
+	}
+	var yearSel=getId("yearSel");
+	var monthSel= getId("monthSel");
+	var daySel= getId("daySel");
+	var hourSel = getId("hourSel");
+	var minuteSel = getId("minuteSel");
+	var secondSel = getId("secondSel");
+	
+	var chazhi;
+	var timer;
+	var aim_date;
+	var know_date;
+	for(var i=2017;i<=2050;i++){
+		var oOption=document.createElement("option");
+		oOption.value=i;
+		oOption.innerHTML=i+"年";
+		yearSel.appendChild(oOption);
+	}
+	for(var i=1;i<=12;i++){
+		var oOption=document.createElement("option");
+		oOption.value=i;
+		oOption.innerHTML=i+"月";
+		monthSel.appendChild(oOption);
+	}
+	/*
+	yearSel.onchange=function(){
+		addDay();
+	}
+	monthSel.onchange=function(){
+		addDay();
+	}
+	*/
+	
+	yearSel.onchange=addDay;
+	monthSel.onchange=addDay;
+	
+	for(var i=0;i<=23;i++){
+		var oOption=document.createElement("option");
+		oOption.value=i;
+		oOption.innerHTML=i+"时";
+		hourSel.appendChild(oOption);
+	}
+	for(var i=0;i<=59;i++){
+		var oOption=document.createElement("option");
+		oOption.value=i;
+		oOption.innerHTML=i+"分";
+		minuteSel.appendChild(oOption);
+	}
+	for(var i=0;i<=59;i++){
+		var oOption=document.createElement("option");
+		oOption.value=i;
+		oOption.innerHTML=i+"秒";
+		secondSel.appendChild(oOption);
+	}
+	
+	var sure=getId("sure");
+	
+	sure.onclick=function(){
+		var y=parseInt(yearSel.value);
+		var mon=parseInt(monthSel.value);
+		var d=parseInt(daySel.value);
+		var h=parseInt(hourSel.value);
+		var min=parseInt(minuteSel.value);
+		var s=parseInt(secondSel.value);
+		mon=mon>=10?mon:"0"+mon;
+		d=d>=10?d:"0"+d;//补齐两位数
+		h=h>=10?h:"0"+h;//补齐两位数
+		min=min>=10?min:"0"+min;
+		s=s>=10?s:"0"+s;
+		//保存到cookie
+		let times=""+y+mon+d+h+min+s;
+		addCookie("time",times,500);
+		
+		getId("aimTime").innerHTML=y+"-"+mon+"-"+d+" "+h+":"+min+":"+s;
+		aim_date=new Date(y,mon-1,d,h,min,s);
+		//console.log(Date.parse(aim_date));
+		setInterval(nowTime,1000);
+		know_date=new Date();		
+		chazhi=Date.parse(aim_date)-Date.parse(know_date);//总毫秒数
+		if(chazhi<0){
+			alert("您设定的时间已经过去了");
+		}else if(chazhi==0){
+			alert("时间到");
+		}else{
+			goTime();	
+		}
+	}
+	
+	function nowTime(){
+		know_date=new Date();
+		let _y=know_date.getFullYear();
+		let _mon=know_date.getMonth()+1;
+		let _d=know_date.getDate();
+		let _h=know_date.getHours();
+		let _min=know_date.getMinutes();
+		let _s=know_date.getSeconds();
+		_h=_h>=10?_h:"0"+_h;//补齐两位数
+		_min=_min>=10?_min:"0"+_min;
+		_s=_s>=10?_s:"0"+_s;
+		getId("nowTime").innerHTML=_y+"-"+_mon+"-"+_d+" "+_h+":"+_min+":"+_s;
+	}
+	
+	function goTime(){
+		clearInterval(timer);
+		
+		know_date=new Date();	
+		chazhi=Date.parse(aim_date)-Date.parse(know_date);//总毫秒数
+			var sec,minmin,hh,dd;
+			chazhi/=1000;
+			timer=setInterval(function(){
+				chazhi--;
+				if(chazhi<0){
+					clearInterval(timer);
+					alert("倒计时结束");
+					return;
+				}
+				sec=chazhi%60;
+				minmin=parseInt(chazhi/60)%60;
+				hh=parseInt(chazhi/3600)%24;
+				dd=parseInt((chazhi/3600)/24);
+				getId("leftTime").innerHTML=dd+"天"+hh+"时"+minmin+"分"+sec+"秒";
+			},1000);
+	}
+	
+	function addDay(){
+		switch(parseInt(monthSel.value)){
+			case 1:;
+			case 3:;
+			case 5:;
+			case 7:;
+			case 8:;
+			case 10:;
+			case 12:
+				daySel.length=1;
+				for(var i=1;i<=31;i++){
+				var oOption=document.createElement("option");
+				oOption.value=i;
+				oOption.innerHTML=i+"日";
+				daySel.appendChild(oOption);
+				};
+				break;
+			case 4:;
+			case 6:;
+			case 9:;
+			case 11:
+				daySel.length=1;
+				for(var i=1;i<=30;i++){
+					var oOption=document.createElement("option");
+					oOption.value=i;
+					oOption.innerHTML=i+"日";
+					daySel.appendChild(oOption);
+				};
+				break;
+			case 2:
+				daySel.length=1;
+				for(var i=1;i<=28;i++){
+					var oOption=document.createElement("option");
+					oOption.value=i;
+					oOption.innerHTML=i+"日";
+					daySel.appendChild(oOption);
+				}
+				var year=yearSel.value;
+				if((year%4==0 && year%100!=0) || (year%400==0)){
+					daySel.length=1;
+					for(var i=1;i<=29;i++){
+						var oOption=document.createElement("option");
+						oOption.value=i;
+						oOption.innerHTML=i+"日";
+						daySel.appendChild(oOption);
+					}
+				}else{
+					
+				};
+				break;
+			default:;break;
+		}
+	}
+	
+	window.onload=function(){
+		var t=getCookie("time");
+		console.log(t);
+		if(t==""){
+			return;
+		}else{
+			
+			getId("aimTime").innerHTML=t.substring(0,4)+"-"+t.substring(4,6)+"-"+t.substring(6,8)+" "+t.substring(8,10)+":"+t.substring(10,12)+":"+t.substring(12,14);
+			aim_date=new Date(t.substring(0,4),t.substring(4,6)-1,t.substring(6,8),t.substring(8,10),t.substring(10,12),t.substring(12,14));
+			//注意，设置时间的时候月份要减一
+			yearSel.value=parseInt(t.substring(0,4));
+			monthSel.value=parseInt(t.substring(4,6));
+			addDay();//此处要调用这个函数，否则天的下拉框不能正确显示
+			daySel.value=parseInt(t.substring(6,8));
+			hourSel.value=parseInt(t.substring(8,10));
+			minuteSel.value=parseInt(t.substring(10,12));
+			secondSel.value=parseInt(t.substring(12,14));
+			goTime();
+			setInterval(nowTime,1000);
+		}
+		
+	}
+</script>

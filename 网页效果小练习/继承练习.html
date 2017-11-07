@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+function Biology(life,weight){
+	this.life=life;
+	this.weight=weight;
+}
+Biology.prototype.move=function(type){
+	alert(type);
+}
+//call继承
+function Person(life,weight,name){
+	Biology.call(this,life,weight);//call和apply可以传参
+	this.name=name;
+}
+Person.prototype.value=function(){
+	alert("为人民服务");
+}
+//原型继承
+function Plant(size){
+	this.size=size;
+}
+Plant.prototype=new Biology("50年","1000KG");//原型无法传参
+
+var plant1=new Plant("大得很");
+console.log(plant1.size+","+plant1.life+","+plant1.weight);
+plant1.move("随风摇曳");//原型可以继承父亲的方法
+
+var person1=new Person("zhangsan","100岁","100公斤");
+person1.value();//
+person1.move("走");//call和apply无法继承父亲的方法
+</script>

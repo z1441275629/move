@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+	</head>
+	<body>
+		<ul id="ul">
+			
+		</ul>
+	</body>
+</html>
+<script type="text/javascript">
+	var arrNeiRong=["老师","学生","校长","教育局局长","市长"];
+	var arrFlag=[];
+	var Len=arrNeiRong.length;
+	for(var i=0;i<Len;i++){
+		arrFlag[i]=0;
+	}
+	//console.log(arrFlag)
+	var ul=document.getElementById("ul");
+	for(var i=0;i<Len;i++){
+		var li=document.createElement("li");
+		li.innerHTML=arrNeiRong[i];
+		ul.appendChild(li);
+	}
+	
+	var lis=ul.getElementsByTagName("li");
+	//console.log(lis)
+	for(let i=0;i<Len;i++){
+		lis[i].onclick=function(){
+			if(arrFlag[i]==0){
+				cb(this.innerHTML);
+				lis[i].style.color="grey";
+				arrFlag[i]=1;
+				//console.log(arrFlag)
+			}else{
+				alert("你已经点过"+this.innerHTML+"了，不能再次点击投票");
+			}
+			
+		}
+	}
+	
+	function cb(val){
+		console.log("你已经成功为"+val+"投了一票");
+	}
+</script>

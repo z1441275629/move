@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			#box{
+				display: flex;
+				background: black;
+				flex-wrap: nowrap;
+			}
+			img,span{
+				float: left;
+				/*display: flex;*/
+			}
+			span{
+				position: relative;
+				font-size: 50px;
+				width: ;
+				height: ;
+				color: white;
+				top:94px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<img src="img/0.png" />
+			<img src="img/0.png" />
+			<span>:</span>
+			<img src="img/0.png" />
+			<img src="img/0.png" />
+			<span>:</span>
+			<img src="img/0.png" />
+			<img src="img/0.png" />
+		</div>
+		
+	</body>
+</html>
+<script type="text/javascript">
+	window.onload=flexTime();
+	function timer(){
+		var nowTime = new Date();
+		var hour = nowTime.getHours();
+		var minute= nowTime.getMinutes();
+		var seconds = nowTime.getSeconds();
+		var timeString = two(hour)+two(minute)+two(seconds);
+		for(var x in timeString){
+			document.getElementsByTagName("img")[x].src="img/"+timeString[x]+".png";
+		}
+	}
+	timer();
+	setInterval(timer,1000);
+	
+	//如果一个数是一位数，在它前面添加一个0.返回值是字符串
+	function two(num){
+		return num>=10?""+num:"0"+num;	
+	}
+	window.onresize=function(){
+		flexTime();
+	}
+	function flexTime(){
+		var zongWidth=document.getElementsByTagName("body")[0].clientWidth;
+		console.log(zongWidth);
+		var imgWidth=zongWidth*0.94/6;
+		var spanWidth=zongWidth*0.06/2;
+		var imgHeight=237*imgWidth/154;
+		var fontSize=imgHeight-(imgHeight*(237-50))/237;
+		var spanTop=(imgHeight-fontSize)/2;
+		var imgs=document.getElementsByTagName("img");
+		var spans=document.getElementsByTagName("span");
+		
+		for(var i=0;i<imgs.length;i++){
+			console.log(i);
+			document.getElementsByTagName("img")[i].style.width=imgWidth+"px";
+			document.getElementsByTagName("img")[i].style.height=imgHeight+"px"
+		}
+		for(var i=0;i<spans.length;i++){
+			document.getElementsByTagName("span")[i].style.width=spanWidth+"px";
+			document.getElementsByTagName("span")[i].style.top=spanTop+"px";
+			document.getElementsByTagName("span")[i].style.fontSize=fontSize+"px";
+		}
+	}
+</script>

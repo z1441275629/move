@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{padding: 0;margin: 0;}
+			#yiguo{margin: 10px auto;width:100px;line-height:20px;height:20px;border: 1px solid red;position: relative;}
+			#yiguo::before{content:"";display: block;width:0;height:0;}
+			#yiguo span{z-index: 10; position: absolute;left:0;top:0;width:100%;}
+			ul,li{list-style: none;}
+			ul{z-index:5;display: none;position: absolute;left:-1px;top:20px;border: 1px solid red;width:150px;}
+			#yiguo:hover span{border-bottom:1px solid #fff;}
+			#yiguo:hover ul{display: block;}
+		</style>
+	</head>
+	<body>
+		<p>设计思路：上面的菜单不给下边框，定位在下一部分的上面，把下一部分的边框盖住</p>
+		<div id="yiguo">
+			<span>我的易果</span>
+			<ul>
+				<li>我的购物车</li>
+				<li>我的悠币数量</li>
+				<li>我的收货地址</li>
+				<li>我的联系方式</li>
+				<li>我的订单</li>
+				<li>切换账号</li>
+			</ul>
+		</div>
+	</body>
+</html>

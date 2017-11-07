@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		#small_banner{
+			width: 220px;
+			height: 150px;
+			margin: 50px auto;
+			position: relative;
+		}		
+	</style>
+</head>
+<body>
+	<div id="small_banner"></div>
+</body>
+</html>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript">
+
+function getId(id){
+	return document.getElementById(id);
+}
+function Slide(_json){
+	var defaultvalue=this.setDEfault(_json);
+	for(let key in defaultvalue){
+		this[key]=defaultvalue[key];
+	}
+	this.initUI();
+	this.initEvent();
+}
+Slide.prototype={
+	initUI:function(){
+//		alert("222")
+		//动态创建元素
+		let bx_wrapperStr="<div><ul></ul></div>";
+		let cssStr="";
+		let length=parseInt(this.data.length/4);
+		$(this.objDom).append("<div style='width: 100%;height: 114px;'><ul style='width: 1500px;height: 114px;list-style: none;position: absolute;left: 0;top: 0;'></ul></div>");
+//		console.log($(this.objDom +">div>ul")[0]);
+		let ul=this.objDom.children[0].getElementsByTagName("ul")[0];
+		for(let i=0; i<length+1; i++){
+			$(ul).append("<li style='float:left;border: 1px solid #CCC;width: 220px;height: 114px;'></li>");
+			let li=ul.children[i];
+			for(let j=0; j<4; j++){
+				$(li).append('<a style="display: block;width: 50%;height: 50%;float: left;" href="###" target="_blank"><img style="width: 80%;height: 80%;display: block;margin: 0 auto;" src="'+this.data[(4*i+j)%(this.data.length)].img+'" alt="Neil Barrett 尼奥·贝奈特" width="107" height="54"></a>')
+			}
+		}
+		
+		let doudou="<div><ul></ul></div>";
+		$(this.objDom).append("<div style='position: relative;width: 100%;'><ul style='width: 100px;margin: 10px auto;'></ul></div>");
+		let ul2=this.objDom.children[1].getElementsByTagName("ul")[0];
+		console.log(ul2);
+		ul2.innerHTML='<a style="float: left;font-size: 20px;width: 10px;height:10px;line-height: 10px;" href="###" class="bx-prev">&lt;</a>';
+		for(let i=0; i<length; i++){
+			ul2.innerHTML+='<li style="float: left;"><a style="display: block;height: 10px;width: 10px;background: #666;border-radius: 100%;margin: 0 5px 0;" href="###"></a></li>';
+		}	
+		ul2.getElementsByTagName("li")[0].getElementsByTagName("a")[0].style.background=this.doudouObj.highbgColor;
+		ul2.innerHTML+='<a style="float: left;font-size: 20px;width: 10px;height:10px;line-height: 10px;" href="###" class="bx-next">&gt;</a>';
+		this.leftBtn=ul2.firstElementChild;
+		this.rightBtn=ul2.lastElementChild;
+	},
+	initEvent:function(){
+		var that=this;
+		that.go();
+		that.leftBtn.onclick=function(){
+			$(that.objDom.getElementsByTagName("ul")[0]).stop(true,true);
+			let nn=that.curOrd-1;
+			if(nn<=0){
+				nn=that.data.length/4;
+				that._left=-1*that.objDom.offsetWidth*nn;
+				$(that.objDom.getElementsByTagName("ul")[0]).css({"left":that._left+"px"});
+			}
+			that.goImg(nn);
+			that.curOrd=nn;
+		},
+		that.rightBtn.onclick=function(){
+			$(that.objDom.getElementsByTagName("ul")[0]).stop(true,true);
+			that.gostep(true,true);
+		},
+		this.objDom.onmouseover=function(){
+			clearInterval(that.timer);
+		},
+		this.objDom.onmouseout=function(){
+			that.go();
+		},
+		$(that.objDom.children[1].getElementsByTagName("ul")[0]).children("li").mouseover(
+			function(){
+				$(that.objDom.getElementsByTagName("ul")[0]).stop(true,true);
+				//console.log(this);//li
+				$(this.getElementsByTagName("a")).css("background",that.doudouObj.highbgColor);
+				let lis=(that.objDom.children[1].getElementsByTagName("ul")[0]).getElementsByTagName("li");
+				//console.log($(lis).index(this));
+				let aimOrd=$(lis).index(this);
+				that.goImg(aimOrd);
+				that.curOrd=$(lis).index(this);
+				
+			}
+		);
+	},
+	gostep:function(){
+			$(this.objDom.getElementsByTagName("ul")[1].getElementsByTagName("li")[this.curOrd%(this.data.length/4)].getElementsByTagName("a")[0]).css("background",this.doudouObj.bgColor);
+			this.curOrd++;
+			if(this.curOrd>this.data.length/4){
+				this.curOrd=1;
+				$(this.objDom.getElementsByTagName("ul")[0]).css({"left":this._left+"px"});
+			}
+			this._left=-1*this.curOrd*this.objDom.offsetWidth;
+			//console.log(this.objDom.offsetWidth)
+			//console.log(this._left);
+			$(this.objDom.getElementsByTagName("ul")[0]).animate({"left":this._left+"px"},500);
+			$(this.objDom.getElementsByTagName("ul")[1].getElementsByTagName("li")[this.curOrd%(this.data.length/4)].getElementsByTagName("a")[0]).css("background",this.doudouObj.highbgColor);
+//			$(this.objDom.getElementsByTagName("ul")[1]).children(this.curOrd%(this.data.length/4)).css("background",this.doudouObj.highbgColor);
+	},
+	goImg:function(aimOrd){
+		$(this.objDom.getElementsByTagName("ul")[1].getElementsByTagName("li")[this.curOrd%(this.data.length/4)].getElementsByTagName("a")[0]).css("background",this.doudouObj.bgColor);
+		this.curOrd=aimOrd;
+		this._left=-1*this.curOrd*this.objDom.offsetWidth;
+		$(this.objDom.getElementsByTagName("ul")[0]).animate({"left":this._left+"px"},500);
+		$(this.objDom.getElementsByTagName("ul")[1].getElementsByTagName("li")[this.curOrd%(this.data.length/4)].getElementsByTagName("a")[0]).css("background",this.doudouObj.highbgColor);
+	},
+	go:function(){
+		var that=this;
+		clearInterval(that.timer);
+		that.timer=setInterval(function(){that.gostep()},1000);
+	},
+	setDEfault:function(obj){
+		var defaultValue={
+				doudouObj:{//定义的默认值
+	                btnwidth:10,
+	                btnheight:10,
+	                space:10,//豆豆之间的间隔
+	                bgColor:"#666",
+	                highbgColor:"red"
+	            },
+	            curOrd:null,
+	            _left:0,
+	            timer:null,
+	            leftBtn:null,
+	            rightBtn:null
+		}
+		for(var key in obj){
+			defaultValue[key]=obj[key];	
+		}
+		return defaultValue;
+	}
+}
+
+window.onload=function(){
+	let _json={
+            objDom:getId("small_banner"),
+            data:[
+	            {img:"http://img.5lux.com.cn/511/avatar/2015/11/17/14477432418542.png",_url:"",alt:""},
+	            {img:"http://img.5lux.com.cn/511/avatar/2015/11/17/14477378676085.png",_url:"",alt:""},
+	            {img:"http://img.5lux.com.cn/511/avatar/2015/11/17/14477423102347.png",_url:"",alt:""},
+	            {img:"http://img.5lux.com.cn/511/avatar/2015/11/17/14477460482377.png",_url:"",alt:""},
+	            {img:"http://img.5lux.com.cn/511/avatar/2015/11/17/14477432418542.png",_url:"",alt:""},
+	            {img:"http://img.5lux.com.cn/511/avatar/2015/11/17/14477432418542.png",_url:"",alt:""},
+	            {img:"http://img.5lux.com.cn/511/avatar/2015/11/17/14477432418542.png",_url:"",alt:""},
+	            {img:"http://img.5lux.com.cn/511/avatar/2015/11/17/14477432418542.png",_url:"",alt:""},
+	            {img:"http://img.5lux.com.cn/511/avatar/2015/11/17/14477432418542.png",_url:"",alt:""},
+	            {img:"http://img.5lux.com.cn/511/avatar/2015/11/17/14477432418542.png",_url:"",alt:""},
+	            {img:"http://img.5lux.com.cn/511/avatar/2015/11/17/14477432418542.png",_url:"",alt:""},
+	            {img:"http://img.5lux.com.cn/511/avatar/2015/11/17/14477432418542.png",_url:"",alt:""}
+            ],
+            doudouObj:{//定义的默认值
+                btnwidth:10,
+                btnheight:10,
+                space:10,//豆豆之间的间隔
+                bgColor:"#666",
+                highbgColor:"red"
+            },
+            timeSpace:3000    
+        }
+	var myLunbo=new Slide(_json)
+	
+}
+</script>

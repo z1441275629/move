@@ -1,0 +1,48 @@
+*{
+	margin:0 ;
+	padding:0;
+}
+.mui-title{
+	
+	color: #D43C33;
+}
+.mui-scroll-wrapper{
+	overflow-y: scroll;
+}
+.mui-scroll-wrapper{
+	margin-bottom: 50px;
+}
+.mui-bar-nav{
+background: #D43C33;
+}
+.topsvg {
+    width: 142px;
+    height: 25px;
+   margin:  auto;
+  
+   margin-top: 9.5px;
+}
+.mui-bar{
+	height: 60px;
+	padding-top: 20px;
+}
+iframe{
+	background: #fff;
+}
+iframe div{
+	border-bottom: none!important;
+}
+#divCurrentWeather{
+	border-bottom: none!important;
+}
+.mui-table-view{
+	margin-top: -32px;
+}
+.mui-badge{
+	width: 100%;
+	height: 30px;
+	text-align: center;
+}
+.mui-bar-nav~.mui-content {
+    padding-top: 60px;
+}
